@@ -1,0 +1,165 @@
+import pandas as pd
+from pathlib import Path
+import gdown
+import tempfile
+import os
+
+def load_and_merge_all_data(drive_csv_url=None):
+    
+    # Define paths
+    base_path = Path(".")
+    outputs_path = base_path / "outputs"
+    worldbank_path = base_path / "worldbank_data"
+    
+    print("Loading and merging datasets...")
+    
+    def find_latest_file_by_pattern(directory, pattern):
+        if not directory.exists():
+            return None
+        matching_files = list(directory.glob(pattern))
+        if not matching_files:
+            return None
+        latest_file = max(matching_files, key=lambda f: f.stat().st_mtime)
+        return latest_file
+    
+    def load_csv_from_drive_gdown(drive_url):
+
+        if not drive_url:
+            return None
+            
+        try:
+            # Create temporary file
+            with tempfile.NamedTemporaryFile(mode='w+b', suffix='.csv', delete=False) as tmp_file:
+                temp_path = tmp_file.name
+            
+            # Download file using gdown
+            gdown.download(drive_url, temp_path, quiet=False, fuzzy=True)
+            
+            # Read CSV
+            df = pd.read_csv(temp_path)
+            
+            # Clean up temporary file
+            os.unlink(temp_path)
+            
+            print(f"Loaded Google Drive CSV: {len(df)} rows")
+            return df
+            
+        except Exception as e:
+            print(f"Error loading CSV from Google Drive: {str(e)}")
+            # Clean up temp file if it exists
+            if 'temp_path' in locals() and os.path.exists(temp_path):
+                os.unlink(temp_path)
+            return None
+   
+    # File patterns for output files
+    file_patterns = {
+        'coup': "coup_*.csv",
+        'economic_crisis': "economic_crisis_*.csv", 
+        'election': "election_*.csv"
+    }
+    
+    # Find latest files
+    output_files = {}
+    for name, pattern in file_patterns.items():
+        latest_file = find_latest_file_by_pattern(outputs_path, pattern)
+        if latest_file:
+            output_files[name] = latest_file
+            print(f"Found {name}: {latest_file.name}")
+        else:
+            print(f"Warning: No file found for pattern {pattern}")
+    
+    # Load output files
+    dataframes = {}
+    for name, file_path in output_files.items():
+        try:
+            df = pd.read_csv(file_path)
+            dataframes[name] = df
+            print(f"Loaded {name}: {len(df)} rows")
+        except Exception as e:
+            print(f"Error loading {name}: {str(e)}")
+    
+    # Load Google Drive CSV
+    if drive_csv_url:
+        drive_df = load_csv_from_drive_gdown(drive_csv_url)
+        if drive_df is not None:
+            dataframes['google_drive'] = drive_df
+    
+    # Load worldbank data
+    worldbank_file = worldbank_path / "combined_indicators.csv"
+    if worldbank_file.exists():
+        try:
+            wb_df = pd.read_csv(worldbank_file)
+            dataframes['worldbank'] = wb_df
+            print(f"Loaded worldbank data: {len(wb_df)} rows")
+        except Exception as e:
+            print(f"Error loading worldbank data: {str(e)}")
+    else:
+        print(f"Warning: Worldbank file not found at {worldbank_file}")
+    
+    # Check if data exists
+    if len(dataframes) == 0:
+        print("Error: No data to merge")
+        return None
+    
+    print(f"Merging {len(dataframes)} datasets...")
+    
+    # Find common columns
+    common_columns = set()
+    for name, df in dataframes.items():
+        if common_columns:
+            common_columns = common_columns.intersection(set(df.columns))
+        else:
+            common_columns = set(df.columns)
+    
+    # Find merge key
+    merge_key = None
+    potential_keys = ['countryiso3code', 'country_code', 'country', 'Country']
+    
+    for key in potential_keys:
+        if key in common_columns:
+            merge_key = key
+            break
+    
+    # Merge datasets
+    if merge_key:
+        print(f"Using '{merge_key}' as merge key")
+        final_df = None
+        for name, df in dataframes.items():
+            if merge_key in df.columns:
+                if final_df is None:
+                    final_df = df.copy()
+                else:
+                    final_df = pd.merge(
+                        final_df, 
+                        df, 
+                        on=merge_key, 
+                        how='outer',
+                        suffixes=('', f'_{name}')
+                    )
+                print(f"Merged {name}")
+            else:
+                print(f"Warning: {name} missing column '{merge_key}', skipping")
+    else:
+        print("No common merge key found, concatenating datasets")
+        final_df = pd.concat(list(dataframes.values()), ignore_index=True, sort=False)
+    
+    # Save final data
+    if final_df is not None:
+        output_file = "final_merged_data.csv"
+        final_df.to_csv(output_file, index=False)
+        print(f"Final dataset saved: {output_file}")
+        print(f"Shape: {final_df.shape[0]} rows x {final_df.shape[1]} columns")
+        return final_df
+    else:
+        print("Error: Failed to create final dataset")
+        return None
+
+if __name__ == "__main__":
+    # Google Drive folder URL containing the CSV
+    drive_url = "https://drive.google.com/drive/folders/1Prw1Ubq02chi0VWczvFR4q6FJvuXT2B7/view" 
+    
+    result = load_and_merge_all_data(drive_csv_url=drive_url)
+    if result is not None:
+        print("Process completed successfully")
+    else:
+        print("Process failed")

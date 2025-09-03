@@ -92,7 +92,7 @@ Ensure the following data files are in place:
 * Admin1 shapefiles:
   `data/raw/boundaries/ne_10m_admin_1_states_provinces/...`
 
-These must be downloaded manually from the Google Drive if not included in the repository.
+These must be downloaded manually from the [Google Drive](https://drive.google.com/drive/folders/1qG9lFDUKTZW2kG6erbAqRSJhdm5l1255?usp=sharing) if not included in the repository.
 
 ---
 
