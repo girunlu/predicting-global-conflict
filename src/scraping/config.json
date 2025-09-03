@@ -2,5 +2,6 @@
     "gnews_filter" : false,
     "max results":3,
     "page timeout": 20,
-    "min page text length" : 500
+    "min page text length" : 500,
+    "website text skip words" : ["blocked", "cloudflare", "cloud flare"]
 }

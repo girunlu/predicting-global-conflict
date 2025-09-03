@@ -7,5 +7,15 @@ ADD ALL COUNTRIES to the IO
 QA with Honduras when code is ready
 Add funcitonality to only capture new data once rename - just limit search
 Add functionality to combine CSVs
-Verify selenium with cloudflare
 Final QA receipt look / feel / information
+
+Look at steven's work
+
+
+do less articles 10 instead of 20
+look at first two paragraphs
+8 years not 10
+value engineering - article cropping
+look into time
+llm data search file output matching
+optimisations

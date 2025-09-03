@@ -1,8 +1,21 @@
 {
-    "instructions" : {
-        "news_instruction" : "Does this article talk about historical occurrences of any of the following [all metrics] for [country]? And I don't mean any sub categories of those items, I just mean strictly the following items: [all metrics]. If it does, return yes (otherwise return no, nothing else) and then for each occurence, list the country, the metric, and the relevant months. Do this for all mentioned countries and all metrics with only one metric on each line. Treat it like a csv and list it month-year as in mm-yyyy, and list all years, don't just go month-year to month-year. Ensure it is numeric. If you do not know the month or year, please move on to the next one and don't return just the text mm-yyyy. List every month and every year. So the format is country 1, metric 1, month1-year1, month2-year2, and so forth, with a new line being required for a new metric or country."
-    },
-    "queries" :{
-        "news_reminder": "Just to remind you of the output I want, for every country, every named metric in ([all metrics]), and every month-year, I want you to return a line with the country, the metric, and the month-year in the format country, metric, mm-yyyy. If there are multiple month-years for a single country-metric pair, please list them all on the same line separated by commas. If there are multiple metrics for a single country, please list each metric on its own line. If there are multiple countries, please list each country-metric pair on its own line. Please do not return anything other than what I have specified. If there are no occurrences of any of the metrics for any of the countries, please just return no."
-        }
+  "instructions": {
+    "news_instruction": "You are analyzing an article. Your task is to check whether it discusses historical occurrences of any of the following metrics: [all metrics]. Only consider exactly these metrics, no others. If the article does NOT discuss these metrics in relation to any country, respond only with: \"no\". Otherwise, respond with valid JSON only, using the exact schema provided in the output_format. Rules: - Each object must contain exactly one country, one metric, and an array of dates. - Dates must be in mm-yyyy format (e.g., 02-2014). - If a range of dates is mentioned, expand it fully into all months and years (e.g., 2014–2015 → 01-2014, 02-2014, ..., 12-2015). - Never use ellipses (..., …). Always list every date explicitly. - Skip any occurrence where the month or year is unknown. - Do not output partial results per country; only output \"no\" if there are zero occurrences overall. Output nothing else but this JSON array.",
+    "summary_instruction": "Summarise this article into a bullet-point list of short sentences. Each sentence must include: (a) explicit country mentions, (b) at least one of the following metrics: [all metrics], and (c) any time expressions (months/years/ranges) linked to the event. Always preserve dates exactly as written in the text. If a month and year are given, output them in mm-yyyy format (e.g., 03-2022). If only a year is given, keep it as yyyy. If the text uses vague expressions (e.g., 'early 2022', 'late 2010s'), output them literally as-is. Do not generalise, approximate, or omit time references. Ignore irrelevant details not connected to a metric. Do not rephrase beyond light compression; the goal is to extract, not retell.",
+    "format_instruction": "An example of the required JSON formatting is shown below - match this exactly:\n[examples]"
+  },
+  "formats": {
+    "output_format": [
+      {
+        "country": "El Salvador",
+        "metric": "protests",
+        "dates": ["03-2022", "04-2022"]
+      },
+      {
+        "country": "Honduras",
+        "metric": "drug trafficking",
+        "dates": ["02-2014"]
+      }
+    ]
+  }
 }

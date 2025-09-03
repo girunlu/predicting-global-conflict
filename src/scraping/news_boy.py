@@ -49,7 +49,7 @@ def get_news_site(url, page_delay = 3000, overall_timeout = 30000):
         return None
 
 class BrowserSim:
-    def __init__(self, page_wait = 15, min_text_length = 500):
+    def __init__(self, page_wait = 15, min_text_length = 500, skip_words = ['blocked']):
         options = Options()
         options.add_argument("--headless=new")
         options.add_argument("--disable-gpu")
@@ -58,6 +58,7 @@ class BrowserSim:
         self.options = options
         self.page_wait = page_wait
         self.min_text_length = min_text_length
+        self.skip_words = skip_words
         
     def start(self):
         self.driver = webdriver.Chrome(options=self.options)
@@ -91,6 +92,10 @@ class BrowserSim:
             else:
                 page_text = body_text
 
+            for word in self.skip_words:
+                if word in page_text[:100]:
+                    print(f"Website rejected request, failed for {url}...")
+                    return None
             print(page_text[:100])
             return page_text
         except Exception as e:

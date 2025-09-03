@@ -1,6 +1,6 @@
 # LOADING AND IMPORTING LIBRARIES
 from gnews_fetcher import GNewsFetcher
-import logic_parser as logic
+import logic_parser
 from news_boy import BrowserSim
 import utils
 
@@ -21,10 +21,12 @@ gnews_filter = config['gnews_filter']
 max_results = config['max results']
 page_timeout = config['page timeout']
 min_page_text_length = config['min page text length']
+skip_words = config['website text skip words']
 
 prompts = json.load(open(os.path.join(os.path.dirname(__file__), "prompts.json")))
 news_instruction = prompts["instructions"]["news_instruction"]
-news_reminder = prompts["queries"]["news_reminder"]
+format_instruction = prompts["instructions"]["format_instruction"]
+output_format = prompts["formats"]["output_format"]
 
 print("generating searches...")
 # GENERATING SEARCHES and initialising url tracker for efficiency
@@ -39,8 +41,7 @@ visited_urls = []
 
 print("generating prompts...")
 # GENERATE PROMPTS FOR PARSING AND FILTERING
-news_instruction = utils.generate_instructions(news_instruction, metrics)
-news_reminder = utils.generate_instructions(news_reminder, metrics)
+news_instruction = utils.generate_prompt_text(news_instruction + format_instruction, metrics, output_format)
 
 print("fetching news articles...")
 # FETCHING URLS
@@ -51,7 +52,7 @@ print(f"Fetched a whole {len(google_news_articles)} articles...")
 print("fetching website data...")
 # BROWSING AND GETTING FULL TEXT
 accessed_articles = []
-browser = BrowserSim(page_wait=page_timeout, min_text_length=min_page_text_length)
+browser = BrowserSim(page_wait=page_timeout, min_text_length=min_page_text_length, skip_words=skip_words)
 browser.start()
 for article in google_news_articles:
     full_text = browser.get_page(article["url"])
@@ -62,37 +63,18 @@ for article in google_news_articles:
 browser.end()
 print(f"Accessed {len(accessed_articles)} articles with full text.")
 
-#TODO testing functionality of saving and loading json
-utils.save_articles_json(accessed_articles, filename="accessed_articles.json")
+print("parsing articles...")
+parsing_agent = logic_parser.TextParser()
+parsing_agent.configure_parsing(None, news_instruction, metrics)
+parsed_articles = [] 
 
-# print("parsing articles...")
-# parsed_articles = [] # MAKE MORE EFFICIENT
-# # PARSE ARTICLES
-# for article in accessed_articles:
-#     # url = article["url"]
-#     # if url in visited_urls:
-#     #     continue
-#     # visited_urls.append(article["url"])
-    
-#     full_text = get_news_data(article["url"], page_delay=page_timeout, overall_timeout=overall_timeout)
-#     if full_text is None:
-#         print(f"Failed to fetch article at {url}, skipping...")
-#         continue
-        
-#     article["full_text"] = full_text
-#     print(f"Summary: {full_text[:500]}...")  # Print first 500 characters of the article text
+# PARSE ARTICLES
+for article in accessed_articles:
+    # url = article["url"]
+    # if url in visited_urls:
+    #     continue
+    # visited_urls.append(article["url"])
 
-#     response = filtering_agent.get_chatgpt_response(
-#         instruction_prompt, 
-#         f"{news_query_prompt.replace('[country]', article['country'])} {article['full_text'][:min(len(article['full_text']), 4000*4)]}" 
-#     )
-#     if response.lower().strip() == "no":
-#         continue
-    
-#     formatted_response = [row.split(',') for row in response.strip().split("\n")[1:]]
-#     article["response"] = formatted_response
-#     print(f"Response: {response}")
-#     parsed_articles.append(article)
-
-# #SAVE TO CSV
-# utils.save_to_csv(parsed_articles)
+    full_text = article.get("full_text", "")
+    agent_response = parsing_agent.parse_and_format(full_text)
+    parsed_articles.append(agent_response) if agent_response is not None else None
