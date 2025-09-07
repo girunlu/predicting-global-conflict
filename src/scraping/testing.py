@@ -13,9 +13,6 @@ format_instruction = prompts["instructions"]["format_instruction"]
 output_format = prompts["formats"]["output_format"]
 news_instruction = utils.generate_prompt_text(news_instruction + format_instruction, metrics, output_format)
 
-# summary_instruction = prompts["instructions"]["summary_instruction"]
-# summary_instruction = utils.generate_prompt_text(summary_instruction, metrics)
-
 print("parsing articles...")
 # EXTRACTING INFORMATION FROM ARTICLES
 parsing_agent = logic_parser.TextParser()
@@ -50,4 +47,4 @@ for article_response in parsed_articles:
         flattened_data.append(entry)
 
 # Save to CSV
-utils.save_to_csv(flattened_data, metrics, country_names, years, output_dir = output_dir)
+utils.save_to_csv_flat(flattened_data, metrics, country_names, years, output_dir = output_dir)

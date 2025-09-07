@@ -75,11 +75,9 @@ class TextParser:
             metric = str(entry.get("metric", "")).strip().lower()
             dates = entry.get("dates", [])
 
-            # 🚫 Drop entries with metrics not in allowed list
             if metric not in self.allowed_metrics:
                 continue
 
-            # Validate dates (only mm-yyyy or yyyy allowed)
             valid_dates = [
                 d for d in dates
                 if isinstance(d, str) and (

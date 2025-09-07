@@ -19,3 +19,5 @@ value engineering - article cropping
 look into time
 llm data search file output matching
 optimisations
+
+country code and us centric question

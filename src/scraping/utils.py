@@ -1,8 +1,7 @@
-import os
+import os, json, time, re, ast
 from datetime import datetime
 from dateutil import parser
 import pandas as pd
-import json
 
 def generate_search_queries(google_search_templates : list[str], 
     country_names : list[str], 
@@ -33,10 +32,21 @@ def display_article_results(articles : list[dict]):
         print(f"URL: {article['url']}")
         print(f"Parsed: {article.get('parsed_response', 'N/A')}\n")
 
-def generate_prompt_text(any_text : str, metrics : list[str], examples : list[dict] | None) -> str:
-    if examples is None:
-        return any_text.replace("[all metrics]", ", ".join(metrics))
-    return any_text.replace("[all metrics]", ", ".join(metrics)).replace("[examples]", str(examples))
+def generate_prompt_text(any_text: str, metrics: dict, examples: list[dict] | None) -> str:
+    """
+    Replaces placeholders in the prompt with metric definitions and examples.
+    """
+    # Build metric definitions text
+    metrics_definitions = "\n".join(
+        [f"- {name}: {definition}" for name, definition in metrics.items()]
+    )
+
+    result = any_text.replace("[all metrics]", metrics_definitions)
+
+    if examples is not None:
+        result = result.replace("[examples]", json.dumps(examples, indent=2))
+
+    return result
 
 def save_articles_json(articles, filename="accessed_articles.json"):
     output_dir = os.path.join(os.getcwd(),"testing", "outputs")
@@ -100,3 +110,68 @@ def save_to_csv(
         filename = os.path.join(output_dir, f"{metric.replace(' ', '_')}_{timestamp}.csv")
         df_metric.to_csv(filename, index=False)
         print(f"Saved metric '{metric}' to {filename}")
+
+def save_to_csv_flat(
+    data: list[dict],
+    metrics: list[str],
+    countries: list[str],
+    years: list[int],
+    output_dir: str = "outputs",
+    date_format: str = "%m-%Y",
+):
+    """
+    Saves parsed article data into a single CSV with columns:
+    date | country | metric1 | metric2 | ...
+    Each row represents one (date, country) combination.
+    """
+    print("Saving flattened results to CSV...")
+
+    # Generate all month strings from years
+    all_months_str = []
+    for year in years:
+        for month in range(1, 13):
+            all_months_str.append(f"{month:02d}-{year}")
+
+    # Ensure output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Prepare a list of rows
+    rows = []
+    for country in countries:
+        for month in all_months_str:
+            row = {"date": month, "country": country}
+            # Initialize all metrics to 0
+            for metric in metrics:
+                row[metric] = 0
+            rows.append(row)
+
+    df = pd.DataFrame(rows)
+
+    # Fill in 1s for metrics that occurred
+    for entry in data:
+        country = entry.get("country")
+        metric = entry.get("metric")
+        if country not in countries or metric not in metrics:
+            continue
+        for date_str in entry.get("dates", []):
+            try:
+                dt = parser.parse(date_str)
+                month_str = dt.strftime(date_format)
+                # Set the metric to 1 for this country and date
+                df.loc[(df["country"] == country) & (df["date"] == month_str), metric] = 1
+            except Exception as e:
+                print(f"Skipping unparseable date {date_str}: {e}")
+
+    # Save to CSV
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    filename = os.path.join(output_dir, f"all_metrics_flat_{timestamp}.csv")
+    df.to_csv(filename, index=False)
+    print(f"Saved flattened metrics CSV to {filename}")
+
+
+def log_time(start = None, label = "None"):
+    if start is None:
+        return time.perf_counter()
+    end = time.perf_counter()
+    print(f"{label} took {end - start:.2f} seconds.\n\n")
+    return end

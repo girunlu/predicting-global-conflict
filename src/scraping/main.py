@@ -3,12 +3,13 @@ from gnews_fetcher import GNewsFetcher
 import logic_parser
 from news_boy import BrowserSim
 import utils
+import os, json, datetime
 
-import os, json
+start = utils.log_time()
 
 print("loading configurations...")
 # LOADING CONFIGURATIONS
-io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["testing"] #TESTING
+io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["testing"] # TESTING
 metrics = io["metrics"]    
 searches = io["searches"]
 countries = io["countries"]
@@ -43,11 +44,15 @@ print("generating prompts...")
 # GENERATE PROMPTS FOR PARSING AND FILTERING
 news_instruction = utils.generate_prompt_text(news_instruction + format_instruction, metrics, output_format)
 
+loading_config = utils.log_time(start, "Loading configurations")
+
 print("fetching news articles...")
 # FETCHING URLS
 news_agent = GNewsFetcher(country=countries[gnews_searches[0]["country"]], max_results=max_results)
 google_news_articles = news_agent.get_bundle_search(search_country_queries=gnews_searches, visited_urls=visited_urls)
 print(f"Fetched a whole {len(google_news_articles)} articles...")
+
+fetching_articles = utils.log_time(loading_config, "Fetching articles")
 
 print("fetching website data...")
 # BROWSING AND GETTING FULL TEXT
@@ -63,18 +68,34 @@ for article in google_news_articles:
 browser.end()
 print(f"Accessed {len(accessed_articles)} articles with full text.")
 
+browsing_sites = utils.log_time(fetching_articles, "Browsing websites")
+
 print("parsing articles...")
 parsing_agent = logic_parser.TextParser()
 parsing_agent.configure_parsing(None, news_instruction, metrics)
-parsed_articles = [] 
+parsed_articles = []
 
 # PARSE ARTICLES
 for article in accessed_articles:
-    # url = article["url"]
-    # if url in visited_urls:
-    #     continue
-    # visited_urls.append(article["url"])
-
     full_text = article.get("full_text", "")
     agent_response = parsing_agent.parse_and_format(full_text)
-    parsed_articles.append(agent_response) if agent_response is not None else None
+    if agent_response:
+        parsed_articles.append(agent_response)
+
+parsing_articles = utils.log_time(browsing_sites, "Parsing articles")
+
+# FLATTEN RESPONSES
+flattened_data = []
+for article_response in parsed_articles:
+    if article_response is None:
+        continue
+    for entry in article_response:
+        flattened_data.append(entry)
+
+# SAVE TO CSV
+output_dir = os.path.join(os.getcwd(), "outputs")
+os.makedirs(output_dir, exist_ok=True)
+utils.save_to_csv_flat(flattened_data, metrics, countries_names, years, output_dir=output_dir)
+
+end = utils.log_time(start, "Total script")
+
