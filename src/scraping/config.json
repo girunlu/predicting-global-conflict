@@ -1,7 +1,9 @@
 {
-    "gnews_filter" : false,
-    "max results":3,
+    "max results":20,
     "page timeout": 10,
     "min page text length" : 500,
-    "website text skip words" : ["blocked", "cloudflare", "cloud flare"]
+    "website text skip words" : ["blocked", "cloudflare", "cloud flare"],
+    "search year chunk length" : 3,
+    "skim article start" : 200,
+    "skim article end" : 1200
 }

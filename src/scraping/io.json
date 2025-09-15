@@ -1,17 +1,43 @@
 {
     "official" :{
-        "metrics" : {
-            "contested election" : "A national or subnational election occurred in the country that month and was contested. Contested means: results were very close (e.g., margin <3%) OR there were credible, widespread allegations of fraud, vote-rigging, or manipulation.",
-            "crop failure" : "Reports indicate widespread crop failure or major agricultural losses, often due to drought, pests, disease, or extreme weather, that month in the country.",
-            "economic concern" : "Significant economic problems reported that month, such as high inflation, rapid currency depreciation, mass unemployment, or severe recession fears.",
-            "military coup" : "A military coup (successful or attempted, even if failed) occurred that month in the country. Defined as an attempt by armed forces to seize political power from the government.",
-            "political assassination" : "An assassination (successful killing or attempted killing) of a political leader, official, or candidate took place that month in the country.",
-            "natural disaster" : "A major natural disaster that month (e.g., earthquake, flood, wildfire, extreme heatwave, drought, tropical cyclone) that disrupted infrastructure, livelihoods, or economic activity.",
-            "ethnic tension" : "Reports that month indicate widespread ethnic, tribal, or communal tensions or violence. This can include discrimination, clashes, riots, hate speech, or persecution targeting a specific ethnic/tribal/religious community."
+        "metrics" : [
+            {
+            "title" : "contested election", 
+            "description" : "A national or subnational election occurred in the country that month and was contested. Contested means: results were very close (e.g., margin <3%) OR there were credible, widespread allegations of fraud, vote-rigging, or manipulation.", 
+            "rich search" : "(contested election OR close election OR disputed election OR election fraud OR vote rigging OR recount)"
         },
-        "searches" : [
-            "[metric] in [country] in [year]"
+            {
+            "title" : "crop failure", 
+            "description" : "Reports indicate widespread crop failure or major agricultural losses, often due to drought, pests, disease, or extreme weather, that month in the country.",
+            "rich search" : "(crop failure OR harvest failure OR agricultural losses OR drought OR famine OR pest outbreak)"
+        },
+            {
+            "title" : "economic concern", 
+            "description" : "Significant economic problems reported that month, such as high inflation, rapid currency depreciation, mass unemployment, or severe recession fears.",
+            "rich search" : "(inflation OR unemployment OR recession OR economic crisis OR currency depreciation)"
+        },
+            {
+            "title" : "military coup", 
+            "description" : "A military coup (successful or attempted, even if failed) occurred that month in the country. Defined as an attempt by armed forces to seize political power from the government.",
+            "rich search" : "(military coup OR junta OR army takeover OR military seized power OR coup attempt)"
+        },
+            {
+            "title" : "political assassination", 
+            "description" : "An assassination (successful killing or attempted killing) of a political leader, official, or candidate took place that month in the country.",
+            "rich search" : "(political assassination OR assassination attempt OR killing of leader OR murdered politician)"
+        },
+            {
+            "title" : "natural disaster", 
+            "description" : "A major natural disaster that month (e.g., earthquake, flood, wildfire, extreme heatwave, drought, tropical cyclone) that disrupted infrastructure, livelihoods, or economic activity.",
+            "rich search" : "(earthquake OR flood OR wildfire OR drought OR cyclone OR extreme weather OR natural disaster)"
+        },
+            {
+            "title" : "ethnic tension", 
+            "description" : "Reports that month indicate widespread ethnic, tribal, or communal tensions or violence. This can include discrimination, clashes, riots, hate speech, or persecution targeting a specific ethnic/tribal/religious community.",
+            "rich search" : "(ethnic clashes OR communal violence OR tribal conflict OR hate speech OR persecution OR riots)"
+        }            
         ],
+        "search format" : "[metric] in [country] in [year]",
         "countries" : { 
             "South Africa" : "ZA",
             "United States" : "US",
@@ -99,7 +125,6 @@
             "Yemen": "YE",
             "Zimbabwe": "ZW"
         },
-
         "years" : [
             "2025",
             "2024",
@@ -108,36 +133,62 @@
             "2021",
             "2020",
             "2019",
-            "2018",
-            "2017",
-            "2016",
-            "2015",
-            "2014",
-            "2013",
-            "2012",
-            "2011",
-            "2010"
-        ]
+            "2018"
+        ],
+        "exclusions" : "-sports -music -movie -review -celebrity -festival -award"
     },
     "testing" :{
-        "years" : [
-            "2018",
-            "2019"
+        "metrics" : [
+            {
+            "title" : "contested election", 
+            "description" : "A national or subnational election occurred in the country that month and was contested. Contested means: results were very close (e.g., margin <3%) OR there were credible, widespread allegations of fraud, vote-rigging, or manipulation.", 
+            "rich search" : "(contested election OR close election OR disputed election OR election fraud OR vote rigging OR recount)"
+        },
+            {
+            "title" : "crop failure", 
+            "description" : "Reports indicate widespread crop failure or major agricultural losses, often due to drought, pests, disease, or extreme weather, that month in the country.",
+            "rich search" : "(crop failure OR harvest failure OR agricultural losses OR drought OR famine OR pest outbreak)"
+        },
+            {
+            "title" : "economic concern", 
+            "description" : "Significant economic problems reported that month, such as high inflation, rapid currency depreciation, mass unemployment, or severe recession fears.",
+            "rich search" : "(inflation OR unemployment OR recession OR economic crisis OR currency depreciation)"
+        },
+            {
+            "title" : "military coup", 
+            "description" : "A military coup (successful or attempted, even if failed) occurred that month in the country. Defined as an attempt by armed forces to seize political power from the government.",
+            "rich search" : "(military coup OR junta OR army takeover OR military seized power OR coup attempt)"
+        },
+            {
+            "title" : "political assassination", 
+            "description" : "An assassination (successful killing or attempted killing) of a political leader, official, or candidate took place that month in the country.",
+            "rich search" : "(political assassination OR assassination attempt OR killing of leader OR murdered politician)"
+        },
+            {
+            "title" : "natural disaster", 
+            "description" : "A major natural disaster that month (e.g., earthquake, flood, wildfire, extreme heatwave, drought, tropical cyclone) that disrupted infrastructure, livelihoods, or economic activity.",
+            "rich search" : "(earthquake OR flood OR wildfire OR drought OR cyclone OR extreme weather OR natural disaster)"
+        },
+            {
+            "title" : "ethnic tension", 
+            "description" : "Reports that month indicate widespread ethnic, tribal, or communal tensions or violence. This can include discrimination, clashes, riots, hate speech, or persecution targeting a specific ethnic/tribal/religious community.",
+            "rich search" : "(ethnic clashes OR communal violence OR tribal conflict OR hate speech OR persecution OR riots)"
+        }            
         ],
-        "searches" : [
-            "[metric] in [country] in [year]"
-        ],
-        "countries" : {
+        "search format" : "[metric] in [country] in [year]",
+        "countries" : { 
             "Honduras": "HN"
         },
-        "metrics" : {
-            "contested election" : "A national or subnational election occurred in the country that month and was contested. Contested means: results were very close (e.g., margin <3%) OR there were credible, widespread allegations of fraud, vote-rigging, or manipulation.",
-            "crop failure" : "Reports indicate widespread crop failure or major agricultural losses, often due to drought, pests, disease, or extreme weather, that month in the country.",
-            "economic concern" : "Significant economic problems reported that month, such as high inflation, rapid currency depreciation, mass unemployment, or severe recession fears.",
-            "military coup" : "A military coup (successful or attempted, even if failed) occurred that month in the country. Defined as an attempt by armed forces to seize political power from the government.",
-            "political assassination" : "An assassination (successful killing or attempted killing) of a political leader, official, or candidate took place that month in the country.",
-            "natural disaster" : "A major natural disaster that month (e.g., earthquake, flood, wildfire, extreme heatwave, drought, tropical cyclone) that disrupted infrastructure, livelihoods, or economic activity.",
-            "ethnic tension" : "Reports that month indicate widespread ethnic, tribal, or communal tensions or violence. This can include discrimination, clashes, riots, hate speech, or persecution targeting a specific ethnic/tribal/religious community."
-        }
+        "years" : [
+            "2025",
+            "2024",
+            "2023",
+            "2022",
+            "2021",
+            "2020",
+            "2019",
+            "2018"
+        ],
+        "exclusions" : "-sports -music -movie -review -celebrity -festival -award"
     }
 }

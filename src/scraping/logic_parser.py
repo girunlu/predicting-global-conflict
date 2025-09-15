@@ -1,6 +1,7 @@
 import os, re, json, ast
 from openai import OpenAI
 from dotenv import load_dotenv
+import spacy
 
 # Load environment and initialize OpenAI
 load_dotenv()
@@ -101,3 +102,30 @@ class TextParser:
         # print(f"Response: {response}")
         # print(f"Formatted: {formatted}")
         return formatted
+    
+class SpacyParser:
+    def __init__(self, metric_keywords: dict[str, list[str]], model: str = "en_core_web_lg"):
+        """
+        Initializes the NLP model and stores metric keywords for pre-filtering.
+        :param metric_keywords: Dictionary mapping metric titles to list of keywords.
+        :param model: spaCy model to load.
+        """
+        self.nlp = spacy.load(model)
+        self.metric_mapping = metric_keywords
+
+    def preprocess_text(self, text: str) -> bool:
+        """
+        Returns True if any metric keywords are discussed in the text.
+        :param text: Article text to analyze.
+        :return: True if text contains any keywords from metric_mapping, else False.
+        """
+        doc = self.nlp(text.lower())
+        # Include tokens and noun chunks for better coverage
+        tokens = [token.text for token in doc if not token.is_stop]
+        phrases = [chunk.text for chunk in doc.noun_chunks]
+        all_phrases = set(tokens + phrases)
+
+        for metric, keywords in self.metric_mapping.items():
+            if any(kw.lower() in all_phrases for kw in keywords):
+                return True
+        return False
