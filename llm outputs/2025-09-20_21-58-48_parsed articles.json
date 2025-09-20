@@ -1,0 +1,420 @@
+[
+  {
+    "country": "South Africa",
+    "metric": "contested election",
+    "dates": [
+      "09-2025"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "contested election",
+    "dates": [
+      "12-2024"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "contested election",
+    "dates": [
+      "10-2024"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "contested election",
+    "dates": [
+      "12-2024"
+    ]
+  },
+  {
+    "country": "Madagascar",
+    "metric": "crop failure",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "12-2024"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "natural disaster",
+    "dates": [
+      "12-2024"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "crop failure",
+    "dates": [
+      "02-2024",
+      "03-2024",
+      "04-2024"
+    ]
+  },
+  {
+    "country": "Zimbabwe",
+    "metric": "crop failure",
+    "dates": [
+      "02-2025",
+      "03-2025"
+    ]
+  },
+  {
+    "country": "Zimbabwe",
+    "metric": "crop failure",
+    "dates": [
+      "02-2024"
+    ]
+  },
+  {
+    "country": "Zambia",
+    "metric": "crop failure",
+    "dates": [
+      "2024",
+      "05-2024"
+    ]
+  },
+  {
+    "country": "Malawi",
+    "metric": "crop failure",
+    "dates": [
+      "03-2024"
+    ]
+  },
+  {
+    "country": "Sudan",
+    "metric": "economic concern",
+    "dates": [
+      "01-2024",
+      "02-2024",
+      "03-2024",
+      "04-2024",
+      "05-2024",
+      "06-2024",
+      "07-2024",
+      "08-2024",
+      "09-2024",
+      "10-2024",
+      "11-2024",
+      "12-2024"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "economic concern",
+    "dates": [
+      "04-2025",
+      "05-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "economic concern",
+    "dates": [
+      "01-2025",
+      "02-2025",
+      "03-2025"
+    ]
+  },
+  {
+    "country": "Sudan",
+    "metric": "economic concern",
+    "dates": [
+      "09-2024"
+    ]
+  },
+  {
+    "country": "Sudan",
+    "metric": "natural disaster",
+    "dates": [
+      "09-2024"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "military coup",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Burkina Faso",
+    "metric": "military coup",
+    "dates": [
+      "04-2025"
+    ]
+  },
+  {
+    "country": "Mali",
+    "metric": "military coup",
+    "dates": [
+      "08-2025"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "military coup",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "political assassination",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "contested election",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Democratic Republic of Congo",
+    "metric": "political assassination",
+    "dates": [
+      "08-2025"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "contested election",
+    "dates": [
+      "10-2024"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "political assassination",
+    "dates": [
+      "10-2024"
+    ]
+  },
+  {
+    "country": "Ukraine",
+    "metric": "political assassination",
+    "dates": [
+      "08-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "political assassination",
+    "dates": [
+      "01-2024",
+      "02-2024",
+      "03-2024",
+      "04-2024"
+    ]
+  },
+  {
+    "country": "United States",
+    "metric": "political assassination",
+    "dates": [
+      "06-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "04-2022",
+      "05-2022",
+      "06-2022",
+      "07-2022",
+      "08-2022",
+      "09-2022",
+      "07-2025",
+      "08-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "economic concern",
+    "dates": [
+      "04-2022",
+      "05-2022",
+      "06-2022",
+      "07-2022",
+      "08-2022",
+      "09-2022"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "04-2025",
+      "05-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "04-2025",
+      "05-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "04-2025",
+      "03-2025",
+      "02-2025",
+      "01-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "12-2024",
+      "11-2024",
+      "10-2024",
+      "09-2024",
+      "08-2024",
+      "07-2024",
+      "06-2024",
+      "05-2024",
+      "04-2024",
+      "03-2024",
+      "02-2024",
+      "01-2024"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "12-2022",
+      "11-2022",
+      "10-2022"
+    ]
+  },
+  {
+    "country": "Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Central African Republic",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Madagascar",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "Mozambique",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2025"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "02-2025",
+      "03-2025",
+      "04-2022",
+      "07-2021",
+      "04-2024",
+      "09-2024"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "crop failure",
+    "dates": [
+      "01-1980",
+      "02-1980",
+      "03-1980",
+      "04-1980",
+      "05-1980",
+      "06-1980",
+      "07-1980",
+      "08-1980",
+      "09-1980",
+      "10-1980",
+      "11-1980",
+      "12-1980",
+      "01-2018",
+      "02-2018",
+      "03-2018",
+      "04-2018",
+      "01-2021",
+      "02-2021",
+      "03-2021",
+      "04-2021",
+      "10-2022"
+    ]
+  },
+  {
+    "country": "South Africa",
+    "metric": "natural disaster",
+    "dates": [
+      "01-1980",
+      "02-1980",
+      "03-1980",
+      "04-1980",
+      "05-1980",
+      "06-1980",
+      "07-1980",
+      "08-1980",
+      "09-1980",
+      "10-1980",
+      "11-1980",
+      "12-1980",
+      "01-2018",
+      "02-2018",
+      "03-2018",
+      "04-2018",
+      "01-2021",
+      "02-2021",
+      "03-2021",
+      "04-2021",
+      "04-2022"
+    ]
+  },
+  {
+    "country": "South Sudan",
+    "metric": "ethnic tension",
+    "dates": [
+      "03-2025"
+    ]
+  },
+  {
+    "country": "South Sudan",
+    "metric": "ethnic tension",
+    "dates": [
+      "03-2025"
+    ]
+  },
+  {
+    "country": "Chad",
+    "metric": "political assassination",
+    "dates": [
+      "08-2025"
+    ]
+  }
+]

@@ -1,50 +1,42 @@
-import utils, logic_parser
-import os, json, datetime
+# --------------------------
+# IMPORTING LIBRARIES
+# --------------------------
+from gnews_fetcher import GNewsFetcher
+import os, json, asyncio
+from news_boy import AsyncPlaywrightBrowser
+from utils import (
+    chunk_and_clean_text, remove_repeated_phrase_from_text,
+    log_time, generate_search_queries, generate_prompt_text,
+    trim_text, save_articles_json, save_to_csv_flat
+)
+from logic_parser import AsyncTextParser, AsyncKeywordFilter
+# --------------------------
+# LOADING CONFIGS AND DATA
+# --------------------------
+t = log_time(label="start")
+print("loading configurations...")
 
-io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["testing"] #TESTING
-metrics = io["metrics"] 
+io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["official"]
+metric_data = io["metrics"]
+search_format = io["search format"]
+country_data = io["countries"]
+country_names = list(country_data.keys())
+country_codes = list(country_data.values())
 years = io["years"]
-countries = io["countries"]
-country_names = list(countries.keys())
+excluded_terms = io["exclusions"]
+
+config = json.load(open(os.path.join(os.path.dirname(__file__), "config.json")))
+max_results = config['max results']
+page_timeout = config['page timeout']
+min_page_text_length = config['min page text length']
+skip_words = config['website text skip words']
+year_chunk_length = config["search year chunk length"]
+fuzzy_match_threshold = config.get("fuzzy keyword similarity", 0.5)
 
 prompts = json.load(open(os.path.join(os.path.dirname(__file__), "prompts.json")))
 news_instruction = prompts["instructions"]["news_instruction"]
 format_instruction = prompts["instructions"]["format_instruction"]
 output_format = prompts["formats"]["output_format"]
-news_instruction = utils.generate_prompt_text(news_instruction + format_instruction, metrics, output_format)
 
-print("parsing articles...")
-# EXTRACTING INFORMATION FROM ARTICLES
-parsing_agent = logic_parser.TextParser()
-parsing_agent.configure_parsing(None, news_instruction, metrics)
-
-articles = utils.load_articles_json()
-output_dir = os.path.join(os.getcwd(), "testing", "outputs")
-os.makedirs(output_dir, exist_ok=True)
-
-raw_responses_file = os.path.join(output_dir, f"llm_responses_{datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.txt")
-
-parsed_articles = []
-with open(raw_responses_file, "w", encoding="utf-8") as f:
-    for article in articles:
-        full_text = article.get("full_text", "")
-        agent_response = parsing_agent.parse_text(full_text)  # Get raw response
-        f.write(f"Article Title: {article.get('title', 'N/A')}\n")
-        f.write(f"Article Text: {full_text}\n")
-        f.write(f"LLM Response:\n{agent_response}\n")
-        f.write("-" * 80 + "\n")
-
-        formatted_response = parsing_agent.format_response(agent_response)
-        if formatted_response:
-            parsed_articles.append(formatted_response)
-
-# Flatten parsed_articles
-flattened_data = []
-for article_response in parsed_articles:
-    if article_response is None:
-        continue
-    for entry in article_response:
-        flattened_data.append(entry)
-
-# Save to CSV
-utils.save_to_csv_flat(flattened_data, metrics, country_names, years, output_dir = output_dir)
+for country, code in country_data.items():
+    print("HEY")

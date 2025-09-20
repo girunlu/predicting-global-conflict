@@ -1,4 +1,4 @@
-import os, json, time, os, ast
+import os, json, time, os, ast, re
 from datetime import datetime
 from dateutil import parser
 import pandas as pd
@@ -6,7 +6,8 @@ from pathlib import Path
 
 def generate_search_queries(
     search_format: str,
-    countries: dict[str, str],  # now pass the dict directly!
+    country_name: str, 
+    country_code: str,
     metrics: list[dict],
     years: list[str],
     exclusions: str = "",
@@ -21,34 +22,33 @@ def generate_search_queries(
 
     queries_to_search = []
 
-    for country_name, country_code in countries.items():
-        for metric in metrics:
-            metric_title = metric["title"]
-            metric_rich = metric["rich search"]
+    for metric in metrics:
+        metric_title = metric["title"]
+        metric_rich = metric["rich search"]
 
-            for year_group in chunk_years(years, year_chunk_length):
-                if len(year_group) > 1:
-                    year_part = "(" + " OR ".join(year_group) + ")"
-                else:
-                    year_part = year_group[0]
+        for year_group in chunk_years(years, year_chunk_length):
+            if len(year_group) > 1:
+                year_part = "(" + " OR ".join(year_group) + ")"
+            else:
+                year_part = year_group[0]
 
-                query = (
-                    search_format
-                    .replace("[metric]", metric_rich)
-                    .replace("[country]", country_name)
-                    .replace("[year]", year_part)
-                )
+            query = (
+                search_format
+                .replace("[metric]", metric_rich)
+                .replace("[country]", country_name)
+                .replace("[year]", year_part)
+            )
 
-                if exclusions:
-                    query = f"{query} {exclusions}"
+            if exclusions:
+                query = f"{query} {exclusions}"
 
-                queries_to_search.append({
-                    "search": query,
-                    "country": country_name,     # human-readable name
-                    "country_code": country_code, # ISO code for GNews
-                    "metric": metric_title,
-                    "years": year_group
-                })
+            queries_to_search.append({
+                "search": query,
+                "country": country_name,     # human-readable name
+                "country_code": country_code, # ISO code for GNews
+                "metric": metric_title,
+                "years": year_group
+            })
 
     return queries_to_search
 
@@ -76,14 +76,19 @@ def generate_prompt_text(any_text: str, metrics: dict, examples: list[dict] | No
 
     return result
 
-def save_articles_json(articles, filename="accessed_articles.json"):
-    output_dir = os.path.join(os.getcwd(),"testing", "outputs")
+def save_articles_json(articles, filename="articles.json", subdir="testing/outputs"):
+    """
+    Saves any list of dicts to a JSON file with a timestamp.
+    """
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    output_dir = os.path.join(os.getcwd(), subdir)
     os.makedirs(output_dir, exist_ok=True)
-    filepath = os.path.join(output_dir, filename)
+    filepath = os.path.join(output_dir, f"{timestamp}_{filename}")
 
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(articles, f, ensure_ascii=False, indent=2)
-    print(f"Saved {len(articles)} articles to {filepath}")
+    print(f"Saved {len(articles)} items to {filepath}")
+    return filepath
 
 def load_articles_json(filename="accessed_articles.json"):
     filepath = os.path.join(os.getcwd(), "testing", "outputs", filename)
@@ -200,7 +205,7 @@ _TIMING_LOGS = []
 _RUN_START = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 _RUN_START_TIME = time.perf_counter()
 
-def log_time(start=None, label: str = "None", store: bool = False, store_data: dict = None, save_dir: str = "testing/outputs"):
+def log_time(start=None, label: str = "None", store: bool = False, store_data: dict = None, save_dir: str = "testing/outputs", name = None):
     """
     Tracks and stores execution time for script sections.
 
@@ -245,13 +250,84 @@ def log_time(start=None, label: str = "None", store: bool = False, store_data: d
         # Save to file
         save_path = Path(save_dir)
         save_path.mkdir(parents=True, exist_ok=True)
-        filepath = save_path / f"timing_summary_{_RUN_START}.json"
+        filepath = save_path / f"{name} timing_summary_{_RUN_START}.json" if name else save_path / f"timing_summary_{_RUN_START}.json"
         with open(filepath, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
 
         print(f"Timing summary saved to {filepath}\n")
         return result
 
-def trim_text(text, words_start : int = 200, words_end : int = 1500):
+def trim_text(text, words_start : int = 20, words_end : int = 1500):
     words = text.split()
-    return " ".join(words[words_start:words_end])
+    return " ".join(words[words_start:max(len(words),words_end)])
+
+def remove_repeated_phrase_from_text(text, min_words_in_phrase=2, max_words_to_check=200):
+    words = text.split()
+    n = len(words)
+
+    # Only consider the first N words for detecting repeated phrase
+    check_words = words[:max_words_to_check]
+    max_len = len(check_words) // 2
+
+    repeated_phrase = None
+
+    # Find the largest repeated consecutive phrase in the first N words
+    for length in range(max_len, min_words_in_phrase - 1, -1):
+        i = 0
+        while i + 2*length <= len(check_words):
+            phrase = check_words[i:i+length]
+            next_phrase = check_words[i+length:i+2*length]
+            if phrase == next_phrase:
+                repeated_phrase = phrase
+                break
+            i += 1
+        if repeated_phrase:
+            break
+
+    # If a repeated phrase was found, remove all its occurrences in the whole text
+    if repeated_phrase:
+        phrase_len = len(repeated_phrase)
+        i = 0
+        cleaned_words = []
+        while i <= n - phrase_len:
+            if words[i:i+phrase_len] == repeated_phrase:
+                i += phrase_len  # skip this repeated phrase
+            else:
+                cleaned_words.append(words[i])
+                i += 1
+        # append remaining words
+        cleaned_words.extend(words[i:])
+        return " ".join(cleaned_words)
+    else:
+        return text
+    
+def chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3):
+    """
+    Split text into chunks of chunk_size and skip chunks with too many non-text characters.
+    
+    Parameters:
+    - text: str, raw scraped text
+    - chunk_size: int, approx number of characters per chunk
+    - max_nontext_ratio: float, max allowed ratio of non-alphanumeric characters
+    
+    Returns:
+    - List of clean text chunks
+    """
+    # Normalize whitespace
+    text = text.replace('\r\n', '\n').replace('\r', '\n').strip()
+    chunks = []
+
+    for i in range(0, len(text), chunk_size):
+        chunk = text[i:i+chunk_size]
+
+        # Count non-alphanumeric characters
+        nontext_count = len(re.findall(r'[^a-zA-Z0-9\s]', chunk))
+        ratio = nontext_count / max(1, len(chunk))
+
+        if ratio <= max_nontext_ratio:
+            # chunk is mostly text
+            chunks.append(chunk.strip())
+
+    return " ".join(chunks)
+
+

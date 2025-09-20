@@ -1,105 +1,99 @@
-from newspaper import Article
-from playwright.sync_api import sync_playwright
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeoutError
+import asyncio
 
-def get_news_site(url, page_delay = 3000, overall_timeout = 30000):
-    # 1️⃣ Try newspaper3k
-    try:
-        article = Article(url)
-        article.download()
-        article.parse()
-        full_text = article.text
-        if full_text and full_text.strip():
-            if len(full_text) > 1000:
-                return full_text
-        print(f"newspaper3k returned empty for {url}, trying Playwright...")
-    except Exception as e:
-        print(f"newspaper3k failed for {url}: {e}, trying Playwright...")
-
-    # 2️⃣ Fallback: Playwright for JS-rendered content
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(url, wait_until="domcontentloaded", timeout=overall_timeout)
-            page.wait_for_timeout(page_delay)  # small wait for JS content
-
-            # Grab all paragraphs and list items
-            paragraphs = page.query_selector_all("p, li")
-            text_blocks = [
-                p.text_content().strip()
-                for p in paragraphs
-                if p.text_content() and len(p.text_content().strip()) > 30
-            ]
-
-            browser.close()
-
-            full_text = "\n".join(text_blocks)
-            if full_text.strip():
-                return full_text
-            else:
-                print(f"Playwright returned empty text for {url}")
-                return None
-    except Exception as e:
-        print(f"Playwright failed for {url}: {e}")
-        return None
-
-class BrowserSim:
-    def __init__(self, page_wait=15, min_text_length=500, skip_words=None):
-        self.page_wait = page_wait
+class AsyncPlaywrightBrowser:
+    def __init__(self, page_wait=20, min_text_length=500, skip_words=None, n_contexts=5, max_task_time=45):
+        self.page_wait = page_wait * 1000  # ms
         self.min_text_length = min_text_length
         self.skip_words = skip_words or ['blocked', 'captcha', 'consent']
+        self.n_contexts = n_contexts
+        self.max_task_time = max_task_time  # seconds for killing long tasks
 
-        options = Options()
-        options.add_argument("--headless=new")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--disable-background-networking")
-        options.add_argument("--disable-default-apps")
-        options.add_argument("--disable-extensions")
-        options.add_argument("--disable-sync")
-        options.add_argument("--metrics-recording-only")
-        options.add_argument("--no-first-run")
-        self.options = options
+        self.playwright = None
+        self.browser = None
+        self.contexts = []
 
-    def start(self):
-        self.driver = webdriver.Chrome(options=self.options)
+    async def start(self):
+        self.playwright = await async_playwright().start()
+        self.browser = await self.playwright.chromium.launch(headless=True, args=[
+            "--disable-images",
+            "--disable-background-timer-throttling",
+            "--disable-renderer-backgrounding",
+            "--disable-gpu",
+            "--mute-audio",
+            "--no-sandbox",
+        ])
+        self.contexts = [await self.browser.new_context() for _ in range(self.n_contexts)]
 
-    def get_page(self, url):
+    async def end(self):
+        for ctx in self.contexts:
+            try:
+                await ctx.close()
+            except:
+                pass
+        if self.browser:
+            await self.browser.close()
+        if self.playwright:
+            await self.playwright.stop()
+
+    async def resolve_final_url(self, page, url: str) -> str:
+        """Detects redirects (e.g., Google RSS) and waits for the final landing page."""
+        if not url:
+            return url
         try:
-            self.driver.get(url)
+            await asyncio.wait_for(page.goto(url, wait_until="domcontentloaded"), timeout=self.max_task_time)
+            await asyncio.wait_for(page.wait_for_load_state("networkidle"), timeout=self.max_task_time)
 
-            # Wait for body to exist
-            WebDriverWait(self.driver, self.page_wait).until(
-                EC.presence_of_element_located((By.TAG_NAME, "body"))
-            )
-            time.sleep(1)  # let JS finish rendering
+            if "news.google.com/rss/articles" in page.url:
+                print(f"[AsyncBrowser] Detected Google RSS redirect: {page.url}")
+                try:
+                    await asyncio.wait_for(page.wait_for_url("**", timeout=self.page_wait), timeout=self.max_task_time)
+                except PlaywrightTimeoutError:
+                    print(f"[AsyncBrowser] Timeout waiting for redirect, using current URL")
 
-            # Try multiple selectors
-            elements = self.driver.find_elements(By.TAG_NAME, "p") + \
-                       self.driver.find_elements(By.TAG_NAME, "div")
+            return page.url
+        except asyncio.TimeoutError:
+            print(f"[AsyncBrowser] Task killed due to timeout for URL: {url}")
+            return page.url
+        except Exception as e:
+            print(f"[AsyncBrowser] Failed to resolve final URL {url}: {e}")
+            return url
 
-            page_text = "\n".join([el.text for el in elements if len(el.text.strip()) > 50])
+    async def get_page_text(self, url: str, context_id=0) -> str | None:
+        """Scrape full text from a page, automatically following redirects, with a timeout."""
+        if context_id < 0 or context_id >= len(self.contexts):
+            raise ValueError(f"context_id must be 0–{len(self.contexts)-1}")
 
-            # Skip short or blocked pages
+        ctx = self.contexts[context_id]
+        page = await ctx.new_page()
+        page.set_default_navigation_timeout(self.page_wait)
+
+        try:
+            final_url = await asyncio.wait_for(self.resolve_final_url(page, url), timeout=self.max_task_time)
+            print(f"[AsyncBrowser] Final URL resolved: {final_url}")
+
+            paragraphs = await asyncio.wait_for(page.query_selector_all("p, div"), timeout=self.max_task_time)
+            text_blocks = []
+            for p in paragraphs:
+                t = (await p.text_content() or "").strip()
+                if t and len(t) > 50:
+                    text_blocks.append(t)
+
+            page_text = "\n".join(text_blocks)
+            await page.close()
+
             if len(page_text) < self.min_text_length:
-                print(f"Page too short ({len(page_text)} chars), skipping: {url}")
                 return None
             if any(word.lower() in page_text[:500].lower() for word in self.skip_words):
-                print(f"Page rejected due to skip words: {url}")
                 return None
 
             return page_text
 
-        except Exception as e:
-            print(f"Selenium failed for {url}: {e}")
+        except asyncio.TimeoutError:
+            print(f"[AsyncBrowser] Task killed due to timeout while scraping: {url}")
+            await page.close()
             return None
-
-    def end(self):
-        self.driver.quit()
+        except Exception as e:
+            print(f"[AsyncBrowser] Failed for {url}: {e}")
+            await page.close()
+            return None

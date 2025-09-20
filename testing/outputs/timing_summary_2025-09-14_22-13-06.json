@@ -34,7 +34,7 @@
     }
   ],
   "metadata": {
-    "comment": "multi-threading and trimming text",
+    "comment": "nlp",
     "num_countries": 1,
     "num_metrics": 7,
     "num_years": 8,

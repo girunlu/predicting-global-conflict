@@ -1,0 +1,43 @@
+{
+  "run_started": "2025-09-20_13-57-56",
+  "total_runtime_seconds": 104.2,
+  "steps": [
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching gnews headlines",
+      "duration_seconds": 35.365,
+      "percent_of_total": 33.94
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 62.287,
+      "percent_of_total": 59.77
+    },
+    {
+      "label": "Preprocessing + Parsing articles",
+      "duration_seconds": 1.934,
+      "percent_of_total": 1.86
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.009,
+      "percent_of_total": 0.01
+    }
+  ],
+  "metadata": {
+    "comment": "parallel NLP + OpenAI processing",
+    "num_countries": 4,
+    "num_metrics": 7,
+    "num_years": 8,
+    "num_searches": 56,
+    "num_articles_fetched": 201,
+    "num_articles_accessed": 0,
+    "num_articles_filtered": 0,
+    "llm_model": "gpt-3.5",
+    "max_results": 5
+  }
+}

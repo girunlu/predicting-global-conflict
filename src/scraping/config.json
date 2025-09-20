@@ -1,9 +1,10 @@
 {
     "max results":20,
-    "page timeout": 10,
+    "page timeout": 30,
     "min page text length" : 500,
-    "website text skip words" : ["blocked", "cloudflare", "cloud flare"],
-    "search year chunk length" : 3,
-    "skim article start" : 200,
-    "skim article end" : 1200
+    "website text skip words" : ["blocked", "cloudflare", "cloud flare", "verifying"],
+    "search year chunk length" : 4,
+    "skim article start" : 20,
+    "skim article end" : 1500,
+    "fuzzy keyword similarity" : 0.5
 }

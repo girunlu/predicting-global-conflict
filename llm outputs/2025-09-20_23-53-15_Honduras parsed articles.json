@@ -1,0 +1,387 @@
+[
+  {
+    "country": "Gaza",
+    "metric": "natural disaster",
+    "dates": [
+      "04-2023",
+      "05-2023"
+    ]
+  },
+  {
+    "country": "Gaza",
+    "metric": "natural disaster",
+    "dates": [
+      "06-2023"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "crop failure",
+    "dates": [
+      "02-2014",
+      "03-2024",
+      "04-2024",
+      "06-2023",
+      "06-2024",
+      "09-2021"
+    ]
+  },
+  {
+    "country": "Kenya",
+    "metric": "natural disaster",
+    "dates": [
+      "02-2022",
+      "03-2022",
+      "04-2022",
+      "05-2022",
+      "06-2022",
+      "07-2022",
+      "08-2022",
+      "09-2022",
+      "10-2022"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "crop failure",
+    "dates": [
+      "12-2020",
+      "01-2021"
+    ]
+  },
+  {
+    "country": "Zimbabwe",
+    "metric": "crop failure",
+    "dates": [
+      "02-2024",
+      "03-2024"
+    ]
+  },
+  {
+    "country": "Malawi",
+    "metric": "crop failure",
+    "dates": [
+      "01-2025",
+      "02-2025",
+      "03-2025",
+      "04-2025",
+      "05-2025",
+      "06-2025",
+      "07-2025",
+      "08-2025",
+      "09-2025",
+      "10-2025",
+      "11-2025",
+      "12-2025",
+      "01-2026",
+      "02-2026",
+      "03-2026",
+      "04-2026",
+      "05-2026",
+      "06-2026",
+      "07-2026",
+      "08-2026",
+      "09-2026",
+      "10-2026",
+      "11-2026",
+      "12-2026"
+    ]
+  },
+  {
+    "country": "Malawi",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2025",
+      "02-2025",
+      "03-2025",
+      "04-2025",
+      "05-2025",
+      "06-2025",
+      "07-2025",
+      "08-2025",
+      "09-2025",
+      "10-2025",
+      "11-2025",
+      "12-2025"
+    ]
+  },
+  {
+    "country": "Myanmar",
+    "metric": "military coup",
+    "dates": [
+      "02-2021"
+    ]
+  },
+  {
+    "country": "Algeria",
+    "metric": "economic concern",
+    "dates": [
+      "03-2022",
+      "10-2022",
+      "11-2020",
+      "01-2020"
+    ]
+  },
+  {
+    "country": "Algeria",
+    "metric": "military coup",
+    "dates": [
+      "11-2020"
+    ]
+  },
+  {
+    "country": "Niger",
+    "metric": "military coup",
+    "dates": [
+      "07-2023"
+    ]
+  },
+  {
+    "country": "Algeria",
+    "metric": "military coup",
+    "dates": [
+      "07-2023"
+    ]
+  },
+  {
+    "country": "Burkina Faso",
+    "metric": "military coup",
+    "dates": [
+      "02-2022"
+    ]
+  },
+  {
+    "country": "United States",
+    "metric": "political assassination",
+    "dates": [
+      "09-2024"
+    ]
+  },
+  {
+    "country": "United States",
+    "metric": "political assassination",
+    "dates": [
+      "09-2024"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020",
+      "12-2020"
+    ]
+  },
+  {
+    "country": "Colombia",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020",
+      "12-2020"
+    ]
+  },
+  {
+    "country": "Caribbean",
+    "metric": "natural disaster",
+    "dates": [
+      "02-2025"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "Belize",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "El Salvador",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "Guatemala",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "Mexico",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "Philippines",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2024"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020",
+      "12-2020"
+    ]
+  },
+  {
+    "country": "Central America",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020",
+      "05-2021"
+    ]
+  },
+  {
+    "country": "Colombia",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020"
+    ]
+  },
+  {
+    "country": "Panama",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020"
+    ]
+  },
+  {
+    "country": "El Salvador",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "11-2020",
+      "12-2020"
+    ]
+  },
+  {
+    "country": "Central America",
+    "metric": "natural disaster",
+    "dates": [
+      "08-2020",
+      "09-2020",
+      "10-2020"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "08-2020",
+      "09-2020",
+      "10-2020"
+    ]
+  },
+  {
+    "country": "Nicaragua",
+    "metric": "natural disaster",
+    "dates": [
+      "08-2020",
+      "09-2020",
+      "10-2020"
+    ]
+  },
+  {
+    "country": "Guatemala",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2021",
+      "02-2021",
+      "03-2021",
+      "04-2021",
+      "05-2021",
+      "06-2021",
+      "07-2021",
+      "08-2021",
+      "09-2021",
+      "10-2021",
+      "11-2021",
+      "12-2021"
+    ]
+  },
+  {
+    "country": "Honduras",
+    "metric": "natural disaster",
+    "dates": [
+      "01-2021",
+      "02-2021",
+      "03-2021",
+      "04-2021",
+      "05-2021",
+      "06-2021",
+      "07-2021",
+      "08-2021",
+      "09-2021",
+      "10-2021",
+      "11-2021",
+      "12-2021"
+    ]
+  },
+  {
+    "country": "Central America",
+    "metric": "natural disaster",
+    "dates": [
+      "12-2020",
+      "11-2022"
+    ]
+  },
+  {
+    "country": "India",
+    "metric": "ethnic tension",
+    "dates": [
+      "03-2023",
+      "04-2023",
+      "05-2023",
+      "06-2023",
+      "07-2023",
+      "03-2024",
+      "04-2024",
+      "05-2024"
+    ]
+  },
+  {
+    "country": "India",
+    "metric": "ethnic tension",
+    "dates": [
+      "06-2023"
+    ]
+  },
+  {
+    "country": "India",
+    "metric": "ethnic tension",
+    "dates": [
+      "05-2022",
+      "06-2022",
+      "07-2022",
+      "08-2022",
+      "09-2022"
+    ]
+  }
+]
