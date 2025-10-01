@@ -1,0 +1,118 @@
+{
+  "run_started": "2025-09-21_09-31-23",
+  "total_runtime_seconds": 1088.22,
+  "steps": [
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.012,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.266,
+      "percent_of_total": 1.59
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 294.542,
+      "percent_of_total": 27.07
+    },
+    {
+      "label": "Preprocessing + Parsing articles",
+      "duration_seconds": 49.337,
+      "percent_of_total": 4.53
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 12.37,
+      "percent_of_total": 1.14
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 150.686,
+      "percent_of_total": 13.85
+    },
+    {
+      "label": "Preprocessing + Parsing articles",
+      "duration_seconds": 19.75,
+      "percent_of_total": 1.81
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.001,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 15.174,
+      "percent_of_total": 1.39
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 193.805,
+      "percent_of_total": 17.81
+    },
+    {
+      "label": "Preprocessing + Parsing articles",
+      "duration_seconds": 24.313,
+      "percent_of_total": 2.23
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 14.834,
+      "percent_of_total": 1.36
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 232.526,
+      "percent_of_total": 21.37
+    },
+    {
+      "label": "Preprocessing + Parsing articles",
+      "duration_seconds": 60.021,
+      "percent_of_total": 5.52
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.006,
+      "percent_of_total": 0.0
+    }
+  ],
+  "metadata": {
+    "comment": "all good man, sped this up a lot",
+    "num_countries": 197,
+    "num_metrics": 7,
+    "num_years": 8,
+    "num_searches": 14,
+    "num_articles_fetched": 148,
+    "num_articles_accessed": 119,
+    "num_articles_filtered": 43,
+    "llm_model": "gpt-3.5",
+    "max_results": 15
+  }
+}

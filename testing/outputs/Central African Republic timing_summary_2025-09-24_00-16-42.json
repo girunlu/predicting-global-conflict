@@ -1,0 +1,917 @@
+{
+  "run_started": "2025-09-24_00-16-42",
+  "total_runtime_seconds": 10579.27,
+  "steps": [
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.024,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 21.722,
+      "percent_of_total": 0.21
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 306.473,
+      "percent_of_total": 2.9
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.52,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 12.79,
+      "percent_of_total": 0.12
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 35.169,
+      "percent_of_total": 0.33
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.019,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.463,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 202.298,
+      "percent_of_total": 1.91
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.52,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.904,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 224.358,
+      "percent_of_total": 2.12
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.436,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 15.163,
+      "percent_of_total": 0.14
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 256.215,
+      "percent_of_total": 2.42
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.513,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.015,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 151.209,
+      "percent_of_total": 1.43
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.255,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 20.266,
+      "percent_of_total": 0.19
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 198.254,
+      "percent_of_total": 1.87
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.289,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.948,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 159.148,
+      "percent_of_total": 1.5
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.36,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.902,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 247.994,
+      "percent_of_total": 2.34
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.261,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.261,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 183.99,
+      "percent_of_total": 1.74
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.24,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.204,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 297.011,
+      "percent_of_total": 2.81
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.486,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.476,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 245.695,
+      "percent_of_total": 2.32
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.287,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.505,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 173.869,
+      "percent_of_total": 1.64
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.299,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.921,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 275.534,
+      "percent_of_total": 2.6
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.29,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 20.386,
+      "percent_of_total": 0.19
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 253.393,
+      "percent_of_total": 2.4
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.338,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.002,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.545,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 239.565,
+      "percent_of_total": 2.26
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.333,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.93,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 220.667,
+      "percent_of_total": 2.09
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.267,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 20.527,
+      "percent_of_total": 0.19
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 253.018,
+      "percent_of_total": 2.39
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.376,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.676,
+      "percent_of_total": 0.19
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 35.858,
+      "percent_of_total": 0.34
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.017,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 13.847,
+      "percent_of_total": 0.13
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 34.542,
+      "percent_of_total": 0.33
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.015,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.814,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 270.857,
+      "percent_of_total": 2.56
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.395,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.592,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 189.861,
+      "percent_of_total": 1.79
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.348,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.132,
+      "percent_of_total": 0.15
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 219.166,
+      "percent_of_total": 2.07
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.341,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.887,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 255.693,
+      "percent_of_total": 2.42
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.461,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.511,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 191.496,
+      "percent_of_total": 1.81
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.374,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.152,
+      "percent_of_total": 0.15
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 181.32,
+      "percent_of_total": 1.71
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.219,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.957,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 262.923,
+      "percent_of_total": 2.49
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.214,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.152,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 236.392,
+      "percent_of_total": 2.23
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.437,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.057,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 175.776,
+      "percent_of_total": 1.66
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.45,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.22,
+      "percent_of_total": 0.15
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 209.626,
+      "percent_of_total": 1.98
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.458,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.219,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 175.016,
+      "percent_of_total": 1.65
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.291,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 15.216,
+      "percent_of_total": 0.14
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 254.741,
+      "percent_of_total": 2.41
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.365,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.43,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 363.441,
+      "percent_of_total": 3.44
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.705,
+      "percent_of_total": 0.01
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.005,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.603,
+      "percent_of_total": 0.19
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 223.685,
+      "percent_of_total": 2.11
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.421,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.928,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 215.481,
+      "percent_of_total": 2.04
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.423,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 15.673,
+      "percent_of_total": 0.15
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 206.13,
+      "percent_of_total": 1.95
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.408,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.818,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 218.515,
+      "percent_of_total": 2.07
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.383,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 19.5,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 207.193,
+      "percent_of_total": 1.96
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.345,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.83,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 292.47,
+      "percent_of_total": 2.76
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.436,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.133,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 206.973,
+      "percent_of_total": 1.96
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.41,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.003,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.061,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 374.498,
+      "percent_of_total": 3.54
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.602,
+      "percent_of_total": 0.01
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 17.61,
+      "percent_of_total": 0.17
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 286.622,
+      "percent_of_total": 2.71
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.706,
+      "percent_of_total": 0.01
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 15.748,
+      "percent_of_total": 0.15
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 146.243,
+      "percent_of_total": 1.38
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.234,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.005,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 16.619,
+      "percent_of_total": 0.16
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 156.98,
+      "percent_of_total": 1.48
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.261,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Loading config",
+      "duration_seconds": 0.004,
+      "percent_of_total": 0.0
+    },
+    {
+      "label": "Fetching articles from GNews",
+      "duration_seconds": 18.634,
+      "percent_of_total": 0.18
+    },
+    {
+      "label": "Browsing sites w/ Playwright",
+      "duration_seconds": 242.912,
+      "percent_of_total": 2.3
+    },
+    {
+      "label": "Saving to CSV",
+      "duration_seconds": 0.454,
+      "percent_of_total": 0.0
+    }
+  ],
+  "metadata": {
+    "comment": "all good man, sped this up a lot",
+    "num_countries": 112,
+    "num_metrics": 7,
+    "num_years": 8,
+    "num_searches": 14,
+    "num_articles_fetched": 152,
+    "num_articles_accessed": 124,
+    "llm_model": "gpt-3.5",
+    "max_results": 15
+  }
+}

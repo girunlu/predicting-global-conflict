@@ -41,7 +41,7 @@ class AsyncTextParser:
     async def parse_text(self, text: str):
         if not hasattr(self, 'extraction_instruction'):
             raise ValueError("Parser not configured.")
-        prompt = text[:min(len(text), 4000 * 4)]
+        prompt = text[:min(len(text), 3500 * 4)]
         return await self.get_chatgpt_response(self.extraction_instruction, prompt)
 
     def format_response(self, response: str):

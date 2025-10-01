@@ -76,22 +76,50 @@ def generate_prompt_text(any_text: str, metrics: dict, examples: list[dict] | No
 
     return result
 
-def save_articles_json(articles, filename="articles.json", subdir="testing/outputs"):
+def save_articles_json(articles, filename, updir, lowdir=None, capture_time=True):
     """
-    Saves any list of dicts to a JSON file with a timestamp.
+    Saves any list of dicts to a JSON file, mirroring load_articles_json’s parameters.
+    
+    Parameters
+    ----------
+    articles : list[dict]
+        Data to save.
+    filename : str
+        Base filename for the JSON file.
+    updir : str
+        Parent folder name.
+    lowdir : str, optional
+        Subfolder name inside updir.
     """
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    output_dir = os.path.join(os.getcwd(), subdir)
-    os.makedirs(output_dir, exist_ok=True)
-    filepath = os.path.join(output_dir, f"{timestamp}_{filename}")
+    if updir is None and lowdir is None:
+        raise ValueError("Either updir or lowdir must be provided")
 
+    # Make path
+    if lowdir is None:
+        output_dir = os.path.join(os.getcwd(), updir)
+    else:
+        output_dir = os.path.join(os.getcwd(), updir, lowdir)
+
+    os.makedirs(output_dir, exist_ok=True)
+
+    if capture_time:
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filepath = os.path.join(output_dir, f"{timestamp}_{filename}")
+    else:
+        filepath = os.path.join(output_dir, filename)
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(articles, f, ensure_ascii=False, indent=2)
+
     print(f"Saved {len(articles)} items to {filepath}")
     return filepath
 
-def load_articles_json(filename="accessed_articles.json"):
-    filepath = os.path.join(os.getcwd(), "testing", "outputs", filename)
+def load_articles_json(filename, updir, lowdir = None):
+    if updir is None and lowdir is None:
+        raise ValueError("Either updir or lowdir must be provided")
+    if lowdir is None:
+        filepath = os.path.join(os.getcwd(), updir, filename)
+    else:
+        filepath = os.path.join(os.getcwd(), updir, lowdir, filename)
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -115,6 +143,7 @@ def save_to_csv(
         for month in range(1, 13):
             all_months_str.append(f"{month:02d}-{year}")
 
+    countries_formatted = [c.lower() for c in countries]
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
@@ -126,7 +155,7 @@ def save_to_csv(
             if entry.get("metric") != metric:
                 continue
             country = entry.get("country")
-            if country not in countries:
+            if country.lower() not in countries_formatted:
                 continue
             for date_str in entry.get("dates", []):
                 try:
@@ -259,7 +288,7 @@ def log_time(start=None, label: str = "None", store: bool = False, store_data: d
 
 def trim_text(text, words_start : int = 20, words_end : int = 1500):
     words = text.split()
-    return " ".join(words[words_start:max(len(words),words_end)])
+    return " ".join(words[words_start:min(len(words),words_end)])
 
 def remove_repeated_phrase_from_text(text, min_words_in_phrase=2, max_words_to_check=200):
     words = text.split()
@@ -331,3 +360,121 @@ def chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3):
     return " ".join(chunks)
 
 
+# compiled for speed
+_WSEP = '<<WSEP>>'                 # temporary placeholder for word separators
+_re_newlines = re.compile(r'\n\s*\n+')   # collapse many newlines -> paragraph break
+_re_multi_space = re.compile(r' {2,}')   # 2+ spaces -> word separator
+_re_spaced_letters = re.compile(r'(?:[A-Za-z0-9](?: [A-Za-z0-9]){1,})')  # "a b c" etc.
+_re_space_before_punct = re.compile(r'\s+([.,:;?!%])')
+
+def clean_text(text: str) -> str:
+    """Fast, pragmatic cleaning:
+       - Treat 2+ spaces as a word separator (preserved)
+       - Remove single spaces between single characters (merge spaced letters)
+       - Normalize newlines and trim whitespace
+    """
+    if not text:
+        return text
+
+    # normalize newlines & common whitespace
+    text = text.replace('\r\n', '\n').replace('\r', '\n')
+    text = text.replace('\t', ' ')
+    text = text.replace('\u00A0', ' ')  # non-breaking space -> normal
+
+    # collapse >=2 newlines into exactly two (preserve paragraph breaks)
+    text = _re_newlines.sub('\n\n', text)
+
+    # mark 2+ spaces (word separators) with a placeholder so we don't lose them
+    text = _re_multi_space.sub(_WSEP, text)
+
+    # merge spaced letters inside each chunk (won't cross the placeholder)
+    # e.g. "a b c" -> "abc"
+    text = _re_spaced_letters.sub(lambda m: m.group(0).replace(' ', ''), text)
+
+    # restore placeholders to single space (word separators become single spaces)
+    text = text.replace(_WSEP, ' ')
+
+    # remove spaces before punctuation like "word ," -> "word,"
+    text = _re_space_before_punct.sub(r'\1', text)
+
+    # strip leading/trailing whitespace for each line and global
+    text = '\n'.join(line.strip() for line in text.splitlines())
+    return text.strip()
+
+
+def list_files(directory):
+    """Return a list of file names in the given directory (non-recursive)."""
+    actual_dir = os.path.join(os.getcwd(), directory)
+    if not os.path.exists(actual_dir):
+        raise ValueError(f"Directory {actual_dir} does not exist.")
+    return [f for f in os.listdir(actual_dir) if os.path.isfile(os.path.join(actual_dir, f))]
+
+def save_to_master_csv(
+    data: list[dict],
+    metrics: list[str],
+    years: list[int],
+    file_name: str,
+    output_file: str = "outputs/master_raw.csv",
+    date_format: str = "%m-%Y",
+):
+    """
+    Appends parsed article data into a master CSV with columns:
+    country | metric | date | source_file
+
+    - One row per (country, metric, date)
+    - Only saves if country, metric, and date are valid
+    - Date range is automatically generated from Jan of the first year
+      up to the current month of the current year
+    - Keeps appending to master file
+    """
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
+    # Build allowed months dynamically
+    start_year = min(years)
+    end_year = datetime.now().year
+    end_month = datetime.now().month
+
+    all_months_str = []
+    for year in range(start_year, end_year + 1):
+        for month in range(1, 13):
+            if year == end_year and month > end_month:
+                break
+            all_months_str.append(f"{month:02d}-{year}")
+
+    rows = []
+    for entry in data:
+        country = entry.get("country")
+        metric = entry.get("metric").lower().strip()
+        if metric not in metrics:
+            continue
+
+        for date_str in entry.get("dates", []):
+            try:
+                dt = parser.parse(date_str)
+                month_str = dt.strftime(date_format)
+
+                if month_str not in all_months_str:
+                    continue
+
+                rows.append({
+                    "country": country,
+                    "metric": metric,
+                    "date": month_str,
+                    "source_file": file_name
+                })
+
+            except Exception as e:
+                print(f"Skipping unparseable date {date_str}: {e}")
+
+    if not rows:
+        return
+
+    df_new = pd.DataFrame(rows)
+
+    # Append mode
+    if os.path.exists(output_file):
+        df_new.to_csv(output_file, mode="a", header=False, index=False)
+    else:
+        df_new.to_csv(output_file, mode="w", header=True, index=False)
+
+    print(f"Appended {len(rows)} rows to {output_file}")

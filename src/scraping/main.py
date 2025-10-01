@@ -7,7 +7,8 @@ from news_boy import AsyncPlaywrightBrowser
 from utils import (
     chunk_and_clean_text, remove_repeated_phrase_from_text,
     log_time, generate_search_queries, generate_prompt_text,
-    trim_text, save_articles_json, save_to_csv_flat
+    trim_text, save_articles_json, save_to_csv_flat,
+    clean_text, list_files, load_articles_json
 )
 from logic_parser import AsyncTextParser, AsyncKeywordFilter
 # --------------------------
@@ -16,10 +17,10 @@ from logic_parser import AsyncTextParser, AsyncKeywordFilter
 t = log_time(label="start")
 print("loading configurations...")
 
-io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["testing"]
+io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["official"]
 metric_data = io["metrics"]
 search_format = io["search format"]
-country_data = io["countries"]
+country_data = io["countries"] #TODO FIX
 country_names = list(country_data.keys())
 country_codes = list(country_data.values())
 years = io["years"]
@@ -38,7 +39,24 @@ news_instruction = prompts["instructions"]["news_instruction"]
 format_instruction = prompts["instructions"]["format_instruction"]
 output_format = prompts["formats"]["output_format"]
 
-for country, code in country_data.items():
+init_files = list_files("processed web data")
+files = []
+
+check = False
+for file in init_files:
+    if "tajikistan" in file.lower():
+        check = True
+    if check:
+        if "afghanistan" in file.lower():
+            break
+        files.append(file)
+    
+for file in files:
+    t = log_time(t, label = file)
+
+    accessed_articles = load_articles_json(file, "processed web data")
+    country = accessed_articles[0]["country"]
+    code = country_data.get(country, "US")
     # --------------------------
     # GENERATE SEARCH QUERIES
     # --------------------------
@@ -54,10 +72,10 @@ for country, code in country_data.items():
     )
     print(f"Generated {len(gnews_searches)} searches...")
 
-    # --- Add country_code for GNewsFetcher ---
-    for s in gnews_searches:
-        country_name = s.get("country")
-        s["country_code"] = code.upper() or "US"
+    # # --- Add country_code for GNewsFetcher ---
+    # for s in gnews_searches:
+    #     country_name = s.get("country")
+    #     s["country_code"] = code.upper() or "US"
 
     metrics_desc = {m["title"]: m["description"] for m in metric_data}
     news_instruction = generate_prompt_text(
@@ -66,64 +84,69 @@ for country, code in country_data.items():
         output_format
     )
 
-    t = log_time(t, "Loading config")
-    # --------------------------
-    # FETCH ARTICLES FROM GNEWS
-    # --------------------------
-    print("fetching news articles...")
+    # t = log_time(t, "Loading config")
+    # # --------------------------
+    # # FETCH ARTICLES FROM GNEWS
+    # # --------------------------
+    # print("fetching news articles...")
 
-    # Create a GNewsFetcher instance
-    news_agent = GNewsFetcher(max_results=max_results, country="US", language="en")
+    # # Create a GNewsFetcher instance
+    # news_agent = GNewsFetcher(max_results=max_results, country="US", language="en")
 
-    # Fetch all searches in parallel
-    google_news_articles = asyncio.run(news_agent.get_bundle_search_parallel(gnews_searches))
+    # # Fetch all searches in parallel
+    # google_news_articles = asyncio.run(news_agent.get_bundle_search_parallel(gnews_searches))
 
-    print(f"Fetched {len(google_news_articles)} gnews articles...")
-    t = log_time(t, "Fetching articles from GNews")
-    # --------------------------
-    # SCRAPE FULL ARTICLES WITH PLAYWRIGHT
-    # --------------------------
-    async def scrape_articles_parallel(articles, page_wait, min_text_length, skip_words, n_contexts=5):
-        if not articles:
-            return []
+    # print(f"Fetched {len(google_news_articles)} gnews articles...")
+    # t = log_time(t, "Fetching articles from GNews")
+    # # --------------------------
+    # # SCRAPE FULL ARTICLES WITH PLAYWRIGHT
+    # # --------------------------
+    # async def scrape_articles_parallel(articles, page_wait, min_text_length, skip_words, n_contexts=5, batch_size=50):
+    #     if not articles:
+    #         return []
 
-        pbrowser = AsyncPlaywrightBrowser(
-            page_wait=page_wait,
-            min_text_length=min_text_length,
-            skip_words=skip_words,
-            n_contexts=n_contexts
-        )
-        await pbrowser.start()
+    #     pbrowser = AsyncPlaywrightBrowser(
+    #         page_wait=page_wait,
+    #         min_text_length=min_text_length,
+    #         skip_words=skip_words,
+    #         n_contexts=n_contexts,
+    #         max_concurrent_tasks=batch_size  # <-- limits running pages
+    #     )
+    #     await pbrowser.start()
 
-        tasks = []
-        for i, article in enumerate(articles):
-            context_id = i % n_contexts
-            tasks.append(pbrowser.get_page_text(article["url"], context_id=context_id))
+    #     accessed_articles = []
 
-        results = await asyncio.gather(*tasks)
+    #     for i in range(0, len(articles), batch_size):
+    #         batch = articles[i:i+batch_size]
+    #         tasks = []
+    #         for j, article in enumerate(batch):
+    #             context_id = j % n_contexts
+    #             tasks.append(pbrowser.get_page_text(article["url"], context_id=context_id))
 
-        accessed_articles = []
-        for article, text in zip(articles, results):
-            if text and len(text) >= min_text_length:
-                text = remove_repeated_phrase_from_text(text.lower(), min_words_in_phrase=2)
-                clean_chunks = chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3)
-                article["full_text"] = " ".join(clean_chunks)
-                accessed_articles.append(article)
+    #         results = await asyncio.gather(*tasks)
+    #         for article, text in zip(batch, results):
+    #             if text and len(text) >= min_text_length:
+    #                 text = remove_repeated_phrase_from_text(text.lower(), min_words_in_phrase=2)
+    #                 clean_chunks = chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3)
+    #                 article["full_text"] = " ".join(clean_chunks)
+    #                 accessed_articles.append(article)
 
-        await pbrowser.end()
-        return accessed_articles
+    #     await pbrowser.end()
+    #     return accessed_articles
 
-    accessed_articles = asyncio.run(
-        scrape_articles_parallel(
-            google_news_articles,
-            page_wait=page_timeout,
-            min_text_length=min_page_text_length,
-            skip_words=skip_words,
-            n_contexts=5
-        )
-    )
-    print(f"Got {len(accessed_articles)} articles with full text.")
-    t = log_time(t, "Browsing sites w/ Playwright")
+    # accessed_articles = asyncio.run(
+    #     scrape_articles_parallel(
+    #         google_news_articles,
+    #         page_wait=page_timeout,
+    #         min_text_length=min_page_text_length,
+    #         skip_words=skip_words,
+    #         n_contexts=5
+    #     ),
+    # )
+    # print(f"Got {len(accessed_articles)} articles with full text.")
+    # t = log_time(t, "Browsing sites w/ Playwright")
+    # save_articles_json(accessed_articles, filename=f"{country} scraped articles.json", subdir="to parse")
+
     # --------------------------
     # ASYNC NLP PREPROCESSING + PARSING
     # --------------------------
@@ -138,28 +161,31 @@ for country, code in country_data.items():
     async_parser = AsyncTextParser(max_workers=5)
     async_parser.configure_parsing(None, news_instruction, [m["title"] for m in metric_data])
 
-    async def process_articles():
+    async def process_articles(batch_size=50):
         results = []
 
-        # Preprocess in parallel
-        prefilter_tasks = []
-        for a in accessed_articles:
-            # Trim the article text before preprocessing
-            trimmed_text = trim_text(a['full_text'][:max(10000,len(a['full_text']))], words_start=200, words_end=1500)
-            a['full_text'] = trimmed_text
-            prefilter_tasks.append(async_filter.preprocess_text(trimmed_text))
+        # Preprocess in batches
+        for i in range(0, len(accessed_articles), batch_size):
+            batch = accessed_articles[i:i + batch_size]
 
-        prefilter_results = await asyncio.gather(*prefilter_tasks)
-        filtered_articles = [a for a, keep in zip(accessed_articles, prefilter_results) if keep]
+            # Trim text and prepare tasks
+            prefilter_tasks = []
+            for a in batch:
+                trimmed_text = trim_text(a['full_text'][:max(10000, len(a['full_text']))], words_start=50, words_end=1500)
+                a['full_text'] = trimmed_text
+                prefilter_tasks.append(async_filter.preprocess_text(trimmed_text))
 
-        # Parse in parallel
-        parse_tasks = [async_parser.parse_and_format(a['full_text']) for a in filtered_articles]
-        parse_results = await asyncio.gather(*parse_tasks)
+            prefilter_results = await asyncio.gather(*prefilter_tasks)
+            filtered_batch = [a for a, keep in zip(batch, prefilter_results) if keep]
 
-        for article, parsed in zip(filtered_articles, parse_results):
-            if parsed:
-                article['parsed'] = parsed
-                results.append(article)
+            # Parse in batches
+            parse_tasks = [async_parser.parse_and_format(a['full_text']) for a in filtered_batch]
+            parse_results = await asyncio.gather(*parse_tasks)
+
+            for article, parsed in zip(filtered_batch, parse_results):
+                if parsed:
+                    article['parsed'] = parsed
+                    results.append(article)
 
         return results
 
@@ -174,7 +200,8 @@ for country, code in country_data.items():
         for entry in article.get("parsed", []):
             flattened_data.append(entry)
 
-    save_articles_json(flattened_data, filename=f"{country} parsed articles.json", subdir="llm outputs")
+    save_articles_json(flattened_data, filename=file, updir="llm outputs",capture_time=False)
+
     output_dir = os.path.join(os.getcwd(), "outputs")
     os.makedirs(output_dir, exist_ok=True)
     # save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], country_names, years, output_dir=output_dir)
@@ -188,10 +215,10 @@ for country, code in country_data.items():
         "num_countries": len(country_names),
         "num_metrics": len(metric_data),
         "num_years": len(years),
-        "num_searches": len(gnews_searches),
-        "num_articles_fetched": len(google_news_articles),
+        # "num_searches": len(gnews_searches),
+        # "num_articles_fetched": len(google_news_articles),
         "num_articles_accessed": len(accessed_articles),
-        "num_articles_filtered": len(preprocessed_and_parsed_articles),
+        # "num_articles_filtered": len(preprocessed_and_parsed_articles),
         "llm_model": "gpt-3.5",
         "max_results": max_results
     })
