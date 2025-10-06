@@ -102,7 +102,7 @@ for country, code in country_data.items():
             for article, text in zip(batch, results):
                 if text and len(text) >= min_text_length:
                     text = remove_repeated_phrase_from_text(text.lower(), min_words_in_phrase=2)
-                    clean_chunks = chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3)
+                    clean_chunks = clean_text(chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3))
                     article["full_text"] = " ".join(clean_chunks)
                     accessed_articles.append(article)
 
@@ -120,7 +120,7 @@ for country, code in country_data.items():
     )
     print(f"Got {len(accessed_articles)} articles with full text.")
 
-    save_articles_json(accessed_articles, filename=f"{country} scraped articles.json",updir = "src/scraping", subdir="outputs/web/raw")
+    save_articles_json(accessed_articles, filename=f"{country} scraped articles.json",updir = "src/scraping", subdir="outputs/web/processed")
     # --------------------------
     # ASYNC NLP PREPROCESSING + PARSING
     # --------------------------
@@ -130,40 +130,52 @@ for country, code in country_data.items():
     metric_keywords = {m["title"]: m["rich search"].replace("(", "").replace(")", "").split(" OR ")
                     for m in metric_data}
 
-    # Initialize async parsers
+    # --------------------------
+    # ASYNC NLP PREPROCESSING (FILTER/CLEAN)
+    # --------------------------
+    print("preprocessing articles in parallel...")
+
+    # Initialize async filter
     async_filter = AsyncKeywordFilter(metric_keywords, max_workers=5, min_score=int(fuzzy_match_threshold*100))
-    async_parser = AsyncTextParser(max_workers=5)
-    async_parser.configure_parsing(None, news_instruction, [m["title"] for m in metric_data])
 
-    async def process_articles(batch_size=50):
-        results = []
-
-        # Preprocess in batches
+    async def preprocess_articles(batch_size=50):
+        filtered_articles = []
         for i in range(0, len(accessed_articles), batch_size):
             batch = accessed_articles[i:i + batch_size]
-
-            # Trim text and prepare tasks
             prefilter_tasks = []
             for a in batch:
                 trimmed_text = trim_text(a['full_text'][:max(10000, len(a['full_text']))], words_start=50, words_end=1500)
                 a['full_text'] = trimmed_text
                 prefilter_tasks.append(async_filter.preprocess_text(trimmed_text))
-
             prefilter_results = await asyncio.gather(*prefilter_tasks)
             filtered_batch = [a for a, keep in zip(batch, prefilter_results) if keep]
+            filtered_articles.extend(filtered_batch)
+        return filtered_articles
 
-            # Parse in batches
-            parse_tasks = [async_parser.parse_and_format(a['full_text']) for a in filtered_batch]
+    filtered_articles = asyncio.run(preprocess_articles())
+
+    print(f"Filtered down to {len(filtered_articles)} articles after preprocessing.")
+    # --------------------------
+    # ASYNC LLM PARSING
+    # --------------------------
+    print("parsing articles with LLM in parallel...")
+
+    async_parser = AsyncTextParser(max_workers=5)
+    async_parser.configure_parsing(None, news_instruction, [m["title"] for m in metric_data])
+
+    async def parse_articles(batch_size=50):
+        results = []
+        for i in range(0, len(filtered_articles), batch_size):
+            batch = filtered_articles[i:i + batch_size]
+            parse_tasks = [async_parser.parse_and_format(a['full_text']) for a in batch]
             parse_results = await asyncio.gather(*parse_tasks)
-
-            for article, parsed in zip(filtered_batch, parse_results):
+            for article, parsed in zip(batch, parse_results):
                 if parsed:
                     article['parsed'] = parsed
                     results.append(article)
-
         return results
 
-    preprocessed_and_parsed_articles = asyncio.run(process_articles())
+    preprocessed_and_parsed_articles = asyncio.run(parse_articles())
 
     print(f"Processed {len(preprocessed_and_parsed_articles)} articles after NLP and LLM parsing.")
     # --------------------------
@@ -179,22 +191,5 @@ for country, code in country_data.items():
     output_dir = os.path.join(os.getcwd(), "outputs")
     os.makedirs(output_dir, exist_ok=True)
     save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], country_names, years, output_dir=output_dir)
-
-    t = log_time(t, "Saving to CSV")
-    # --------------------------
-    # LOGGING
-    # --------------------------
-    log_time(store=True,name=country, store_data={
-        "comment": "all good man, sped this up a lot",
-        "num_countries": len(country_names),
-        "num_metrics": len(metric_data),
-        "num_years": len(years),
-        # "num_searches": len(gnews_searches),
-        # "num_articles_fetched": len(google_news_articles),
-        "num_articles_accessed": len(accessed_articles),
-        # "num_articles_filtered": len(preprocessed_and_parsed_articles),
-        "llm_model": "gpt-3.5",
-        "max_results": max_results
-    })
 
     print("all done!")
