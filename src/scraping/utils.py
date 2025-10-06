@@ -14,7 +14,47 @@ def generate_search_queries(
     year_chunk_length: int = 3
 ) -> list[dict]:
     """
-    Generates rich search queries using metrics, countries, and chunked years.
+    Generates a list of search query dictionaries for news or data scraping, combining metrics, country information, and chunked years.
+    Args:
+        search_format (str): A template string for the search query, containing placeholders: [metric], [country], [year].
+        country_name (str): The human-readable name of the country to include in the query.
+        country_code (str): The ISO country code, useful for APIs like GNews.
+        metrics (list[dict]): A list of metric dictionaries, each containing at least "title" and "rich search" keys.
+        years (list[str]): A list of years (as strings) to include in the queries.
+        exclusions (str, optional): Additional exclusion terms to append to each query. Defaults to "".
+        year_chunk_length (int, optional): Number of years to group together in each query chunk. Defaults to 3.
+    Returns:
+        list[dict]: A list of dictionaries, each representing a search query with keys:
+            - "search": The generated search query string.
+            - "country": The country name.
+            - "country_code": The ISO country code.
+            - "metric": The metric title.
+            - "years": The list of years included in this query chunk.
+    Example:
+        >>> generate_search_queries(
+                search_format="[metric] in [country] during [year]",
+                country_name="France",
+                country_code="FR",
+                metrics=[{"title": "GDP", "rich search": "Gross Domestic Product"}],
+                years=["2020", "2021", "2022"],
+                exclusions="-sports",
+                year_chunk_length=2
+        [
+            {
+                "search": "Gross Domestic Product in France during (2020 OR 2021) -sports",
+                "country": "France",
+                "country_code": "FR",
+                "metric": "GDP",
+                "years": ["2020", "2021"]
+            },
+            {
+                "search": "Gross Domestic Product in France during 2022 -sports",
+                "country": "France",
+                "country_code": "FR",
+                "metric": "GDP",
+                "years": ["2022"]
+            }
+        ]
     """
     def chunk_years(years_list, chunk_size):
         for i in range(0, len(years_list), chunk_size):
@@ -62,7 +102,16 @@ def display_article_results(articles : list[dict]):
 
 def generate_prompt_text(any_text: str, metrics: dict, examples: list[dict] | None) -> str:
     """
-    Replaces placeholders in the prompt with metric definitions and examples.
+    Generates a prompt text by replacing placeholders in the input string with metric definitions and example data.
+    Args:
+        any_text (str): The input string containing placeholders such as '[all metrics]' and '[examples]'.
+        metrics (dict): A dictionary where keys are metric names and values are their definitions.
+        examples (list[dict] | None): A list of example dictionaries to be inserted into the prompt, or None if not provided.
+    Returns:
+        str: The formatted prompt text with placeholders replaced by metric definitions and examples.
+    Placeholders:
+        - '[all metrics]': Replaced with a formatted list of metric definitions.
+        - '[examples]': Replaced with a JSON-formatted string of example data (if provided).
     """
     # Build metric definitions text
     metrics_definitions = "\n".join(
@@ -78,18 +127,24 @@ def generate_prompt_text(any_text: str, metrics: dict, examples: list[dict] | No
 
 def save_articles_json(articles, filename, updir, lowdir=None, capture_time=True):
     """
-    Saves any list of dicts to a JSON file, mirroring load_articles_json’s parameters.
-    
-    Parameters
-    ----------
-    articles : list[dict]
-        Data to save.
-    filename : str
-        Base filename for the JSON file.
-    updir : str
-        Parent folder name.
-    lowdir : str, optional
-        Subfolder name inside updir.
+    Saves a list of article dictionaries to a JSON file, with optional timestamp and directory structure.
+        List of dictionaries representing articles to save.
+        Name of the parent directory where the file will be saved.
+        Name of the subdirectory inside `updir` where the file will be saved. If None, file is saved directly in `updir`.
+    capture_time : bool, optional
+        If True, prepends a timestamp to the filename. Default is True.
+    Returns
+    -------
+    str
+        The full path to the saved JSON file.
+    Raises
+    ------
+    ValueError
+        If both `updir` and `lowdir` are None.
+    Notes
+    -----
+    - Creates directories if they do not exist.
+    - Prints the number of items saved and the file path.
     """
     if updir is None and lowdir is None:
         raise ValueError("Either updir or lowdir must be provided")
@@ -114,6 +169,24 @@ def save_articles_json(articles, filename, updir, lowdir=None, capture_time=True
     return filepath
 
 def load_articles_json(filename, updir, lowdir = None):
+    """
+    Loads a JSON file containing articles from a specified directory path.
+
+    Args:
+        filename (str): The name of the JSON file to load.
+        updir (str): The upper directory path where the file is located.
+        lowdir (str, optional): An optional lower directory within updir. Defaults to None.
+
+    Raises:
+        ValueError: If both updir and lowdir are None.
+
+    Returns:
+        dict or list: The parsed JSON content from the file.
+
+    Example:
+        articles = load_articles_json("articles.json", "data")
+        articles = load_articles_json("articles.json", "data", "2024")
+    """
     if updir is None and lowdir is None:
         raise ValueError("Either updir or lowdir must be provided")
     if lowdir is None:
@@ -122,55 +195,6 @@ def load_articles_json(filename, updir, lowdir = None):
         filepath = os.path.join(os.getcwd(), updir, lowdir, filename)
     with open(filepath, "r", encoding="utf-8") as f:
         return json.load(f)
-
-def save_to_csv(
-    data: list[dict],
-    metrics: list[str],
-    countries: list[str],
-    years: list[int],
-    output_dir: str = "outputs",
-    date_format: str = "%m-%Y",
-):
-    """
-    Saves parsed article data into CSV files, one per metric,
-    using a fixed list of years to generate month columns.
-    """
-    print("Saving results to CSV...")
-
-    # Generate all month strings from years
-    all_months_str = []
-    for year in years:
-        for month in range(1, 13):
-            all_months_str.append(f"{month:02d}-{year}")
-
-    countries_formatted = [c.lower() for c in countries]
-    # Ensure output directory exists
-    os.makedirs(output_dir, exist_ok=True)
-
-    # Build one DataFrame per metric
-    for metric in metrics:
-        df_metric = pd.DataFrame(0, index=countries, columns=all_months_str)
-
-        for entry in data:
-            if entry.get("metric") != metric:
-                continue
-            country = entry.get("country")
-            if country.lower() not in countries_formatted:
-                continue
-            for date_str in entry.get("dates", []):
-                try:
-                    dt = parser.parse(date_str)
-                    month_str = dt.strftime(date_format)
-                    if month_str in df_metric.columns:
-                        df_metric.loc[country, month_str] = 1
-                except Exception as e:
-                    print(f"Skipping unparseable date {date_str}: {e}")
-
-        df_metric = df_metric.reset_index().rename(columns={"index": "country"})
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        filename = os.path.join(output_dir, f"{metric.replace(' ', '_')}_{timestamp}.csv")
-        df_metric.to_csv(filename, index=False)
-        print(f"Saved metric '{metric}' to {filename}")
 
 def save_to_csv_flat(
     data: list[dict],
@@ -181,9 +205,35 @@ def save_to_csv_flat(
     date_format: str = "%m-%Y",
 ):
     """
-    Saves parsed article data into a single CSV with columns:
-    date | country | metric1 | metric2 | ...
-    Each row represents one (date, country) combination.
+    Saves parsed article data into a flattened CSV file, where each row represents a unique (date, country) combination,
+    and each metric is a column indicating its occurrence (1) or absence (0) for that month and country.
+    Parameters
+    ----------
+    data : list of dict
+        List of parsed article data entries. Each entry should contain 'country', 'metric', and 'dates' keys.
+        - 'country': str, country name.
+        - 'metric': str, metric name.
+        - 'dates': list of str, date strings representing when the metric occurred.
+    metrics : list of str
+        List of metric names to include as columns in the output CSV.
+    countries : list of str
+        List of country names to include as rows in the output CSV.
+    years : list of int
+        List of years to generate month-year combinations for each country.
+    output_dir : str, optional
+        Directory where the output CSV file will be saved. Defaults to "outputs".
+    date_format : str, optional
+        Format string for month-year representation in the CSV. Defaults to "%m-%Y".
+    Returns
+    -------
+    None
+        The function saves the resulting DataFrame to a CSV file in the specified output directory.
+        The filename includes a timestamp for uniqueness.
+    Notes
+    -----
+    - The CSV columns are: 'date', 'country', followed by one column for each metric.
+    - Each metric column contains 1 if the metric occurred for the country in that month, otherwise 0.
+    - Unparseable dates in the input data are skipped with a warning.
     """
     print("Saving flattened results to CSV...")
 
@@ -236,17 +286,28 @@ _RUN_START_TIME = time.perf_counter()
 
 def log_time(start=None, label: str = "None", store: bool = False, store_data: dict = None, save_dir: str = "testing/outputs", name = None):
     """
-    Tracks and stores execution time for script sections.
-
-    Args:
-        start: start time from time.perf_counter()
-        label: name of the step (e.g., 'Fetching news')
-        store: if True, finalizes run logs with metadata and writes JSON
-        store_data: optional metadata (dict) to save with logs
-        save_dir: directory to save timing logs
-
+    Logs and measures execution time for code sections, and optionally saves timing summaries to disk.
+    Parameters:
+        start (float, optional): The starting time (from time.perf_counter()) for measuring duration. If None and store is False, returns a fresh timer.
+        label (str, optional): Label for the timed section. Default is "None".
+        store (bool, optional): If True, finalizes and saves timing logs to disk. If False, logs a single timing entry.
+        store_data (dict, optional): Additional metadata to include in the saved timing summary. Default is None.
+        save_dir (str, optional): Directory where timing summary will be saved. Default is "testing/outputs".
+        name (str, optional): Optional prefix for the timing summary filename.
     Returns:
-        tuple: (end_time, log_entry) if measuring a section
+        float: If store is False and start is None, returns a fresh timer (time.perf_counter()).
+        float: If store is False and start is provided, returns the end time (time.perf_counter()) after logging the duration.
+        dict: If store is True, returns the timing summary dictionary after saving it to disk.
+    Side Effects:
+        - Appends timing logs to the global _TIMING_LOGS list.
+        - Prints timing information to stdout.
+        - Saves timing summary as a JSON file in the specified directory.
+    Example usage:
+        start = log_time(label="Step 1")
+        # ... code to time ...
+        log_time(start, label="Step 1")
+        # After all steps:
+        log_time(store=True, store_data={"experiment": "test"}, name="run1")
     """
     global _TIMING_LOGS, _RUN_START, _RUN_START_TIME
 
@@ -287,10 +348,34 @@ def log_time(start=None, label: str = "None", store: bool = False, store_data: d
         return result
 
 def trim_text(text, words_start : int = 20, words_end : int = 1500):
+    """
+    Trims a given text by extracting a subset of words between specified start and end indices.
+
+    Args:
+        text (str): The input text to be trimmed.
+        words_start (int, optional): The starting index (inclusive) of the word to begin extraction. Defaults to 20.
+        words_end (int, optional): The ending index (exclusive) of the word to stop extraction. Defaults to 1500.
+
+    Returns:
+        str: A string containing the words from `words_start` up to (but not including) `words_end`.
+    """
     words = text.split()
     return " ".join(words[words_start:min(len(words),words_end)])
 
 def remove_repeated_phrase_from_text(text, min_words_in_phrase=2, max_words_to_check=200):
+    """
+    Removes the largest repeated consecutive phrase from the input text.
+    This function searches for the largest sequence of consecutive words (phrase) 
+    that is repeated at least twice within the first `max_words_to_check` words of the text.
+    If such a repeated phrase is found, all its occurrences are removed from the entire text.
+    Args:
+        text (str): The input text to process.
+        min_words_in_phrase (int, optional): The minimum number of words in a phrase to consider as repeated. Defaults to 2.
+        max_words_to_check (int, optional): The maximum number of words from the start of the text to check for repeated phrases. Defaults to 200.
+    Returns:
+        str: The text with all occurrences of the detected repeated phrase removed. 
+             If no repeated phrase is found, returns the original text.
+    """
     words = text.split()
     n = len(words)
 
@@ -332,15 +417,13 @@ def remove_repeated_phrase_from_text(text, min_words_in_phrase=2, max_words_to_c
     
 def chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3):
     """
-    Split text into chunks of chunk_size and skip chunks with too many non-text characters.
-    
-    Parameters:
-    - text: str, raw scraped text
-    - chunk_size: int, approx number of characters per chunk
-    - max_nontext_ratio: float, max allowed ratio of non-alphanumeric characters
-    
+    Splits the input text into chunks of a specified size, removes chunks with a high ratio of non-text characters, and returns the cleaned text.
+    Args:
+        text (str): The input text to be chunked and cleaned.
+        chunk_size (int, optional): The size of each chunk in characters. Defaults to 50.
+        max_nontext_ratio (float, optional): The maximum allowed ratio of non-alphanumeric characters in a chunk. Chunks exceeding this ratio are discarded. Defaults to 0.3.
     Returns:
-    - List of clean text chunks
+        str: The cleaned text, consisting of valid chunks joined by spaces.
     """
     # Normalize whitespace
     text = text.replace('\r\n', '\n').replace('\r', '\n').strip()
@@ -359,7 +442,6 @@ def chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3):
 
     return " ".join(chunks)
 
-
 # compiled for speed
 _WSEP = '<<WSEP>>'                 # temporary placeholder for word separators
 _re_newlines = re.compile(r'\n\s*\n+')   # collapse many newlines -> paragraph break
@@ -368,11 +450,23 @@ _re_spaced_letters = re.compile(r'(?:[A-Za-z0-9](?: [A-Za-z0-9]){1,})')  # "a b 
 _re_space_before_punct = re.compile(r'\s+([.,:;?!%])')
 
 def clean_text(text: str) -> str:
-    """Fast, pragmatic cleaning:
-       - Treat 2+ spaces as a word separator (preserved)
-       - Remove single spaces between single characters (merge spaced letters)
-       - Normalize newlines and trim whitespace
     """
+    Cleans and normalizes a given text string by performing the following operations:
+    - Returns the input unchanged if it is empty or None.
+    - Normalizes all newline characters to '\n'.
+    - Replaces tab characters and non-breaking spaces with regular spaces.
+    - Collapses sequences of two or more newlines into exactly two, preserving paragraph breaks.
+    - Marks sequences of two or more spaces with a placeholder to preserve word separation.
+    - Merges spaced letters within each chunk (e.g., "a b c" becomes "abc").
+    - Restores placeholders to single spaces, ensuring word separators are single spaces.
+    - Removes spaces before punctuation (e.g., "word ," becomes "word,").
+    - Strips leading and trailing whitespace from each line and from the entire text.
+    Args:
+        text (str): The input text string to be cleaned.
+    Returns:
+        str: The cleaned and normalized text string.
+    """
+
     if not text:
         return text
 
@@ -401,7 +495,6 @@ def clean_text(text: str) -> str:
     text = '\n'.join(line.strip() for line in text.splitlines())
     return text.strip()
 
-
 def list_files(directory):
     """Return a list of file names in the given directory (non-recursive)."""
     actual_dir = os.path.join(os.getcwd(), directory)
@@ -409,7 +502,7 @@ def list_files(directory):
         raise ValueError(f"Directory {actual_dir} does not exist.")
     return [f for f in os.listdir(actual_dir) if os.path.isfile(os.path.join(actual_dir, f))]
 
-def save_to_master_csv(
+def save_to_master_csv_bulk(
     data: list[dict],
     metrics: list[str],
     years: list[int],
@@ -418,14 +511,24 @@ def save_to_master_csv(
     date_format: str = "%m-%Y",
 ):
     """
-    Appends parsed article data into a master CSV with columns:
-    country | metric | date | source_file
-
-    - One row per (country, metric, date)
-    - Only saves if country, metric, and date are valid
-    - Date range is automatically generated from Jan of the first year
-      up to the current month of the current year
-    - Keeps appending to master file
+    Saves bulk data entries to a master CSV file, appending new rows for valid country-metric-date combinations.
+    This function processes a list of data entries, filters them by allowed metrics and valid date ranges,
+    and writes the results to a specified CSV file. Dates are parsed and formatted according to the given
+    date_format, and only entries within the specified years and up to the current month are included.
+    Parameters:
+        data (list[dict]): List of data entries, each containing 'country', 'metric', and 'dates'.
+        metrics (list[str]): List of allowed metric names (case-insensitive).
+        years (list[int]): List of years to include in the output.
+        file_name (str): Name of the source file to record in the output.
+        output_file (str, optional): Path to the output CSV file. Defaults to "outputs/master_raw.csv".
+        date_format (str, optional): Format string for output dates. Defaults to "%m-%Y".
+    Returns:
+        None
+    Side Effects:
+        - Creates the output directory if it does not exist.
+        - Appends or writes rows to the specified CSV file.
+        - Prints the number of rows appended.
+        - Prints a message for any unparseable date encountered.
     """
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
 

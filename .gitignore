@@ -1,3 +1,5 @@
 # Ignoring all .env files for security
 *.env
 **/*.env
+src/scraping/outputs/web/*/*
+src/scraping/outputs/llm/*

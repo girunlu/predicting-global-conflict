@@ -2,7 +2,34 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 import asyncio
 
 class AsyncPlaywrightBrowser:
+    """
+    An asynchronous browser automation class using Playwright for scraping web page text with concurrency control.
+    Attributes:
+        page_wait (int): Time to wait for page navigation and loading, in milliseconds.
+        min_text_length (int): Minimum length of text to consider a page successfully scraped.
+        skip_words (list[str]): List of words indicating blocked or unwanted pages.
+        n_contexts (int): Number of browser contexts to use for parallel scraping.
+        max_task_time (int): Maximum time (in seconds) allowed for a single scraping task before it is killed.
+        max_concurrent_tasks (int): Maximum number of concurrent scraping tasks.
+        playwright: Playwright instance.
+        browser: Playwright browser instance.
+        contexts (list): List of browser contexts for parallel scraping.
+        semaphore (asyncio.Semaphore): Semaphore to limit concurrent tasks.
+    Methods:
+        start():
+            Asynchronously starts the Playwright browser and initializes contexts.
+        end():
+            Asynchronously closes all browser contexts, the browser, and stops Playwright.
+        resolve_final_url(page, url):
+            Asynchronously navigates to the given URL, follows redirects, and returns the final landing URL.
+            Handles special cases like Google RSS redirects.
+        get_page_text(url, context_id=0):
+            Asynchronously scrapes visible text from the given URL using the specified browser context.
+            Applies concurrency limits, minimum text length, and skip word filtering.
+            Returns the scraped text or None if scraping fails or content is insufficient.
+    """
     def __init__(self, page_wait=20, min_text_length=500, skip_words=None, n_contexts=5, max_task_time=45, max_concurrent_tasks = 50):
+        """Initialize the AsyncPlaywrightBrowser with configuration parameters."""
         self.page_wait = page_wait * 1000  # ms
         self.min_text_length = min_text_length
         self.skip_words = skip_words or ['blocked', 'captcha', 'consent']

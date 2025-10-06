@@ -1,33 +1,38 @@
-Hello.
+# Scraping Module Overview
 
-# First Things First
-Please give the following documents a read and just look over them:
-1. prompts.json
-2. io.json
-3. logic_parser.py
-4. gnews_fetcher.py
+This module handles the collection and processing of news data for predicting global conflict. Before diving in, please review the following files to understand their roles:
 
-## prompts.json
-This is a work in progress file dedicated to instructions or supplementary things to be thrown at the OpenAI API. So far it just deals with the preliminary scraping of gnews, and not full articles themselves.
+## Key Files
 
-## io.json
-This file is dedicated to all IO from and between the internet and the OpenAI API, both for testing and official use.
+1. **prompts.json**  
+    Contains instructions and supplementary prompts for the OpenAI API, currently focused on preliminary scraping from GNews.
 
-## logic_parser.py
-The simplest OpenAI API.
+2. **io.json**  
+    Manages all input/output operations between the internet and the OpenAI API, used for both testing and production.
 
-## gnews_fetcher.py
-Gets news from the gnews API and formats it slightly.
+3. **logic_parser.py**  
+    Provides basic interaction with the OpenAI API.
+
+4. **gnews_fetcher.py**  
+    Fetches news articles from the GNews API and performs initial formatting.
+
+5. **news_boy.py**  
+    (Refer to source for details.)
+
+## Main Workflow
+
+After familiarizing yourself with the above files, proceed to `main.py`, which orchestrates the scraping process:
+
+1. Extracts scraping-, parsing-, and configuration-related information from `io.json`, `prompts.json` and `config.json`.
+2. Generates search queries and retrieves articles from GNews.
+3. Retrives full articles using PlayWright.
+3. Filters results using RapidFuzz and the OpenAI API based on provided queries.
+4. Converts filtered results into a binary CSV containing date-time and country data.
+
+## How to Run
+
+1. Execute `install_requirements.bat` to install dependencies.
+2. Run `main.py` to start data collection and processing.
 
 ---
-
-Now that you have done that, you can have a proper look at:
-# main.py
-1. It extracts the relevant information from io.json and prompts.json
-2. It generates searches and searches gnews.
-3. It filters them using the OpenAI API based on the data received at the provided query.
-4. The filtered searches then get converted to a binary csv with date-time and country data.
-
-# Running
-1. Run the file install_requirements.bat to download the dependencies.
-2. Run the file main.py to get data.
+For further details, consult the source code and configuration files.

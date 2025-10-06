@@ -84,68 +84,68 @@ for file in files:
         output_format
     )
 
-    # t = log_time(t, "Loading config")
-    # # --------------------------
-    # # FETCH ARTICLES FROM GNEWS
-    # # --------------------------
-    # print("fetching news articles...")
+    t = log_time(t, "Loading config")
+    # --------------------------
+    # FETCH ARTICLES FROM GNEWS
+    # --------------------------
+    print("fetching news articles...")
 
-    # # Create a GNewsFetcher instance
-    # news_agent = GNewsFetcher(max_results=max_results, country="US", language="en")
+    # Create a GNewsFetcher instance
+    news_agent = GNewsFetcher(max_results=max_results, country="US", language="en")
 
-    # # Fetch all searches in parallel
-    # google_news_articles = asyncio.run(news_agent.get_bundle_search_parallel(gnews_searches))
+    # Fetch all searches in parallel
+    google_news_articles = asyncio.run(news_agent.get_bundle_search_parallel(gnews_searches))
 
-    # print(f"Fetched {len(google_news_articles)} gnews articles...")
-    # t = log_time(t, "Fetching articles from GNews")
-    # # --------------------------
-    # # SCRAPE FULL ARTICLES WITH PLAYWRIGHT
-    # # --------------------------
-    # async def scrape_articles_parallel(articles, page_wait, min_text_length, skip_words, n_contexts=5, batch_size=50):
-    #     if not articles:
-    #         return []
+    print(f"Fetched {len(google_news_articles)} gnews articles...")
+    t = log_time(t, "Fetching articles from GNews")
+    # --------------------------
+    # SCRAPE FULL ARTICLES WITH PLAYWRIGHT
+    # --------------------------
+    async def scrape_articles_parallel(articles, page_wait, min_text_length, skip_words, n_contexts=5, batch_size=50):
+        if not articles:
+            return []
 
-    #     pbrowser = AsyncPlaywrightBrowser(
-    #         page_wait=page_wait,
-    #         min_text_length=min_text_length,
-    #         skip_words=skip_words,
-    #         n_contexts=n_contexts,
-    #         max_concurrent_tasks=batch_size  # <-- limits running pages
-    #     )
-    #     await pbrowser.start()
+        pbrowser = AsyncPlaywrightBrowser(
+            page_wait=page_wait,
+            min_text_length=min_text_length,
+            skip_words=skip_words,
+            n_contexts=n_contexts,
+            max_concurrent_tasks=batch_size  # <-- limits running pages
+        )
+        await pbrowser.start()
 
-    #     accessed_articles = []
+        accessed_articles = []
 
-    #     for i in range(0, len(articles), batch_size):
-    #         batch = articles[i:i+batch_size]
-    #         tasks = []
-    #         for j, article in enumerate(batch):
-    #             context_id = j % n_contexts
-    #             tasks.append(pbrowser.get_page_text(article["url"], context_id=context_id))
+        for i in range(0, len(articles), batch_size):
+            batch = articles[i:i+batch_size]
+            tasks = []
+            for j, article in enumerate(batch):
+                context_id = j % n_contexts
+                tasks.append(pbrowser.get_page_text(article["url"], context_id=context_id))
 
-    #         results = await asyncio.gather(*tasks)
-    #         for article, text in zip(batch, results):
-    #             if text and len(text) >= min_text_length:
-    #                 text = remove_repeated_phrase_from_text(text.lower(), min_words_in_phrase=2)
-    #                 clean_chunks = chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3)
-    #                 article["full_text"] = " ".join(clean_chunks)
-    #                 accessed_articles.append(article)
+            results = await asyncio.gather(*tasks)
+            for article, text in zip(batch, results):
+                if text and len(text) >= min_text_length:
+                    text = remove_repeated_phrase_from_text(text.lower(), min_words_in_phrase=2)
+                    clean_chunks = chunk_and_clean_text(text, chunk_size=50, max_nontext_ratio=0.3)
+                    article["full_text"] = " ".join(clean_chunks)
+                    accessed_articles.append(article)
 
-    #     await pbrowser.end()
-    #     return accessed_articles
+        await pbrowser.end()
+        return accessed_articles
 
-    # accessed_articles = asyncio.run(
-    #     scrape_articles_parallel(
-    #         google_news_articles,
-    #         page_wait=page_timeout,
-    #         min_text_length=min_page_text_length,
-    #         skip_words=skip_words,
-    #         n_contexts=5
-    #     ),
-    # )
-    # print(f"Got {len(accessed_articles)} articles with full text.")
-    # t = log_time(t, "Browsing sites w/ Playwright")
-    # save_articles_json(accessed_articles, filename=f"{country} scraped articles.json", subdir="to parse")
+    accessed_articles = asyncio.run(
+        scrape_articles_parallel(
+            google_news_articles,
+            page_wait=page_timeout,
+            min_text_length=min_page_text_length,
+            skip_words=skip_words,
+            n_contexts=5
+        ),
+    )
+    print(f"Got {len(accessed_articles)} articles with full text.")
+    t = log_time(t, "Browsing sites w/ Playwright")
+    save_articles_json(accessed_articles, filename=f"{country} scraped articles.json", subdir="to parse")
 
     # --------------------------
     # ASYNC NLP PREPROCESSING + PARSING

@@ -29,14 +29,35 @@ def extract_real_article_from_rss(url: str) -> str:
         pass
     return url
 
-# --- Main Fetcher Class ---
 class GNewsFetcher:
+    """ 
+    A class to fetch news articles using the GNews API, supporting parallel searches and configurable parameters.
+    Attributes:
+        country (str): The country code for news search (default: "ZA").
+        max_results (int): Maximum number of articles to fetch per search (default: 20).
+        start_date (datetime | None): The earliest date for articles (default: datetime(2000, 1, 1)).
+        end_date (datetime | None): The latest date for articles (default: datetime(2025, 1, 1)).
+        gnews (GNews): Instance of the GNews API client.
+    Methods:
+        __init__(country="ZA", max_results=20, language="en", start_date=datetime(2000, 1, 1), end_date=datetime(2025, 1, 1)):
+            Initializes the GNewsFetcher with the specified configuration.
+        update_config(country=None, max_results=None, start_date=None, end_date=None):
+            Updates the fetcher configuration and reinitializes the GNews client.
+        async _fetch_single(query, visited_urls, delay=1.0):
+            Fetches articles for a single search-country query, resolving URLs and adding metadata.
+            Ensures URLs are not revisited and applies an optional delay between requests.
+        async get_bundle_search_parallel(search_country_queries, delay=1.0):
+            Runs multiple searches in parallel for different countries, rate-limiting URL resolution within each search.
+            Returns a flattened list of articles with metadata.
+        add_metadata(article, search_country_query):
+            Adds country and search metadata to an article dictionary.
+    """
     def __init__(
         self,
         country: str = "ZA",
         max_results: int = 20,
         language: str = "en",
-        start_date: datetime | None = datetime(2000, 1, 1),
+        start_date: datetime | None = datetime(2018, 1, 1),
         end_date: datetime | None = datetime(2025, 1, 1),
     ) -> None:
         self.country = country
