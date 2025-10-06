@@ -14,7 +14,6 @@ from logic_parser import AsyncTextParser, AsyncKeywordFilter
 # --------------------------
 # LOADING CONFIGS AND DATA
 # --------------------------
-t = log_time(label="start")
 print("loading configurations...")
 
 io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["official"]
@@ -39,24 +38,7 @@ news_instruction = prompts["instructions"]["news_instruction"]
 format_instruction = prompts["instructions"]["format_instruction"]
 output_format = prompts["formats"]["output_format"]
 
-init_files = list_files("processed web data")
-files = []
-
-check = False
-for file in init_files:
-    if "tajikistan" in file.lower():
-        check = True
-    if check:
-        if "afghanistan" in file.lower():
-            break
-        files.append(file)
-    
-for file in files:
-    t = log_time(t, label = file)
-
-    accessed_articles = load_articles_json(file, "processed web data")
-    country = accessed_articles[0]["country"]
-    code = country_data.get(country, "US")
+for country, code in country_data.items():
     # --------------------------
     # GENERATE SEARCH QUERIES
     # --------------------------
@@ -72,11 +54,6 @@ for file in files:
     )
     print(f"Generated {len(gnews_searches)} searches...")
 
-    # # --- Add country_code for GNewsFetcher ---
-    # for s in gnews_searches:
-    #     country_name = s.get("country")
-    #     s["country_code"] = code.upper() or "US"
-
     metrics_desc = {m["title"]: m["description"] for m in metric_data}
     news_instruction = generate_prompt_text(
         news_instruction + format_instruction,
@@ -84,7 +61,6 @@ for file in files:
         output_format
     )
 
-    t = log_time(t, "Loading config")
     # --------------------------
     # FETCH ARTICLES FROM GNEWS
     # --------------------------
@@ -97,7 +73,6 @@ for file in files:
     google_news_articles = asyncio.run(news_agent.get_bundle_search_parallel(gnews_searches))
 
     print(f"Fetched {len(google_news_articles)} gnews articles...")
-    t = log_time(t, "Fetching articles from GNews")
     # --------------------------
     # SCRAPE FULL ARTICLES WITH PLAYWRIGHT
     # --------------------------
@@ -144,9 +119,8 @@ for file in files:
         ),
     )
     print(f"Got {len(accessed_articles)} articles with full text.")
-    t = log_time(t, "Browsing sites w/ Playwright")
-    save_articles_json(accessed_articles, filename=f"{country} scraped articles.json", subdir="to parse")
 
+    save_articles_json(accessed_articles, filename=f"{country} scraped articles.json",updir = "src/scraping", subdir="outputs/web/raw")
     # --------------------------
     # ASYNC NLP PREPROCESSING + PARSING
     # --------------------------
@@ -190,8 +164,8 @@ for file in files:
         return results
 
     preprocessed_and_parsed_articles = asyncio.run(process_articles())
+
     print(f"Processed {len(preprocessed_and_parsed_articles)} articles after NLP and LLM parsing.")
-    t = log_time(t, "Preprocessing + Parsing articles")
     # --------------------------
     # FLATTEN AND SAVE
     # --------------------------
@@ -200,11 +174,11 @@ for file in files:
         for entry in article.get("parsed", []):
             flattened_data.append(entry)
 
-    save_articles_json(flattened_data, filename=file, updir="llm outputs",capture_time=False)
+    save_articles_json(flattened_data, filename=f"{country} llm outputs.json",updir = "src/scraping", subdir="outputs/llm")
 
     output_dir = os.path.join(os.getcwd(), "outputs")
     os.makedirs(output_dir, exist_ok=True)
-    # save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], country_names, years, output_dir=output_dir)
+    save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], country_names, years, output_dir=output_dir)
 
     t = log_time(t, "Saving to CSV")
     # --------------------------
@@ -223,4 +197,4 @@ for file in files:
         "max_results": max_results
     })
 
-print("all done!")
+    print("all done!")
