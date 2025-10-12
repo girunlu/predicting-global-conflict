@@ -7,5 +7,17 @@
     "skim article start" : 20,
     "skim article end" : 1500,
     "fuzzy keyword similarity" : 0.6,
-    "batch size" : 50
+    "max parallel filter tabs" : 50,
+    "max browser instances" : 5,
+    "max browser tabs" : 75,
+    "save points" :[
+        "gnews fetch",
+        "web scrape",
+        "openai classify"
+    ],
+    "task list" : [
+        "gnews fetch",
+        "web scrape",
+        "openai classify"
+    ]
 }

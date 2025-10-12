@@ -133,14 +133,13 @@ This project collects news via GNews, scrapes full article text with Playwright,
    py -m playwright install
    ```
 2. Set `OPENAI_API_KEY` in `.env`.
-3. Place `io.json`, `config.json`, `prompts.json` next to main script.
-4. Run the main script from project root:
+3. Configure `io.json`, `config.json`, `prompts.json`.
+4. Run the main script:
 
    ```
    python main_script.py
    ```
 
-   (Or the filename containing the orchestrating code.)
 
 # Recommended improvements (brief)
 

@@ -59,6 +59,7 @@ class GNewsFetcher:
         language: str = "en",
         start_date: datetime | None = datetime(2018, 1, 1),
         end_date: datetime | None = datetime(2025, 1, 1),
+        visited_urls: set[str] = set(),
     ) -> None:
         self.country = country
         self.max_results = max_results
@@ -71,7 +72,7 @@ class GNewsFetcher:
             start_date=start_date,
             end_date=end_date,
         )
-
+        self.visited_urls = visited_urls # To track visited URLs across searches
     def update_config(self, country=None, max_results=None, start_date=None, end_date=None):
         if country:
             self.country = country
@@ -89,19 +90,12 @@ class GNewsFetcher:
             end_date=self.end_date,
         )
 
-    async def _fetch_single(self, query: dict[str, str], visited_urls: set[str], delay: float = 1.0) -> list[dict[str, str]]:
+    async def _fetch_single(self, query: dict[str, str], delay: float = 1.0) -> list[dict[str, str]]:
         """
         Fetch and resolve articles for a single search-country query.
         """
         def fetch_sync():
-            g = GNews(
-                language="en",
-                country=query["country_code"],
-                max_results=self.max_results,
-                start_date=self.start_date,
-                end_date=self.end_date,
-            )
-            return g.get_news(query["search"])
+            return self.gnews.get_news(query["search"])
 
         search_result = await asyncio.to_thread(fetch_sync)
         results = []
@@ -109,11 +103,11 @@ class GNewsFetcher:
         # Sequentially resolve each URL with optional delay
         for article in search_result:
             raw_url = article.get("link") or article.get("url")
-            if raw_url not in visited_urls:
+            if raw_url not in self.visited_urls:
                 article["url"] = raw_url
                 self.add_metadata(article, query)
                 results.append(article)
-                visited_urls.add(raw_url)
+                self.visited_urls.add(raw_url)
 
         return results
 
@@ -122,8 +116,7 @@ class GNewsFetcher:
         Run multiple searches in parallel (one per country) but rate-limit
         URL resolution inside each search.
         """
-        visited_urls = set()
-        tasks = [self._fetch_single(query, visited_urls, delay=delay) for query in search_country_queries]
+        tasks = [self._fetch_single(query, delay=delay) for query in search_country_queries]
         results_list = await asyncio.gather(*tasks)
         return [article for sublist in results_list for article in sublist]
 

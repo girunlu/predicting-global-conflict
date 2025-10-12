@@ -328,7 +328,8 @@
         }],            
         "search format" : "[metric] in [country] in [year]",
         "countries" : {
-            "Honduras": "HN"
+            "Afghanistan": "AF",
+            "Albania": "AL"
         },
         "years" : [
             2025,

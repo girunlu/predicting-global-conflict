@@ -9,7 +9,7 @@ def generate_search_queries(
     country_name: str, 
     country_code: str,
     metrics: list[dict],
-    years: list[str],
+    years: list,
     exclusions: str = "",
     year_chunk_length: int = 3
 ) -> list[dict]:
@@ -20,7 +20,7 @@ def generate_search_queries(
         country_name (str): The human-readable name of the country to include in the query.
         country_code (str): The ISO country code, useful for APIs like GNews.
         metrics (list[dict]): A list of metric dictionaries, each containing at least "title" and "rich search" keys.
-        years (list[str]): A list of years (as strings) to include in the queries.
+        years (list): A list of years to include in the queries.
         exclusions (str, optional): Additional exclusion terms to append to each query. Defaults to "".
         year_chunk_length (int, optional): Number of years to group together in each query chunk. Defaults to 3.
     Returns:
@@ -57,6 +57,7 @@ def generate_search_queries(
         ]
     """
     def chunk_years(years_list, chunk_size):
+        years_list = [str(y) for y in years_list]
         for i in range(0, len(years_list), chunk_size):
             yield years_list[i:i + chunk_size]
 
