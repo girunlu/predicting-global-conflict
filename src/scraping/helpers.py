@@ -1,8 +1,10 @@
-import os, json, time, os, ast, re
+import os, json, time, os, re
 from datetime import datetime
 from dateutil import parser
 import pandas as pd
 from pathlib import Path
+from difflib import get_close_matches
+from collections import defaultdict
 
 def generate_search_queries(
     search_format: str,
@@ -199,86 +201,146 @@ def load_articles_json(filename, updir, lowdir = None):
 
 def save_to_csv_flat(
     data: list[dict],
-    metrics: list[str],
-    countries: list[str],
-    years: list[int],
-    output_dir: str = "outputs",
+    allowed_metrics: list[str],
+    allowed_countries: list[str],
+    allowed_years: list[int],
+    output_dir: str = "src/scraping/outputs/csv/cleaned",
     date_format: str = "%m-%Y",
+    max_continuous_months: int = 12,
+    stop_at_current_month: bool = True,
 ):
     """
-    Saves parsed article data into a flattened CSV file, where each row represents a unique (date, country) combination,
-    and each metric is a column indicating its occurrence (1) or absence (0) for that month and country.
-    Parameters
-    ----------
-    data : list of dict
-        List of parsed article data entries. Each entry should contain 'country', 'metric', and 'dates' keys.
-        - 'country': str, country name.
-        - 'metric': str, metric name.
-        - 'dates': list of str, date strings representing when the metric occurred.
-    metrics : list of str
-        List of metric names to include as columns in the output CSV.
-    countries : list of str
-        List of country names to include as rows in the output CSV.
-    years : list of int
-        List of years to generate month-year combinations for each country.
-    output_dir : str, optional
-        Directory where the output CSV file will be saved. Defaults to "outputs".
-    date_format : str, optional
-        Format string for month-year representation in the CSV. Defaults to "%m-%Y".
-    Returns
-    -------
-    None
-        The function saves the resulting DataFrame to a CSV file in the specified output directory.
-        The filename includes a timestamp for uniqueness.
-    Notes
-    -----
-    - The CSV columns are: 'date', 'country', followed by one column for each metric.
-    - Each metric column contains 1 if the metric occurred for the country in that month, otherwise 0.
-    - Unparseable dates in the input data are skipped with a warning.
+    Save parsed article data into a flattened CSV with data sanitization.
+    Each row = (month, country), each column = metric occurrence (1/0).
+
+    Cleaning steps:
+    - Fuzzy match countries
+    - Normalize and deduplicate dates
+    - Remove same-month repeats across >2 years
+    - Collapse continuous spans longer than max_continuous_months
     """
-    print("Saving flattened results to CSV...")
 
-    # Generate all month strings from years
-    all_months_str = []
-    for year in years:
-        for month in range(1, 13):
-            all_months_str.append(f"{month:02d}-{year}")
-
-    # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
 
-    # Prepare a list of rows
+    # Generate all valid months
+    now = datetime.now()
+    all_months_str = []
+    for y in allowed_years:
+        for m in range(1, 13):
+            if stop_at_current_month and (y > now.year or (y == now.year and m > now.month)):
+                break
+            all_months_str.append(f"{m:02d}-{y}")
+
+    print("Normalizing dates and cleaning country names...")
+
+    cleaned_data = []
+    seen = set()
+
+    # Normalize country names and dates
+    for entry in data:
+        raw_country = entry.get("country", "").strip()
+        metric = entry.get("metric", "").strip().lower()
+        date_list = entry.get("dates", [])
+
+        if not raw_country or not metric or not date_list:
+            continue
+
+        match = get_close_matches(raw_country, allowed_countries, n=1, cutoff=0.85)
+        if not match:
+            print(f"Unknown or unmatched country: {raw_country}")
+            continue
+        country = match[0]
+
+        norm_dates = []
+        for d in date_list:
+            try:
+                dt = parser.parse(d)
+                norm_dates.append(dt.strftime(date_format))
+            except Exception:
+                continue
+
+        for date_str in set(norm_dates):
+            key = (country, metric, date_str)
+            if key not in seen:
+                seen.add(key)
+                cleaned_data.append({"country": country, "metric": metric, "date": date_str})
+
+    # Remove repetitive same-month entries across multiple years
+    grouped = defaultdict(list)
+    for e in cleaned_data:
+        month = e["date"].split("-")[0]
+        grouped[(e["country"], e["metric"], month)].append(e["date"])
+
+    filtered_data = []
+    for (country, metric, month), dates in grouped.items():
+        years_found = {d.split("-")[1] for d in dates}
+        if len(years_found) > 2:
+            # skip if this same month appears in 3 or more different years
+            continue
+        for d in dates:
+            filtered_data.append({"country": country, "metric": metric, "date": d})
+
+    # Step 3: Collapse continuous spans
+    def parse_months(months):
+        try:
+            return sorted([parser.parse(m, fuzzy=True) for m in months])
+        except Exception:
+            return []
+
+    def month_diff(a, b):
+        return (b.year - a.year) * 12 + (b.month - a.month)
+
+    collapsed = []
+    by_country_metric = defaultdict(list)
+    for e in filtered_data:
+        by_country_metric[(e["country"], e["metric"])].append(e["date"])
+
+    for (country, metric), months in by_country_metric.items():
+        sorted_months = sorted(set(parse_months(months)))
+        if not sorted_months:
+            continue
+
+        block = [sorted_months[0]]
+        for i in range(1, len(sorted_months)):
+            if month_diff(sorted_months[i - 1], sorted_months[i]) <= 1:
+                block.append(sorted_months[i])
+            else:
+                if len(block) <= max_continuous_months:
+                    for m in block:
+                        collapsed.append({"country": country, "metric": metric, "date": m.strftime(date_format)})
+                block = [sorted_months[i]]
+
+        if len(block) <= max_continuous_months:
+            for m in block:
+                collapsed.append({"country": country, "metric": metric, "date": m.strftime(date_format)})
+
+    print(f"After collapsing continuous spans: {len(collapsed)} records remain")
+
+    # Build flat CSV matrix
     rows = []
-    for country in countries:
-        for month in all_months_str:
-            row = {"date": month, "country": country}
-            # Initialize all metrics to 0
-            for metric in metrics:
+    for c in allowed_countries:
+        for m in all_months_str:
+            row = {"date": m, "country": c}
+            for metric in allowed_metrics:
                 row[metric] = 0
             rows.append(row)
 
     df = pd.DataFrame(rows)
 
-    # Fill in 1s for metrics that occurred
-    for entry in data:
-        country = entry.get("country")
-        metric = entry.get("metric")
-        if country not in countries or metric not in metrics:
+    for e in collapsed:
+        if e["country"] not in allowed_countries or e["metric"] not in allowed_metrics:
             continue
-        for date_str in entry.get("dates", []):
-            try:
-                dt = parser.parse(date_str)
-                month_str = dt.strftime(date_format)
-                # Set the metric to 1 for this country and date
-                df.loc[(df["country"] == country) & (df["date"] == month_str), metric] = 1
-            except Exception as e:
-                print(f"Skipping unparseable date {date_str}: {e}")
+        df.loc[
+            (df["country"] == e["country"]) & (df["date"] == e["date"]),
+            e["metric"]
+        ] = 1
 
-    # Save to CSV
+    # Step 5: Save
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    filename = os.path.join(output_dir, f"all_metrics_flat_{timestamp}.csv")
-    df.to_csv(filename, index=False)
-    print(f"Saved flattened metrics CSV to {filename}")
+    output_file = os.path.join(output_dir, f"all_metrics_flat_cleaned_{timestamp}.csv")
+    df.to_csv(output_file, index=False)
+
+    print(f"Saved cleaned and flattened CSV to: {output_file}")
 
 # Globals to keep state between calls
 _TIMING_LOGS = []

@@ -19,6 +19,7 @@ io = json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["testin
 metric_data = io["metrics"]
 search_format = io["search format"]
 country_data : dict = io["countries"] #TODO FIX
+accepted_countries = list(json.load(open(os.path.join(os.path.dirname(__file__), "io.json")))["official"]["countries"].keys())
 country_names = list(country_data.keys())
 country_codes = list(country_data.values())
 years = io["years"]
@@ -294,6 +295,6 @@ for country, code in country_data.items():
 
         output_dir = os.path.join(os.getcwd(), "outputs","csv", "cleaned")
         os.makedirs(output_dir, exist_ok=True)
-        save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], country_names, years, output_dir=output_dir)
+        save_to_csv_flat(flattened_data, [m["title"] for m in metric_data], accepted_countries, years, output_dir=output_dir)
 
 print("all done!")

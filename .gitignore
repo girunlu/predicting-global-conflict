@@ -3,3 +3,6 @@
 **/*.env
 src/scraping/outputs/web/*/*
 src/scraping/outputs/llm/*
+src/scraping/outputs/csv/*/*
+src/scraping/to-implement.py
+src/scraping/to-do.txt

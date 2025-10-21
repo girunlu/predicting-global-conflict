@@ -67,7 +67,7 @@ class AsyncPlaywrightBrowser:
 
     async def resolve_final_url(self, page, url: str) -> str:
         """Detects redirects (e.g., Google RSS) and waits for the final landing page."""
-        if not url:
+        if not url or "google" not in url:
             return url
         try:
             await asyncio.wait_for(page.goto(url, wait_until="domcontentloaded"), timeout=self.max_task_time)
@@ -89,8 +89,8 @@ class AsyncPlaywrightBrowser:
             return url
 
     async def get_page_text(self, url: str, context_id=0) -> str | None:
-        """Scrape page text with concurrency limit"""
-        async with self.semaphore:  # <-- ensures only max_concurrent_tasks run at once
+        """Scrape visible, meaningful text from a URL using robust fallbacks."""
+        async with self.semaphore:
             if context_id < 0 or context_id >= len(self.contexts):
                 raise ValueError(f"context_id must be 0–{len(self.contexts)-1}")
 
@@ -99,22 +99,77 @@ class AsyncPlaywrightBrowser:
             page.set_default_navigation_timeout(self.page_wait)
 
             try:
-                final_url = await asyncio.wait_for(self.resolve_final_url(page, url), timeout=self.max_task_time)
+                final_url = await asyncio.wait_for(
+                    self.resolve_final_url(page, url),
+                    timeout=self.max_task_time
+                )
                 print(f"[AsyncBrowser] Final URL resolved: {final_url}")
 
-                paragraphs = await asyncio.wait_for(page.query_selector_all("p, div"), timeout=self.max_task_time)
-                text_blocks = []
-                for p in paragraphs:
-                    t = (await p.text_content() or "").strip()
-                    if t and len(t) > 50:
-                        text_blocks.append(t)
+                # Wait for network + JS to settle
+                await page.wait_for_load_state("networkidle")
+                await asyncio.sleep(5)
 
+                # Try multiple content selectors
+                content_selectors = [
+                    "article", "main", "section",
+                    "div[class*='content']",
+                    "div[class*='article']",
+                    "div[class*='story']",
+                    "div[data-component*='text']",
+                    "div[class*='body']",
+                    "div[class*='text']",
+                    "p"
+                ]
+
+                elements = []
+                for sel in content_selectors:
+                    try:
+                        found = await page.query_selector_all(sel)
+                        elements.extend(found)
+                    except Exception:
+                        continue
+
+                text_blocks = []
+
+                # Try extracting visible elements first
+                for el in elements:
+                    try:
+                        box = await el.bounding_box()
+                        if not box:  # invisible or off-screen
+                            continue
+                        t = (await el.inner_text() or "").strip()
+                        if not t or len(t) < 50:
+                            continue
+                        if len(t.split()) < len(t) / 4:  
+                            continue
+                        if any(word in t.lower() for word in self.skip_words):
+                            continue
+                        text_blocks.append(t)
+                    except Exception:
+                        continue
+
+                # If still empty, fallback to full page content
+                if not text_blocks:
+                    print(f"[AsyncBrowser] No visible text found, falling back to raw HTML parse for {url}")
+                    html = await page.content()
+                    import re
+                    from bs4 import BeautifulSoup
+
+                    soup = BeautifulSoup(html, "html.parser")
+                    # Get all paragraphs and texty divs
+                    candidates = soup.find_all(["p", "article", "main", "section", "div"])
+                    for c in candidates:
+                        t = c.get_text(" ", strip=True)
+                        if len(t) > 100 and not re.search(r"\b(subscribe|cookie|sign in|follow us)\b", t.lower()):
+                            text_blocks.append(t)
+
+                # Combine and clean
                 page_text = "\n".join(text_blocks)
+                page_text = " ".join(page_text.split())
                 await page.close()
 
                 if len(page_text) < self.min_text_length:
-                    return None
-                if any(word.lower() in page_text[:500].lower() for word in self.skip_words):
+                    print(f"[AsyncBrowser] Text too short for {url} ({len(page_text)} chars)")
                     return None
 
                 return page_text
@@ -127,3 +182,38 @@ class AsyncPlaywrightBrowser:
                 print(f"[AsyncBrowser] Failed for {url}: {e}")
                 await page.close()
                 return None
+            
+def main():
+    urls = [
+        'https://www.bbc.com/news/world-asia-50883812',
+        "https://news.google.com/rss/articles/CBMi6wFBVV95cUxObzFlLWVIa2tqbzUyYmdWcDNVZFJZcTZManpQU2dVNnhkVmg5S3ExUUNWLWx1Y2NVaHdwM1pJZXJjeWlWQ0huU2hPRHhCYVl3M2NmSXgyNmwtQ0lsb2M2RWpwbTRHVkpqNTRxSkcwQWV6S2RFLVVqbW5oT0RwRWxlaENhblJUUkZORGh6YVBfNWl6b2JFa3FlRUxkTjl4X0ZwTEFiRnlPb2VNeXA2NVVwdi1ZQ2NwWXFfVzdnTTVCU0lKdDBkd3hzMTNLZTZHdTAxcEw4c0hpb2JhZUwwdndXYzdhTGxHY2Y2bGVR?oc=5&hl=en-ZA&gl=ZA&ceid=ZA:en",
+        "https://news.google.com/rss/articles/CBMilgFBVV95cUxPbFU1YkRGN2pEU3VYdVBDOXB3QmZzWVg4V2lJRFZQazIxTE5kbUlqUWJZcF9lV1hreW9YeEVuRnlzRGFqdVZWeGU0NUVydWZYYXNLaTNjVk5laGNvY0VCUU5FYWZSc0xwQmg2VDFtTkcyUWpXRWVXME5fN1UwbGsycHBMdFdqeXlSN0o3QnZnT3Vibl8yMmc?oc=5&hl=en-ZA&gl=ZA&ceid=ZA:en"
+    ]
+
+    asBrowser = AsyncPlaywrightBrowser()
+
+    async def run():
+        await asBrowser.start()
+        # create a task per URL, round-robin assign contexts
+        tasks = [
+            asyncio.create_task(asBrowser.get_page_text(url, context_id=(i % asBrowser.n_contexts)))
+            for i, url in enumerate(urls)
+        ]
+
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        for url, res in zip(urls, results):
+            if isinstance(res, Exception):
+                print(f"[Main] Error scraping {url}: {res}")
+            elif res:
+                print(f"[Main] Success scraping {url} (first 500 chars):\n{res[:500]}\n")
+            else:
+                print(f"[Main] Failed to scrape or text too short for {url}")
+
+        await asBrowser.end()
+
+    asyncio.run(run())
+
+
+if __name__ == "__main__":
+    main()
