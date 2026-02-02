@@ -1,6 +1,6 @@
 # ACLED Conflict Forecasting
 
-This project forecasts **conflict event counts** at the **Admin 1 level** using ACLED data, spatial and temporal features, and machine learning (Random Forests, XGBoost). It supports forecasting by region and event type, with evaluation metrics and visualizations.
+This project forecasts **conflict event counts** at the **Admin 1 level** using ACLED data, spatial and temporal features, and machine learning (Random Forests, XGBoost). It supports forecasting by region and event type, with evaluation metrics and visualizations. It also supports running the data cleaning pipeline independently.
 
 ---
 
@@ -31,9 +31,28 @@ Or in Google Colab:
 
 ---
 
-## Running the Forecasting Pipeline
+## Running the Pipeline
 
-You can run the full forecasting pipeline from the command line using:
+### Data Cleaning Only Mode
+
+You can run **only the data cleaning and preprocessing pipeline**, with no forecasting, using:
+
+```bash
+python main.py --clean-data
+```
+
+This mode:
+
+* Runs the full preprocessing pipeline from raw data
+* Saves cleaned and feature-engineered data to disk
+* Does not require `--region` or `--event`
+* Does not train or evaluate any model
+
+This is useful for preparing data once before running multiple forecasts.
+
+### Forecasting Mode
+
+Run the full forecasting pipeline for a specific Admin1 region and event type:
 
 ```bash
 python main.py --region "UKR - Donetsk" --event "Battles"
@@ -41,21 +60,25 @@ python main.py --region "UKR - Donetsk" --event "Battles"
 
 Optional flag:
 
-* `--clean-data`: Run the full preprocessing pipeline from raw data. Otherwise, the pipeline loads cleaned data from disk (if available).
+* `--clean-data`: Run the full preprocessing pipeline from raw data before modeling. If omitted, the pipeline loads cleaned data from disk if available.
 
-See the full list of possible regions in '/data/processed/valid_regions.txt'.
-
-### Example: Run full pipeline including data cleaning
+Example:
 
 ```bash
 python main.py --region "UKR - Donetsk" --event "Battles" --clean-data
+```
+
+See the full list of valid regions in:
+
+```
+data/processed/valid_regions.txt
 ```
 
 ---
 
 ## Outputs
 
-Running the pipeline will generate:
+Running the forecasting pipeline will generate:
 
 * Mean Absolute Error (MAE)
 * Mean Absolute Percentage Error (MAPE)
@@ -111,4 +134,4 @@ These must be downloaded manually from the [Google Drive](https://drive.google.c
 
 ## License
 
-MIT License — feel free to use, modify, and share with attribution.
+MIT License.
