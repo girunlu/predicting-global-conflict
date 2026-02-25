@@ -29,7 +29,13 @@ predictors = [
     'quarter_2',
     'quarter_3',
     'quarter_4',
-    'importance_weight'
+    'importance_weight',
+    "holiday_count_month",
+    "is_holiday_month",
+    "inflation",
+    "youth_unemployment",
+    "income_inequality",
+    "income_level_code",
     ]
 
 targets = [
