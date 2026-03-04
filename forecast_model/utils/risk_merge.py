@@ -105,17 +105,22 @@ class RiskIndicatorMerger:
 
     def _add_lag(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.sort_values(["matched_admin1_id", "month_year"])
+        self.risk_cols_lagged_ = [f"{col} (t-{self.lag})" for col in self.risk_cols_]
 
-        self.risk_cols_lagged_ = []
-        for col in self.risk_cols_:
-            lag_name = f"{col} (t-{self.lag})"
-            df[lag_name] = (
-                df.groupby("matched_admin1_id")[col]
-                .shift(self.lag)
-                .fillna(0)
-                .astype(int)
-            )
-            self.risk_cols_lagged_.append(lag_name)
+        # Build lag table by advancing month_year forward by `lag` months,
+        # then join back on the original month_year.  This is immune to gaps
+        # in the time series — unlike positional shift(), which silently pulls
+        # the wrong month when rows are missing.
+        lag_df = df[["matched_admin1_id", "month_year"] + self.risk_cols_].copy()
+        lag_df["month_year"] = (
+            pd.to_datetime(lag_df["month_year"]) + pd.DateOffset(months=self.lag)
+        ).dt.strftime("%Y-%m-%d")
+        lag_df = lag_df.rename(
+            columns={col: f"{col} (t-{self.lag})" for col in self.risk_cols_}
+        )
+
+        df = df.merge(lag_df, on=["matched_admin1_id", "month_year"], how="left")
+        df[self.risk_cols_lagged_] = df[self.risk_cols_lagged_].fillna(0).astype(int)
 
         return df
 

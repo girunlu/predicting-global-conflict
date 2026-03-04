@@ -204,6 +204,57 @@ def add_time_trend_features(df):
     return df
 
 
+def build_enhanced_features(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Adds 9 engineered features motivated by cross-variable relationship analysis:
+      a) Lag-2 columns for each of the three main targets
+      b) organized_violence (t-1)  — aggregate threat level
+      c) is_active (t-1)           — binary zero-inflation splitter
+      d) battles_x_remote (t-1)   — multiplicative co-escalation interaction
+      e) 3-month rolling averages  — smoothed trend per target
+
+    Parameters:
+        df (pd.DataFrame): Must contain 'matched_admin1_id', 'month_year', and the
+                           three (t-1) lag columns for Battles, Remote violence, VaC.
+
+    Returns:
+        pd.DataFrame: Original DataFrame with 9 new columns appended.
+    """
+    B1 = 'Battles (t-1)'
+    E1 = 'Explosions/Remote violence (t-1)'
+    V1 = 'Violence against civilians (t-1)'
+
+    df = df.copy().sort_values(['matched_admin1_id', 'month_year']).reset_index(drop=True)
+    grp = df.groupby('matched_admin1_id', sort=False)
+
+    # a) Lag-2: shift existing t-1 columns by 1 more within each region
+    for src, dst in [
+        (B1, 'Battles (t-2)'),
+        (E1, 'Explosions/Remote violence (t-2)'),
+        (V1, 'Violence against civilians (t-2)'),
+    ]:
+        df[dst] = grp[src].shift(1)
+
+    # b) Organized-violence aggregate (CAST's own combined target)
+    df['organized_violence (t-1)'] = df[B1] + df[E1] + df[V1]
+
+    # c) Binary activity flag — helps model split zero-inflation from low-activity
+    df['is_active (t-1)'] = (df['organized_violence (t-1)'] > 0).astype(int)
+
+    # d) Cross-type interaction — co-escalation: remote violence spikes 13x when Battles > 3
+    df['battles_x_remote (t-1)'] = df[B1] * df[E1]
+
+    # e) 3-month rolling averages of each t-1 lag (smoother trend signal)
+    for col, name in [
+        (B1, 'Battles_3mo_avg (t-1)'),
+        (E1, 'Remote_3mo_avg (t-1)'),
+        (V1, 'VaC_3mo_avg (t-1)'),
+    ]:
+        df[name] = grp[col].transform(lambda x: x.rolling(3, min_periods=1).mean())
+
+    return df
+
+
 def add_importance_weights(df, decay_rate=0.05):
     """
     Adds an 'importance_weight' column based on recency, with exponential decay.
