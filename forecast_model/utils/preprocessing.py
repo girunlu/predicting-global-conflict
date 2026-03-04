@@ -3,6 +3,9 @@ import pandas as pd
 import geopandas as gpd
 from utils import data_cleaning, map_admin_regions
 from config import settings
+from utils.features.holidays import add_holiday_features
+from utils.features.worldbank import add_worldbank_features
+
 
 def prepare_data_pipeline(clean_data: bool = False):
     """
@@ -23,6 +26,7 @@ def prepare_data_pipeline(clean_data: bool = False):
     df['month_year'] = df['date'].dt.to_period('M').astype(str)
 
     gdf = gpd.read_file("data/raw/boundaries/ne_10m_admin_1_states_provinces/ne_10m_admin_1_states_provinces.shp")
+    
     df_neighbours = map_admin_regions.add_admin1_neighbors(df, gdf)
 
     neighbour_data = data_cleaning.summarise_neighbour_events(df_neighbours)
@@ -35,10 +39,12 @@ def prepare_data_pipeline(clean_data: bool = False):
     combined = data_cleaning.add_lagged_columns(combined)
     combined = data_cleaning.add_time_trend_features(combined)
     combined = data_cleaning.add_importance_weights(combined)
+    combined = add_holiday_features(combined, gdf)
+    combined = add_worldbank_features(combined, gdf)
+
 
     model_data = combined[settings.predictors + settings.targets]
 
-    # Save to disk for next time
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     model_data.to_csv(output_path)
 
