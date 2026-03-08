@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_holidays_monthly(holidays_path: str = "data/raw/holidays.csv") -> pd.DataFrame:
+def load_holidays_monthly(holidays_path: str = "data/raw/holidays_raw.csv") -> pd.DataFrame:
     hol = pd.read_csv(holidays_path)
 
     required = {"Country", "Date", "Holiday"}
@@ -13,7 +13,7 @@ def load_holidays_monthly(holidays_path: str = "data/raw/holidays.csv") -> pd.Da
     hol["Date"] = pd.to_datetime(hol["Date"], errors="coerce")
     hol = hol.dropna(subset=["Country", "Date"]).copy()
 
-    hol["month_year"] = hol["Date"].dt.to_period("M").astype(str)
+    hol["month_year"] = hol["Date"].dt.strftime("%Y-%m-01")
 
     hol_month = (
         hol.groupby(["Country", "month_year"], as_index=False)
@@ -73,7 +73,7 @@ def add_iso3_to_holidays(hol_month: pd.DataFrame, country_map: pd.DataFrame) -> 
 
     return out
 
-def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays.csv"):
+def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays_raw.csv"):
     country_map = gdf[["admin", "adm0_a3"]].dropna().drop_duplicates()
 
     hol_month = load_holidays_monthly(holidays_path)
@@ -93,7 +93,7 @@ def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays.
 
     idx = combined.index.to_frame(index=False)
     idx["matched_admin1_id"] = idx["matched_admin1_id"].astype(str)
-    idx["month_year"] = pd.to_datetime(idx["month_year"], errors="coerce").dt.strftime("%Y-%m")
+    idx["month_year"] = pd.to_datetime(idx["month_year"], errors="coerce").dt.strftime("%Y-%m-01")
 
     idx = idx.merge(admin1_to_iso3, on="matched_admin1_id", how="left")
 
@@ -109,7 +109,7 @@ def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays.
 
     tmp = combined.reset_index().copy()
     tmp["matched_admin1_id"] = tmp["matched_admin1_id"].astype(str)
-    tmp["month_year"] = pd.to_datetime(tmp["month_year"], errors="coerce").dt.strftime("%Y-%m")
+    tmp["month_year"] = pd.to_datetime(tmp["month_year"], errors="coerce").dt.strftime("%Y-%m-01")
 
     out = tmp.merge(feat, on=["matched_admin1_id", "month_year"], how="left")
     out = out.set_index(["matched_admin1_id", "month_year"])

@@ -353,6 +353,34 @@ def match_admin1_to_gdf(df, gdf):
         lambda row: match_cache.get((row['country_code'], row['admin1_norm']), None),
         axis=1
     )
+    
+    # 6. Spatial coordinate fallback for anything dropped completely
+    missing_mask = df['matched_admin1_id'].isnull() & df['latitude'].notnull() & df['longitude'].notnull()
+    
+    if missing_mask.any():
+        print(f"Applying spatial geocoordinate fallback for {missing_mask.sum()} unmapped events...")
+        missing_df = df[missing_mask].copy()
+
+        # Convert to Geopandas using event points
+        missing_points = gpd.GeoDataFrame(
+            missing_df, 
+            geometry=gpd.points_from_xy(missing_df.longitude, missing_df.latitude),
+            crs=gdf.crs  # Same CRS as polygons
+        )
+        
+        # Spatial join against the region polygons
+        joined = gpd.sjoin(missing_points, gdf[['admin1_id', 'geometry']], how="left", predicate="intersects")
+        
+        # Deduplicate index: if a point intersects multiple borders, keep the first to avoid reassignment errors
+        joined = joined[~joined.index.duplicated(keep='first')]
+        
+        # Bring the matched names back into the original dataframe
+        df.loc[missing_mask, 'matched_admin1_id'] = joined['admin1_id'].str.strip()
+        
+        # Update our match cache so future runs of these names know what spatial mapping hit
+        for _, row in joined[joined['admin1_id'].notnull()].iterrows():
+            key = (row['country_code'], row['admin1_norm'])
+            match_cache[key] = row['admin1_id']
 
     return df, gdf
     

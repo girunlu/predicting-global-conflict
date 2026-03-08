@@ -97,6 +97,7 @@ def add_lagged_columns(df: pd.DataFrame, lag: int = 1) -> pd.DataFrame:
 
     # Rename columns to include (t-1)
     lagged_df.columns = [f"{col} (t-{lag})" for col in lagged_df.columns]
+    lagged_df = lagged_df.fillna(0)
 
     # Combine original and lagged
     combined = pd.concat([df, lagged_df], axis=1)

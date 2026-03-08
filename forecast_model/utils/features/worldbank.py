@@ -76,8 +76,9 @@ def _indicators_yearly_wide_to_monthly(indicators_path: str) -> pd.DataFrame:
 def add_worldbank_features(
     combined: pd.DataFrame,
     gdf,
-    indicators_path: str = "data/raw/world_bank_data/combined_indicators.csv",
-    metadata_path: str = "data/raw/world_bank_data/country_metadata.csv",) -> pd.DataFrame:
+    indicators_path: str = "data/raw/combined_indicators.csv",
+    metadata_path: str = None,
+) -> pd.DataFrame:
 
  
     admin1_to_iso3 = gdf[["adm0_a3", "name_en"]].dropna().copy()
@@ -107,8 +108,9 @@ def add_worldbank_features(
     wb_monthly = wb_monthly[wb_monthly["country_iso3"].astype(str).str.len() == 3].copy()
     wb_monthly["month_year"] = wb_monthly["month_year"].astype(str)
 
-    meta = _load_country_metadata(metadata_path)
-    wb_monthly = wb_monthly.merge(meta, on="country_iso3", how="left")
+    if metadata_path and __import__("os").path.exists(metadata_path):
+        meta = _load_country_metadata(metadata_path)
+        wb_monthly = wb_monthly.merge(meta, on="country_iso3", how="left")
 
     # Merge WB onto idx using adm0_a3 (country ISO3) + month_year
     enriched = idx.merge(wb_monthly, left_on=["adm0_a3", "month_year"], right_on=["country_iso3", "month_year"],how="left")

@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import pandas as pd
 import pycountry
@@ -63,6 +63,9 @@ class RiskIndicatorMerger:
     def _load_model_data(self, path: str) -> pd.DataFrame:
         df = pd.read_csv(path)
         df["country_code"] = df["matched_admin1_id"].str.split(" - ").str[0]
+        # Map ACLED specific codes to ISO3
+        acled_to_iso3 = {'PSX': 'PSE', 'SDS': 'SSD'}
+        df["country_code"] = df["country_code"].replace(acled_to_iso3)
         return df
 
     def _load_and_transform_risk(self, path: str) -> pd.DataFrame:
@@ -93,6 +96,10 @@ class RiskIndicatorMerger:
         return pivot
 
     def _join(self, model_df: pd.DataFrame, risk_df: pd.DataFrame) -> pd.DataFrame:
+        # Guarantee both are datetime to prevent pandas string-datetime mismatch errors
+        model_df["month_year"] = pd.to_datetime(model_df["month_year"])
+        risk_df["month_year"] = pd.to_datetime(risk_df["month_year"])
+
         merged = model_df.merge(
             risk_df,
             left_on=["country_code", "month_year"],
@@ -114,13 +121,18 @@ class RiskIndicatorMerger:
         lag_df = df[["matched_admin1_id", "month_year"] + self.risk_cols_].copy()
         lag_df["month_year"] = (
             pd.to_datetime(lag_df["month_year"]) + pd.DateOffset(months=self.lag)
-        ).dt.strftime("%Y-%m-%d")
+        )
         lag_df = lag_df.rename(
             columns={col: f"{col} (t-{self.lag})" for col in self.risk_cols_}
         )
 
+        # Merge on datetimes
+        df["month_year"] = pd.to_datetime(df["month_year"])
         df = df.merge(lag_df, on=["matched_admin1_id", "month_year"], how="left")
         df[self.risk_cols_lagged_] = df[self.risk_cols_lagged_].fillna(0).astype(int)
+
+        # Ensure month_year is cleanly formatted string before returning
+        df["month_year"] = df["month_year"].dt.strftime("%Y-%m-%d")
 
         return df
 

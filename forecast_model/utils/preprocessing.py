@@ -27,6 +27,7 @@ def _build_combined():
 
     gdf = gpd.read_file(_BOUNDARIES)
     df_neighbours = map_admin_regions.add_admin1_neighbors(df, gdf)
+    df_neighbours = df_neighbours.dropna(subset=['matched_admin1_id']).copy()
 
     neighbour_data = data_cleaning.summarise_neighbour_events(df_neighbours)
     event_data     = data_cleaning.get_monthly_events(df_neighbours)
@@ -65,9 +66,9 @@ def prepare_data_pipeline(clean_data: bool = False) -> pd.DataFrame:
 def prepare_enriched_pipeline(
     clean_data: bool = False,
     master_raw_csv: str = "data/raw/master_raw.csv",
-    indicators_csv: str = "data/raw/world_bank_data/combined_indicators.csv",
-    metadata_csv:   str = "data/raw/world_bank_data/country_metadata.csv",
-    holidays_csv:   str = "data/raw/holidays.csv",
+    indicators_csv: str = "data/raw/combined_indicators.csv",
+    metadata_csv:   str = None,
+    holidays_csv:   str = "data/raw/holidays_raw.csv",
 ) -> pd.DataFrame:
     """
     Full enrichment pipeline — adds on top of the baseline in sequence:
