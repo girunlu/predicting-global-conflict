@@ -1,0 +1,3097 @@
+ABW - Aruba
+AFG - Badakhshan
+AFG - Badghis
+AFG - Baghlan
+AFG - Balkh
+AFG - Bamyan
+AFG - Daykundi
+AFG - Farah
+AFG - Faryab
+AFG - Ghazni
+AFG - Ghor
+AFG - Hilmand
+AFG - Hirat
+AFG - Jawzjan
+AFG - Kabul
+AFG - Kandahar
+AFG - Kapisa
+AFG - Khost
+AFG - Kunar
+AFG - Kunduz
+AFG - Laghman
+AFG - Logar
+AFG - Nangarhar
+AFG - Nimroz
+AFG - Nuristan
+AFG - Paktika
+AFG - Panjsher
+AFG - Parwan
+AFG - Samangan
+AFG - Sar-e-Pul
+AFG - Takhar
+AFG - Uruzgan
+AFG - Wardak
+AFG - Zabul
+AGO - Bengo
+AGO - Benguela
+AGO - Bié
+AGO - Cabinda
+AGO - Cuando Cubango
+AGO - Cuanza Norte
+AGO - Cuanza Sul
+AGO - Cunene
+AGO - Huambo
+AGO - Huíla
+AGO - Luanda
+AGO - Lunda Norte
+AGO - Lunda Sul
+AGO - Malanje
+AGO - Moxico
+AGO - Namibe
+AGO - Uíge
+AGO - Zaire
+ALB - Berat
+ALB - Dibër
+ALB - Durrës
+ALB - Elbasan
+ALB - Fier
+ALB - Gjirokastër
+ALB - Korçë
+ALB - Kukës
+ALB - Lezhë
+ALB - Shkodër
+ALB - Tirana
+ALB - Vlorë
+AND - Andorra la Vella
+AND - Canillo
+AND - Ordino
+ARE - Emirate of Abu Dhabi
+ARE - Emirate of Dubai
+ARE - Emirate of Fujairah
+ARE - Emirate of Sharjah
+ARG - Buenos Aires
+ARG - Catamarca
+ARG - Chaco
+ARG - Chubut
+ARG - Corrientes
+ARG - Córdoba
+ARG - Entre Ríos
+ARG - Formosa
+ARG - Jujuy
+ARG - La Pampa
+ARG - La Rioja
+ARG - Mendoza
+ARG - Misiones
+ARG - Neuquén
+ARG - Río Negro
+ARG - Salta
+ARG - San Juan
+ARG - San Luis
+ARG - Santa Cruz
+ARG - Santa Fe
+ARG - Santiago del Estero
+ARG - Tierra del Fuego
+ARG - Tucumán
+ARM - Aragatsotn
+ARM - Ararat
+ARM - Armavir
+ARM - Gegharkunik
+ARM - Kotayk
+ARM - Lori
+ARM - Shirak
+ARM - Syunik
+ARM - Tavush
+ARM - Vayots Dzor
+ARM - Yerevan
+ASM - Eastern District
+ASM - Western District
+ATA - Antarctica
+ATG - Barbuda
+ATG - Saint George
+ATG - Saint John
+ATG - Saint Mary
+ATG - Saint Paul
+ATG - Saint Peter
+ATG - Saint Philip
+AUS - Australian Capital Territory
+AUS - New South Wales
+AUS - Northern Territory
+AUS - Queensland
+AUS - South Australia
+AUS - Tasmania
+AUS - Victoria
+AUS - Western Australia
+AUT - Burgenland
+AUT - Carinthia
+AUT - Lower Austria
+AUT - Salzburg
+AUT - Styria
+AUT - Tyrol
+AUT - Upper Austria
+AUT - Vienna
+AUT - Vorarlberg
+AZE - Absheron
+AZE - Agdam
+AZE - Agdash
+AZE - Aghjabadi
+AZE - Agstafa
+AZE - Astara
+AZE - Babek
+AZE - Baku
+AZE - Balakan
+AZE - Barda
+AZE - Beylagan
+AZE - Bilasuvar
+AZE - Dashkasan
+AZE - Fuzuli
+AZE - Gadabay
+AZE - Ganja
+AZE - Goranboy
+AZE - Goychay
+AZE - Goygol
+AZE - Imishli
+AZE - Jabrayil
+AZE - Jalilabad
+AZE - Julfa
+AZE - Kalbajar
+AZE - Khachmaz
+AZE - Khizi
+AZE - Khojali
+AZE - Khojavend
+AZE - Kurdamir
+AZE - Lankaran
+AZE - Mingachevir
+AZE - Naftalan
+AZE - Nakhchivan
+AZE - Neftchala
+AZE - Oghuz
+AZE - Ordubad
+AZE - Qabala
+AZE - Qakh
+AZE - Qazax
+AZE - Quba
+AZE - Qubadli
+AZE - Qusar
+AZE - Saatly
+AZE - Sadarak
+AZE - Salyan
+AZE - Shabran
+AZE - Shahbuz
+AZE - Shaki
+AZE - Shamkir
+AZE - Sharur
+AZE - Shusha
+AZE - Siyazan
+AZE - Stepanakert
+AZE - Sumqayit
+AZE - Tartar
+AZE - Tovuz
+AZE - Yardimli
+AZE - Yevlakh
+AZE - Zangilan
+AZE - Zaqatala
+AZE - Zardab
+BDI - Bubanza
+BDI - Bujumbura Mairie
+BDI - Bujumbura Rural
+BDI - Bururi
+BDI - Cankuzo
+BDI - Cibitoke
+BDI - Gitega
+BDI - Karuzi
+BDI - Kayanza
+BDI - Kirundo
+BDI - Makamba
+BDI - Muramvya
+BDI - Muyinga
+BDI - Mwaro
+BDI - Ngozi
+BDI - Rutana
+BDI - Ruyigi
+BEL - Region de Bruxelles-Capitale / Brussels Hoofdstedelijk Gewes
+BEL - Region wallonne
+BEL - Vlaams Gewest
+BEN - Alibori
+BEN - Atakora
+BEN - Atlantique
+BEN - Borgou
+BEN - Collines
+BEN - Donga
+BEN - Kouffo
+BEN - Littoral
+BEN - Mono
+BEN - Ouémé
+BEN - Plateau
+BEN - Zou
+BFA - Boucle Du Mouhoun
+BFA - Cascades
+BFA - Centre
+BFA - Centre-est
+BFA - Centre-nord
+BFA - Centre-ouest
+BFA - Centre-sud
+BFA - Est
+BFA - Hauts-bassins
+BFA - Nord
+BFA - Plateau Central
+BFA - Sahel
+BFA - Sud-ouest
+BGD - Barishal
+BGD - Chattogram
+BGD - Dhaka
+BGD - Khulna
+BGD - Mymensingh
+BGD - Rajshahi
+BGD - Rangpur
+BGD - Sylhet
+BGR - Blagoevgrad
+BGR - Burgas
+BGR - Dobrich
+BGR - Gabrovo
+BGR - Haskovo
+BGR - Kardzhali
+BGR - Kyustendil
+BGR - Lovech
+BGR - Montana
+BGR - Pazardzhik
+BGR - Pernik
+BGR - Pleven
+BGR - Plovdiv
+BGR - Razgrad
+BGR - Ruse
+BGR - Shumen
+BGR - Silistra
+BGR - Sliven
+BGR - Smolyan
+BGR - Sofia
+BGR - Stara Zagora
+BGR - Targovishte
+BGR - Varna
+BGR - Veliko Tarnovo
+BGR - Vidin
+BGR - Vratsa
+BGR - Yambol
+BHR - Capital
+BHR - Muharraq
+BHR - Northern
+BHR - Southern
+BHS - Acklins
+BHS - Bimini
+BHS - Cat Island
+BHS - Central Abaco
+BHS - Central Eleuthera
+BHS - Exuma
+BHS - Freeport
+BHS - Harbour Island
+BHS - Inagua
+BHS - Long Island
+BHS - New Providence
+BHS - North Abaco
+BHS - North Andros
+BHS - Ragged Island
+BHS - South Andros
+BIH - Brčko
+BIH - Zenica-Doboj Canton
+BLM - Saint Barthélemy
+BLR - Brest
+BLR - Gomel
+BLR - Grodno
+BLR - Mahilioŭ
+BLR - Minsk
+BLR - Vitebsk
+BLZ - Belize
+BLZ - Cayo
+BLZ - Corozal
+BLZ - Orange Walk
+BLZ - Stann Creek
+BLZ - Toledo
+BMU - Devonshire
+BMU - Pembroke Parish
+BMU - Saint George
+BMU - Sandys Parish
+BMU - Warwick
+BOL - Beni
+BOL - Chuquisaca
+BOL - Cochabamba
+BOL - La Paz
+BOL - Oruro
+BOL - Pando
+BOL - Potosí
+BOL - Santa Cruz
+BOL - Tarija
+BRA - Acre
+BRA - Alagoas
+BRA - Amapá
+BRA - Amazonas
+BRA - Bahia
+BRA - Ceará
+BRA - Espírito Santo
+BRA - Federal
+BRA - Goiás
+BRA - Maranhão
+BRA - Mato Grosso
+BRA - Mato Grosso do Sul
+BRA - Minas Gerais
+BRA - Paraná
+BRA - Paraíba
+BRA - Pará
+BRA - Pernambuco
+BRA - Piauí
+BRA - Rio Grande do Norte
+BRA - Rio Grande do Sul
+BRA - Rio de Janeiro
+BRA - Rondônia
+BRA - Roraima
+BRA - Santa Catarina
+BRA - Sergipe
+BRA - São Paulo
+BRA - Tocantins
+BRB - Christ Church
+BRB - Saint Michael
+BRB - Saint Philip
+BRN - Brunei-Muara
+BTN - Chukha
+BTN - Gasa
+BTN - Samdrup Jongkhar
+BTN - Samtse
+BTN - Thimphu
+BTN - Zhemgang
+BWA - Central
+BWA - Kgatleng
+BWA - Kweneng
+BWA - North-East
+BWA - South-East
+BWA - Southern
+CAF - Bamingui-Bangoran Prefecture
+CAF - Bangui
+CAF - Basse-Kotto Prefecture
+CAF - Haut-Mbomou Prefecture
+CAF - Haute-Kotto Prefecture
+CAF - Kémo Prefecture
+CAF - Lobaye Prefecture
+CAF - Mambéré-Kadéï
+CAF - Mbomou Prefecture
+CAF - Nana-Grébizi Economic Prefecture
+CAF - Nana-Mambéré Prefecture
+CAF - Ombella-M'Poko Prefecture
+CAF - Ouaka Prefecture
+CAF - Ouham Prefecture
+CAF - Ouham-Pendé Prefecture
+CAF - Sangha-Mbaéré
+CAF - Vakaga Prefecture
+CAN - Alberta
+CAN - British Columbia
+CAN - Manitoba
+CAN - New Brunswick
+CAN - Newfoundland and Labrador
+CAN - Northwest Territories
+CAN - Nova Scotia
+CAN - Nunavut
+CAN - Ontario
+CAN - Prince Edward Island
+CAN - Quebec
+CAN - Saskatchewan
+CAN - Yukon
+CHE - Aargau
+CHE - Appenzell Ausserrhoden
+CHE - Basel-Landschaft
+CHE - Basel-Stadt
+CHE - Bern
+CHE - Fribourg
+CHE - Geneva
+CHE - Glarus
+CHE - Grisons
+CHE - Jura
+CHE - Lucerne
+CHE - Neuchâtel
+CHE - Obwalden
+CHE - Schaffhausen
+CHE - Schwyz
+CHE - Solothurn
+CHE - St. Gallen
+CHE - Thurgau
+CHE - Ticino
+CHE - Uri
+CHE - Valais
+CHE - Vaud
+CHE - Zug
+CHE - Zürich
+CHL - Antofagasta
+CHL - Araucanía
+CHL - Arica y Parinacota
+CHL - Atacama
+CHL - Aysén
+CHL - Biobío
+CHL - Coquimbo
+CHL - Los Lagos
+CHL - Los Ríos
+CHL - Magellan and the Chilean Antarctic
+CHL - Maule
+CHL - O'Higgins
+CHL - Santiago
+CHL - Tarapacá
+CHL - Valparaíso
+CHL - Ñuble
+CHN - Anhui
+CHN - Beijing
+CHN - Chongqing
+CHN - Fujian
+CHN - Gansu
+CHN - Guangdong
+CHN - Guangxi
+CHN - Guizhou
+CHN - Hainan
+CHN - Hebei
+CHN - Heilongjiang
+CHN - Henan
+CHN - Hubei
+CHN - Hunan
+CHN - Inner Mongolia
+CHN - Jiangsu
+CHN - Jiangxi
+CHN - Jilin
+CHN - Liaoning
+CHN - Ningxia
+CHN - Qinghai
+CHN - Shaanxi
+CHN - Shandong
+CHN - Shanghai
+CHN - Shanxi
+CHN - Sichuan
+CHN - Tianjin
+CHN - Tibet
+CHN - Xinjiang
+CHN - Yunnan
+CHN - Zhejiang
+CIV - Abidjan
+CIV - Bas-Sassandra
+CIV - Comoé
+CIV - Denguélé
+CIV - Gôh-Djiboua
+CIV - Lacs
+CIV - Lagunes
+CIV - Montagnes
+CIV - Sassandra-Marahoué
+CIV - Savanes
+CIV - Vallée du Bandama
+CIV - Woroba
+CIV - Yamoussoukro
+CIV - Zanzan
+CMR - Adamawa
+CMR - Centre
+CMR - East
+CMR - Far North
+CMR - Littoral
+CMR - North
+CMR - Northwest
+CMR - South
+CMR - Southwest
+CMR - West
+COD - Bas-Uélé
+COD - Haut-Katanga
+COD - Haut-Lomami
+COD - Haut-Uélé
+COD - Kasaï
+COD - Kasaï-Central
+COD - Kasaï-Oriental
+COD - Kinshasa
+COD - Kongo Central
+COD - Kwango
+COD - Kwilu
+COD - Lomami
+COD - Lualaba
+COD - Mai-Ndombe
+COD - Maniema
+COD - Mongala
+COD - Nord-Kivu
+COD - Nord-Ubangi
+COD - Sankuru
+COD - Sud-Kivu
+COD - Sud-Ubangi
+COD - Tanganyika
+COD - Tshopo
+COD - Tshuapa
+COD - Équateur
+COL - Amazonas
+COL - Antioquia
+COL - Arauca
+COL - Archipelago of Saint Andréws
+COL - Atlántico
+COL - Bogotá
+COL - Bolívar
+COL - Boyacá
+COL - Caldas
+COL - Caquetá
+COL - Casanare
+COL - Cauca
+COL - Cesar
+COL - Chocó
+COL - Cundinamarca
+COL - Córdoba
+COL - Guainía
+COL - Guaviare
+COL - Huila
+COL - La Guajira
+COL - Magdalena
+COL - Meta
+COL - Nariño
+COL - Norte de Santander
+COL - Putumayo
+COL - Quindío
+COL - Risaralda
+COL - Santander
+COL - Sucre
+COL - Tolima
+COL - Valle del Cauca
+COL - Vaupés
+COL - Vichada
+COM - Andjazîdja
+COM - Anjouan
+COM - Mohéli
+CPV - Boa Vista
+CPV - Brava
+CPV - Maio
+CPV - Mosteiros
+CPV - Porto Novo
+CPV - Praia
+CPV - Ribeira Brava
+CPV - Ribeira Grande
+CPV - Sal
+CPV - Santa Catarina
+CPV - Santa Catarina do Fogo
+CPV - Santa Cruz
+CPV - São Domingos
+CPV - São Filipe
+CPV - São Lourenço dos Órgãos
+CPV - São Miguel
+CPV - São Vicente
+CPV - Tarrafal
+CPV - Tarrafal de São Nicolau
+CRI - Alajuela
+CRI - Cartago
+CRI - Guanacaste
+CRI - Heredia
+CRI - Limón
+CRI - Puntarenas
+CRI - San José
+CUB - Artemisa
+CUB - Camagüey
+CUB - Ciego de Ávila
+CUB - Cienfuegos
+CUB - Granma
+CUB - Guantánamo
+CUB - Havana
+CUB - Holguín
+CUB - Isla de la Juventud
+CUB - Las Tunas
+CUB - Matanzas
+CUB - Mayabeque
+CUB - Pinar del Río
+CUB - Sancti Spíritus
+CUB - Santiago de Cuba
+CUB - Villa Clara
+CUW - Curaçao
+CYM - Cayman Islands
+CYP - Famagusta
+CYP - Larnaca
+CYP - Limassol
+CYP - Nicosia
+CYP - Paphos
+CZE - Central Bohemian
+CZE - Hradec Králové
+CZE - Karlovy Vary
+CZE - Liberec
+CZE - Moravian-Silesian
+CZE - Olomouc
+CZE - Pardubice
+CZE - Plzeň-
+CZE - Prague
+CZE - South Bohemian
+CZE - South Moravian
+CZE - Vysočina
+CZE - Zlín
+CZE - Ústí nad Labem
+DEU - Baden-Württemberg
+DEU - Bavaria
+DEU - Berlin
+DEU - Brandenburg
+DEU - Free Hanseatic Bremen
+DEU - Hamburg
+DEU - Hesse
+DEU - Lower Saxony
+DEU - Mecklenburg-Western Pomerania
+DEU - North Rhine-Westphalia
+DEU - Rhineland-Palatinate
+DEU - Saarland
+DEU - Saxony
+DEU - Saxony-Anhalt
+DEU - Schleswig-Holstein
+DEU - Thuringia
+DJI - Ali Sabieh
+DJI - Dikhil
+DJI - Djibouti
+DJI - Obock
+DJI - Tadjourah
+DMA - Saint Andrew
+DMA - Saint David
+DMA - Saint George
+DMA - Saint John
+DMA - Saint Joseph
+DMA - Saint Luke
+DMA - Saint Mark
+DMA - Saint Patrick
+DMA - Saint Paul
+DNK - Central Denmark
+DNK - Denmark
+DNK - North Denmark
+DNK - Southern Denmark
+DNK - Zealand
+DOM - Azua
+DOM - Baoruco
+DOM - Barahona
+DOM - Dajabón
+DOM - Duarte
+DOM - El Seibo
+DOM - Espaillat
+DOM - Hato Mayor
+DOM - Hermanas Mirabal
+DOM - Independencia
+DOM - La Altagracia
+DOM - La Estrelleta
+DOM - La Romana
+DOM - La Vega
+DOM - María Trinidad Sánchez
+DOM - Monseñor Nouel
+DOM - Monte Cristi
+DOM - Monte Plata
+DOM - Nacional
+DOM - Pedernales
+DOM - Peravia
+DOM - Puerto Plata
+DOM - Samaná
+DOM - San Cristóbal
+DOM - San José de Ocoa
+DOM - San Juan
+DOM - San Pedro de Macorís
+DOM - Santiago
+DOM - Santiago Rodríguez
+DOM - Santo Domingo
+DOM - Sánchez Ramírez
+DOM - Valverde
+DZA - Adrar
+DZA - Algiers
+DZA - Annaba
+DZA - Aïn Defla
+DZA - Aïn Témouchent
+DZA - Batna
+DZA - Biskra
+DZA - Blida
+DZA - Bordj Bou Arréridj
+DZA - Boumerdès
+DZA - Bouïra
+DZA - Béchar
+DZA - Béjaïa
+DZA - Chlef
+DZA - Constantine
+DZA - Djelfa
+DZA - El Bayadh
+DZA - El Oued
+DZA - El Tarf
+DZA - Ghardaïa
+DZA - Guelma
+DZA - Illizi
+DZA - Jijel
+DZA - Khenchela
+DZA - Laghouat
+DZA - M'Sila
+DZA - Mascara
+DZA - Mila
+DZA - Mostaganem
+DZA - Médéa
+DZA - Naama
+DZA - Oran
+DZA - Ouargla
+DZA - Oum El Bouaghi
+DZA - Relizane
+DZA - Saïda
+DZA - Sidi Bel Abbès
+DZA - Skikda
+DZA - Souk Ahras
+DZA - Sétif
+DZA - Tamanghasset
+DZA - Tiaret
+DZA - Tindouf
+DZA - Tipasa
+DZA - Tissemsilt
+DZA - Tizi Ouzou
+DZA - Tlemcen
+DZA - Tébessa
+ECU - Azuay
+ECU - Bolívar
+ECU - Carchi
+ECU - Cañar
+ECU - Chimborazo
+ECU - Cotopaxi
+ECU - El Oro
+ECU - Esmeraldas
+ECU - Galápagos
+ECU - Guayas
+ECU - Imbabura
+ECU - Loja
+ECU - Los Ríos
+ECU - Manabí
+ECU - Morona-Santiago
+ECU - Napo
+ECU - Orellana
+ECU - Pastaza
+ECU - Pichincha
+ECU - Santa Elena
+ECU - Santo Domingo de los Tsáchilas
+ECU - Sucumbíos
+ECU - Tungurahua
+ECU - Zamora Chinchipe
+EGY - Al Sharqia
+EGY - Alexandria
+EGY - Aswan
+EGY - Asyut
+EGY - Beheira
+EGY - Beni Suef
+EGY - Cairo
+EGY - Dakahlia
+EGY - Damietta
+EGY - Faiyum
+EGY - Gharbia
+EGY - Giza
+EGY - Ismailia
+EGY - Kafr el-Sheikh
+EGY - Luxor
+EGY - Matrouh
+EGY - Minya
+EGY - Monufia
+EGY - New Valley
+EGY - North Sinai
+EGY - Port Said
+EGY - Qalyubia
+EGY - Qena
+EGY - Red Sea
+EGY - Sohag
+EGY - South Sinai
+EGY - Suez
+ERI - Anseba
+ERI - Debub
+ERI - Gash-Barka
+ERI - Maekel
+ERI - Northern Red Sea
+ERI - Southern Red Sea
+ESP - Andalucía
+ESP - Aragón
+ESP - Canarias
+ESP - Cantabria
+ESP - Castilla y León
+ESP - Castilla-La Mancha
+ESP - Cataluña/Catalunya
+ESP - Ceuta (Sp.)
+ESP - Comunidad Foral de Navarra
+ESP - Comunidad de Madrid
+ESP - Extremadura
+ESP - Galicia
+ESP - Illes Balears
+ESP - La Rioja
+ESP - Melilla (Sp.)
+ESP - País Vasco/Euskadi
+ESP - Región de Murcia
+EST - Harju
+EST - Hiiu
+EST - Ida-Viru
+EST - Järva
+EST - Jõgeva
+EST - Lääne
+EST - Lääne-Viru
+EST - Pärnu
+EST - Rapla
+EST - Saare
+EST - Tartu
+EST - Valga
+EST - Viljandi
+EST - Võru
+ETH - Addis Ababa
+ETH - Afar
+ETH - Amhara
+ETH - Benishangul-Gumuz
+ETH - Dire Dawa
+ETH - Gambela
+ETH - Harari
+ETH - Oromia
+ETH - Somali
+ETH - Southern Nations
+ETH - Tigray
+FIN - Central Finland
+FIN - Central Ostrobothnia
+FIN - Finland Proper
+FIN - Kainuu
+FIN - Kymenlaakso
+FIN - Lapland
+FIN - North Karelia
+FIN - Northern Ostrobothnia
+FIN - Northern Savonia
+FIN - Ostrobothnia
+FIN - Pirkanmaa
+FIN - Päijänne Tavastia
+FIN - Satakunta
+FIN - South Karelia
+FIN - Southern Ostrobothnia
+FIN - Southern Savonia
+FIN - Tavastia Proper
+FIN - Uusimaa
+FJI - Central
+FJI - Northern
+FJI - Western
+FLK - Falkland Islands
+FRA - Auvergne-Rhone-Alpes
+FRA - Bourgogne-Franche-Comte
+FRA - Bretagne
+FRA - Centre-Val De Loire
+FRA - Corse
+FRA - Grand Est
+FRA - Hauts-De-France
+FRA - Ile-De-France
+FRA - Mayotte
+FRA - Normandie
+FRA - Nouvelle-Aquitaine
+FRA - Occitanie
+FRA - Pays De La Loire
+FRA - Provence-Alpes-Cote D'Azur
+FRO - Eysturoy
+FSM - Pohnpei State
+GAB - Estuaire
+GAB - Haut-Ogooué
+GAB - Moyen-Ogooué
+GAB - Ngounié
+GAB - Nyanga
+GAB - Ogooué-Ivindo
+GAB - Ogooué-Lolo
+GAB - Ogooué-Maritime
+GAB - Woleu-Ntem
+GBR - Highland
+GBR - Northumberland
+GBR - Rutland
+GBR - Walsall
+GEO - Abkhazia
+GEO - Adjara
+GEO - Guria
+GEO - Imereti
+GEO - Kakheti
+GEO - Kvemo Kartli
+GEO - Mtskheta-Mtianeti
+GEO - Racha-Lechkhumi and Kvemo Svaneti
+GEO - Samegrelo-Zemo Svaneti
+GEO - Samtskhe–Javakheti
+GEO - Shida Kartli
+GEO - Tbilisi
+GHA - Ashanti
+GHA - Brong-Ahafo
+GHA - Central
+GHA - Eastern
+GHA - Greater Accra
+GHA - Northern
+GHA - Upper East
+GHA - Upper West
+GHA - Volta
+GHA - Western
+GIB - Gibraltar
+GIN - Boké
+GIN - Conakry
+GIN - Faranah
+GIN - Kankan
+GIN - Kindia
+GIN - Labé Prefecture
+GIN - Mamou Prefecture
+GIN - Nzérékoré Prefecture
+GMB - Banjul
+GNB - Bafatá
+GNB - Biombo
+GNB - Bissau
+GNB - Cacheu
+GNB - Gabú
+GNB - Oio
+GNB - Quinara
+GNB - Tombali
+GNQ - Bioko Norte
+GNQ - Centro Sur
+GNQ - Kié-Ntem
+GNQ - Litoral
+GRC - Attica
+GRC - Central Greece
+GRC - Centre Macedonia
+GRC - Crete
+GRC - Ionian Islands
+GRC - South Aegean
+GRC - West Macedonia
+GRD - Saint Andrew
+GRD - Saint George
+GRD - Saint John
+GRD - Saint Mark
+GRD - Saint Patrick
+GRL - Kujalleq
+GRL - Qeqqata
+GRL - Sermersooq
+GTM - Alta Verapaz
+GTM - Baja Verapaz
+GTM - Chimaltenango
+GTM - Chiquimula
+GTM - El Progreso
+GTM - Escuintla
+GTM - Guatemala
+GTM - Huehuetenango
+GTM - Izabal
+GTM - Jalapa
+GTM - Jutiapa
+GTM - Petén
+GTM - Quetzaltenango
+GTM - Quiché
+GTM - Retalhuleu
+GTM - Sacatepéquez
+GTM - San Marcos
+GTM - Santa Rosa
+GTM - Sololá
+GTM - Suchitepéquez
+GTM - Totonicapán
+GTM - Zacapa
+GUM - Guam
+GUY - Barima-Waini
+GUY - Cuyuni-Mazaruni
+GUY - Demerara-Mahaica
+GUY - East Berbice-Corentyne
+GUY - Mahaica-Berbice
+GUY - Pomeroon-Supenaam
+GUY - Potaro-Siparuni
+GUY - Upper Demerara-Berbice
+GUY - Upper Takutu-Upper Essequibo
+HND - Atlántida
+HND - Bay Islands
+HND - Choluteca
+HND - Colón
+HND - Comayagua
+HND - Copán
+HND - Cortés
+HND - El Paraíso
+HND - Francisco Morazán
+HND - Gracias a Dios
+HND - Intibucá
+HND - La Paz
+HND - Lempira
+HND - Ocotepeque
+HND - Olancho
+HND - Santa Bárbara
+HND - Valle
+HND - Yoro
+HRV - Bjelovar-Bilogora
+HRV - Brod-Posavina
+HRV - Dubrovnik-Neretva
+HRV - Istria
+HRV - Karlovac
+HRV - Koprivnica-Križevci
+HRV - Krapina-Zagorje
+HRV - Lika-Senj
+HRV - Međimurje
+HRV - Osijek-Baranja
+HRV - Požega-Slavonia
+HRV - Primorje-Gorski
+HRV - Sisak-Moslavina
+HRV - Split-Dalmatia
+HRV - Varaždin
+HRV - Virovitica-Podravina
+HRV - Vukovar-Syrmia
+HRV - Zadar
+HRV - Zagreb
+HRV - Šibenik-Knin
+HTI - Artibonite
+HTI - Centre
+HTI - Grand'Anse
+HTI - Nippes
+HTI - Nord
+HTI - Nord-Est
+HTI - Nord-Ouest
+HTI - Ouest
+HTI - Sud
+HTI - Sud-Est
+HUN - Baranya
+HUN - Borsod-Abaúj-Zemplén
+HUN - Budapest
+HUN - Bács-Kiskun
+HUN - Békés
+HUN - Csongrád-Csanád
+HUN - Fejér
+HUN - Győr-Moson-Sopron
+HUN - Hajdú-Bihar
+HUN - Heves
+HUN - Jász-Nagykun-Szolnok
+HUN - Komárom-Esztergom
+HUN - Nógrád
+HUN - Pest
+HUN - Somogy
+HUN - Szabolcs-Szatmár-Bereg
+HUN - Tolna
+HUN - Vas
+HUN - Veszprém
+HUN - Zala
+IDN - Aceh
+IDN - Bali
+IDN - Bangka Belitung Islands
+IDN - Banten
+IDN - Bengkulu
+IDN - Central Java
+IDN - Central Kalimantan
+IDN - Central Sulawesi
+IDN - East Java
+IDN - East Kalimantan
+IDN - East Nusa Tenggara
+IDN - Gorontalo
+IDN - Jakarta
+IDN - Jambi
+IDN - Lampung
+IDN - Maluku
+IDN - North Maluku
+IDN - North Sulawesi
+IDN - North Sumatra
+IDN - Papua
+IDN - Riau
+IDN - Riau Islands
+IDN - South Kalimantan
+IDN - South Sulawesi
+IDN - South Sumatra
+IDN - Southeast Sulawesi
+IDN - West Java
+IDN - West Kalimantan
+IDN - West Nusa Tenggara
+IDN - West Papua
+IDN - West Sulawesi
+IDN - West Sumatra
+IDN - Yogyakarta
+IMN - Isle of Man
+IND - Andaman and Nicobar Islands
+IND - Andhra Pradesh
+IND - Arunachal Pradesh
+IND - Assam
+IND - Bihar
+IND - Chandigarh
+IND - Chhattisgarh
+IND - Dadra and Nagar Haveli and Daman and Diu
+IND - Delhi
+IND - Goa
+IND - Gujarat
+IND - Haryana
+IND - Himachal Pradesh
+IND - Jammu and Kashmir
+IND - Jharkhand
+IND - Karnataka
+IND - Kerala
+IND - Ladakh
+IND - Lakshadweep
+IND - Madhya Pradesh
+IND - Maharashtra
+IND - Manipur
+IND - Meghalaya
+IND - Mizoram
+IND - Nagaland
+IND - Odisha
+IND - Puducherry
+IND - Punjab
+IND - Rajasthan
+IND - Sikkim
+IND - Tamil Nadu
+IND - Telangana
+IND - Tripura
+IND - Uttar Pradesh
+IND - Uttarakhand
+IND - West Bengal
+IOT - British Indian Ocean Territory
+IRL - Carlow
+IRL - Cavan
+IRL - Clare
+IRL - Cork
+IRL - Donegal
+IRL - Dublin
+IRL - Galway
+IRL - Kerry
+IRL - Kildare
+IRL - Kilkenny
+IRL - Laois
+IRL - Leitrim
+IRL - Longford
+IRL - Louth
+IRL - Mayo
+IRL - Meath
+IRL - Monaghan
+IRL - Offaly
+IRL - Roscommon
+IRL - Sligo
+IRL - Tipperary
+IRL - Waterford
+IRL - Westmeath
+IRL - Wexford
+IRL - Wicklow
+IRN - Alborz
+IRN - Ardabil
+IRN - Bushehr
+IRN - Chaharmahal and Bakhtiari
+IRN - East Azerbaijan
+IRN - Fars
+IRN - Gilan
+IRN - Golestan
+IRN - Hamadan
+IRN - Hormozgan
+IRN - Ilam
+IRN - Isfahan
+IRN - Kerman
+IRN - Kermanshah
+IRN - Khuzestan
+IRN - Kohgiluyeh and Boyer-Ahmad
+IRN - Kurdistan
+IRN - Lorestan
+IRN - Markazi
+IRN - Mazandaran
+IRN - North Khorasan
+IRN - Qazvin
+IRN - Qom
+IRN - Razavi Khorasan
+IRN - Semnan
+IRN - Sistan and Baluchestan
+IRN - South Khorasan
+IRN - Tehran
+IRN - West Azerbaijan
+IRN - Yazd
+IRN - Zanjan
+IRQ - Al Anbar
+IRQ - Al Muthanna
+IRQ - Al-Qādisiyyah
+IRQ - Babylon
+IRQ - Baghdad
+IRQ - Basra
+IRQ - Dhi Qar
+IRQ - Diyala
+IRQ - Duhok
+IRQ - Erbil
+IRQ - Karbala
+IRQ - Kirkuk
+IRQ - Maysan
+IRQ - Najaf
+IRQ - Nineveh
+IRQ - Saladin
+IRQ - Sulaymaniyah
+IRQ - Wasit
+ISL - Skagafjaroar
+ISR - Central
+ISR - Haifa
+ISR - Jerusalem
+ISR - Northern
+ISR - Southern
+ISR - Tel Aviv
+ITA - Aosta
+ITA - Ascoli Piceno
+ITA - Avellino
+ITA - Biella
+ITA - Bologna
+ITA - Enna
+ITA - Frosinone
+ITA - Isernia
+ITA - L'Aquila
+ITA - Liguria
+ITA - Ogliastra
+ITA - Pavia
+ITA - Perugia
+ITA - Pordenone
+ITA - Potenza
+ITA - Prato
+ITA - Taranto
+ITA - Trentino
+ITA - Treviso
+ITA - Vibo Valentia
+JAM - Clarendon
+JAM - Hanover
+JAM - Kingston
+JAM - Manchester
+JAM - Portland
+JAM - Saint Andrew
+JAM - Saint Ann
+JAM - Saint Catherine
+JAM - Saint Elizabeth
+JAM - Saint James
+JAM - Saint Mary
+JAM - Saint Thomas
+JAM - Trelawny
+JAM - Westmoreland
+JEY - Jersey
+JOR - Ajloun
+JOR - Amman
+JOR - Aqaba
+JOR - Balqa
+JOR - Irbid
+JOR - Jerash
+JOR - Karak
+JOR - Ma'an
+JOR - Madaba
+JOR - Mafraq
+JOR - Tafilah
+JOR - Zarqa
+JPN - Aichi Prefecture
+JPN - Akita Prefecture
+JPN - Aomori Prefecture
+JPN - Chiba Prefecture
+JPN - Ehime Prefecture
+JPN - Fukui Prefecture
+JPN - Fukuoka Prefecture
+JPN - Fukushima Prefecture
+JPN - Gifu Prefecture
+JPN - Gunma Prefecture
+JPN - Hiroshima Prefecture
+JPN - Hokkaidō
+JPN - Hyōgo Prefecture
+JPN - Ibaraki Prefecture
+JPN - Ishikawa Prefecture
+JPN - Iwate Prefecture
+JPN - Kagawa Prefecture
+JPN - Kagoshima Prefecture
+JPN - Kanagawa Prefecture
+JPN - Kumamoto Prefecture
+JPN - Kyōto Prefecture
+JPN - Kōchi Prefecture
+JPN - Mie Prefecture
+JPN - Miyagi Prefecture
+JPN - Miyazaki Prefecture
+JPN - Nagano Prefecture
+JPN - Nagasaki Prefecture
+JPN - Nara Prefecture
+JPN - Niigata Prefecture
+JPN - Okayama Prefecture
+JPN - Okinawa Prefecture
+JPN - Saga Prefecture
+JPN - Saitama Prefecture
+JPN - Shiga Prefecture
+JPN - Shimane Prefecture
+JPN - Shizuoka Prefecture
+JPN - Tochigi Prefecture
+JPN - Tokushima Prefecture
+JPN - Tokyo
+JPN - Tottori Prefecture
+JPN - Toyama Prefecture
+JPN - Wakayama Prefecture
+JPN - Yamagata Prefecture
+JPN - Yamaguchi Prefecture
+JPN - Yamanashi Prefecture
+JPN - Ōita Prefecture
+JPN - Ōsaka Prefecture
+KAZ - Akmola
+KAZ - Aktobe
+KAZ - Almaty
+KAZ - Atyrau
+KAZ - East Kazakhstan
+KAZ - Jambyl
+KAZ - Karaganda
+KAZ - Kostanay
+KAZ - Kyzylorda
+KAZ - Mangystau
+KAZ - North Kazakhstan
+KAZ - Nur-Sultan
+KAZ - Pavlodar
+KAZ - Turkistan
+KAZ - West Kazakhstan
+KEN - Baringo
+KEN - Bomet
+KEN - Bungoma
+KEN - Busia
+KEN - Elgeyo-Marakwet
+KEN - Embu
+KEN - Garissa
+KEN - Homa Bay
+KEN - Isiolo
+KEN - Kajiado
+KEN - Kakamega
+KEN - Kericho
+KEN - Kiambu
+KEN - Kilifi
+KEN - Kirinyaga
+KEN - Kisii
+KEN - Kisumu
+KEN - Kitui
+KEN - Kwale
+KEN - Laikipia
+KEN - Lamu
+KEN - Machakos
+KEN - Makueni
+KEN - Mandera
+KEN - Marsabit
+KEN - Meru
+KEN - Migori
+KEN - Mombasa
+KEN - Murang'a
+KEN - Nairobi
+KEN - Nakuru
+KEN - Nandi
+KEN - Narok
+KEN - Nyamira
+KEN - Nyandarua
+KEN - Nyeri
+KEN - Samburu
+KEN - Siaya
+KEN - Taita Taveta
+KEN - Tana River
+KEN - Tharaka-Nithi
+KEN - Trans Nzoia
+KEN - Turkana
+KEN - Uasin Gishu
+KEN - Vihiga
+KEN - Wajir
+KEN - West Pokot
+KGZ - Batken
+KGZ - Bishkek
+KGZ - Chuy
+KGZ - Issyk-Kul
+KGZ - Jalal-Abad
+KGZ - Naryn
+KGZ - Osh
+KGZ - Talas
+KHM - Banteay Meanchey
+KHM - Battambang
+KHM - Kam
+KHM - Kampong Cham
+KHM - Kampong Chhnang
+KHM - Kampong Thom
+KHM - Kampot
+KHM - Kandal
+KHM - Koh Kong
+KHM - Kratié
+KHM - Mondulkiri
+KHM - Oddar Meanchey
+KHM - Pailin
+KHM - Phnom Penh
+KHM - Preah Vihear
+KHM - Pursat
+KHM - Ratanakiri
+KHM - Siem Reap
+KHM - Sihanoukville
+KHM - Stung Treng
+KHM - Svay Rieng
+KHM - Takéo
+KNA - Saint George Basseterre
+KNA - Saint Peter Basseterre
+KOR - Busan
+KOR - Daegu
+KOR - Daejeon
+KOR - Gangwon
+KOR - Gwangju
+KOR - Gyeonggi
+KOR - Incheon
+KOR - Jeju
+KOR - North Chungcheong
+KOR - North Gyeongsang
+KOR - North Jeolla
+KOR - Sejong
+KOR - Seoul
+KOR - South Chungcheong
+KOR - South Gyeongsang
+KOR - South Jeolla
+KOR - Ulsan
+KWT - Al Ahmadi
+KWT - Al Farwaniyah
+KWT - Al Jahra
+KWT - Capital
+KWT - Hawally
+KWT - Mubarak Al-Kabeer
+LAO - Bokeo
+LAO - Champasak
+LAO - Khammouane
+LAO - Luang Prabang
+LAO - Salavan
+LAO - Savannakhet
+LAO - Vientiane Prefecture
+LAO - Xiangkhouang
+LBN - Akkar
+LBN - Baalbek-Hermel
+LBN - Beirut
+LBN - Bekaa
+LBN - Mount Lebanon
+LBN - Nabatiye
+LBN - North
+LBN - South
+LBR - Bomi
+LBR - Bong
+LBR - Gbarpolu
+LBR - Grand Bassa
+LBR - Grand Cape Mount
+LBR - Grand Gedeh
+LBR - Grand Kru
+LBR - Lofa
+LBR - Margibi
+LBR - Maryland
+LBR - Montserrado
+LBR - Nimba
+LBR - River Cess
+LBR - River Gee
+LBR - Sinoe
+LBY - East
+LBY - South
+LBY - West
+LCA - Castries Quarter
+LCA - Dennery Quarter
+LCA - Gros Islet Quarter
+LCA - Micoud Quarter
+LCA - Soufrière Quarter
+LCA - Vieux Fort Quarter
+LIE - Eschen
+LIE - Mauren
+LIE - Ruggell
+LIE - Triesen
+LIE - Vaduz
+LKA - Central
+LKA - Eastern
+LKA - North Central
+LKA - North Western
+LKA - Northern
+LKA - Sabaragamuwa
+LKA - Southern
+LKA - Uva
+LKA - Western
+LSO - Berea
+LSO - Butha-Buthe
+LSO - Leribe
+LSO - Mafeteng
+LSO - Maseru
+LSO - Mohale's Hoek
+LSO - Mokhotlong
+LSO - Qacha's Nek
+LSO - Quthing
+LSO - Thaba-Tseka
+LTU - Alytus
+LTU - Kaunas
+LTU - Klaipėda
+LTU - Marijampolė
+LTU - Panevėžys
+LTU - Tauragė
+LTU - Telšiai
+LTU - Utena
+LTU - Vilnius
+LTU - Šiauliai
+LUX - Diekirch
+LUX - Grevenmacher
+LUX - Luxembourg
+LVA - Aizkraukle
+LVA - Bauska
+LVA - Daugavpils
+LVA - Dobele
+LVA - Gulbene
+LVA - Jelgava
+LVA - Jēkabpils
+LVA - Kandava
+LVA - Krāslava
+LVA - Kuldīga
+LVA - Liepāja
+LVA - Limbaži
+LVA - Ogre
+LVA - Riga
+LVA - Roja
+LVA - Ropaži
+LVA - Rēzekne
+LVA - Saldus
+LVA - Saulkrasti
+LVA - Skrunda
+LVA - Talsi
+LVA - Tukums
+LVA - Valka
+LVA - Valmiera
+LVA - Ventspils
+LVA - Zilupe
+LVA - Ķegums
+MAF - Saint Martin
+MAR - Béni Mellal-Khénifra
+MAR - Casablanca-Settat
+MAR - Drâa-Tafilalet
+MAR - Fès-Meknès
+MAR - Guelmim-Oued Noun
+MAR - L'oriental
+MAR - Laâyoune-Sakia al Hamra
+MAR - Marrakech-Safi
+MAR - Rabat-Salé-Kénitra
+MAR - Souss-Massa
+MAR - Tanger-Tétouan-Al Hoceima
+MCO - Monaco
+MDA - Anenii Noi
+MDA - Basarabeasca
+MDA - Bender
+MDA - Briceni
+MDA - Bălți
+MDA - Cahul
+MDA - Camenca
+MDA - Cantemir
+MDA - Chișinău
+MDA - Cimișlia
+MDA - Comrat
+MDA - Criuleni
+MDA - Călărași
+MDA - Căușeni
+MDA - Dondușeni
+MDA - Drochia
+MDA - Edineț
+MDA - Florești
+MDA - Fălești
+MDA - Glodeni
+MDA - Grigoriopol
+MDA - Hîncești
+MDA - Ialoveni
+MDA - Leova
+MDA - Nisporeni
+MDA - Ocnița
+MDA - Orhei
+MDA - Rezina
+MDA - Rîșcani
+MDA - Soroca
+MDA - Strășeni
+MDA - Sîngerei
+MDA - Taraclia
+MDA - Telenești
+MDA - Transnistria
+MDA - Ungheni
+MDA - Șoldănești
+MDA - Ștefan Vodă
+MDG - Amoron'i Mania
+MDG - Androy
+MDG - Anosy
+MDG - Antananarivo
+MDG - Atsimo-Andrefana
+MDG - Atsimo-Atsinanana
+MDG - Betsiboka
+MDG - Boeny
+MDG - Diana
+MDG - Haute Matsiatra
+MDG - Ihorombe
+MDG - Melaky
+MDG - Menabe
+MDG - Sava
+MDG - Sofia
+MDG - Toamasina
+MDG - Vatovavy-Fitovinany
+MDV - Addu Atoll
+MDV - Alif Alif Atoll
+MDV - Alif Dhaal Atoll
+MDV - Baa Atoll
+MDV - Dhaalu Atoll
+MDV - Faafu Atoll
+MDV - Gaafu Alif Atoll
+MDV - Gaafu Dhaalu Atoll
+MDV - Gnaviyani Atoll
+MDV - Haa Alif Atoll
+MDV - Haa Dhaalu Atoll
+MDV - Kaafu Atoll
+MDV - Laamu Atoll
+MDV - Lhaviyani Atoll
+MDV - Malé
+MDV - Meemu Atoll
+MDV - Noonu Atoll
+MDV - Raa Atoll
+MDV - Shaviyani Atoll
+MDV - Thaa Atoll
+MDV - Vaavu Atoll
+MEX - Aguascalientes
+MEX - Baja California
+MEX - Baja California Sur
+MEX - Campeche
+MEX - Chiapas
+MEX - Chihuahua
+MEX - Coahuila
+MEX - Colima
+MEX - Durango
+MEX - Guanajuato
+MEX - Guerrero
+MEX - Hidalgo
+MEX - Jalisco
+MEX - Mexico
+MEX - Michoacán
+MEX - Morelos
+MEX - Nayarit
+MEX - Nuevo León
+MEX - Oaxaca
+MEX - Puebla
+MEX - Querétaro
+MEX - Quintana Roo
+MEX - San Luis Potosí
+MEX - Sinaloa
+MEX - Sonora
+MEX - State of Mexico
+MEX - Tabasco
+MEX - Tamaulipas
+MEX - Tlaxcala
+MEX - Veracruz
+MEX - Yucatán
+MEX - Zacatecas
+MKD - Berovo
+MKD - Bitola
+MKD - Bogdanci
+MKD - Bogovinje
+MKD - Bosilovo
+MKD - Brvenica
+MKD - Centar
+MKD - Debar
+MKD - Debarca
+MKD - Delčevo
+MKD - Demir Hisar
+MKD - Dojran
+MKD - Dolneni
+MKD - Gevgelija
+MKD - Gostivar
+MKD - Gradsko
+MKD - Karbinci
+MKD - Kavadarci
+MKD - Kisela Voda
+MKD - Kičevo
+MKD - Kočani
+MKD - Kratovo
+MKD - Kriva Palanka
+MKD - Kruševo
+MKD - Kumanovo
+MKD - Lipkovo
+MKD - Lozovo
+MKD - Makedonska Kamenica
+MKD - Makedonski Brod
+MKD - Mavrovo and Rostuša
+MKD - Negotino
+MKD - Novaci
+MKD - Novo Selo
+MKD - Ohrid
+MKD - Pehčevo
+MKD - Prilep
+MKD - Radoviš
+MKD - Resen
+MKD - Rosoman
+MKD - Struga
+MKD - Strumica
+MKD - Studeničani
+MKD - Sveti Nikole
+MKD - Tearce
+MKD - Tetovo
+MKD - Valandovo
+MKD - Veles
+MKD - Vinica
+MKD - Čaška
+MKD - Češinovo-Obleševo
+MKD - Čučer-Sandevo
+MKD - Štip
+MKD - Želino
+MLI - Bamako
+MLI - Gao
+MLI - Kayes
+MLI - Kidal
+MLI - Koulikoro
+MLI - Mopti
+MLI - Ségou
+MLI - Tombouctou
+MLI - Wassoulou
+MLT - Fontana
+MMR - Ayeyarwady
+MMR - Bago
+MMR - Chin State
+MMR - Kachin State
+MMR - Kayah State
+MMR - Kayin State
+MMR - Magway
+MMR - Mandalay
+MMR - Mon State
+MMR - Rakhine State
+MMR - Sagaing
+MMR - Shan State
+MMR - Tanintharyi
+MMR - Yangon
+MNE - Andrijevica
+MNE - Bar
+MNE - Berane
+MNE - Bijelo Polje
+MNE - Budva
+MNE - Cetinje
+MNE - Danilovgrad
+MNE - Herceg Novi
+MNE - Kolasin
+MNE - Kotor
+MNE - Mojkovac
+MNE - Niksic
+MNE - Plav
+MNE - Pljevlja
+MNE - Pluzine
+MNE - Podgorica
+MNE - Rozaj
+MNE - Savnik
+MNE - Tivat
+MNE - Ulcinj
+MNE - Zabljak
+MNG - Arkhangai
+MNG - Bayankhongor
+MNG - Bulgan
+MNG - Darkhan-Uul
+MNG - Dornod
+MNG - Dornogovi
+MNG - Dundgovi
+MNG - Govi-Altai
+MNG - Khovd
+MNG - Khövsgöl
+MNG - Orkhon
+MNG - Selenge
+MNG - Sükhbaatar
+MNG - Töv
+MNG - Ulaanbaatar
+MNG - Uvs
+MNG - Zavkhan
+MNG - Ömnögovi
+MNG - Övörkhangai
+MOZ - Cabo Delgado
+MOZ - Gaza
+MOZ - Inhambane
+MOZ - Manica
+MOZ - Maputo
+MOZ - Nampula
+MOZ - Niassa
+MOZ - Sofala
+MOZ - Tete
+MOZ - Zambezia
+MRT - Adrar
+MRT - Assaba
+MRT - Brakna
+MRT - Dakhlet Nouadhibou
+MRT - Gorgol
+MRT - Guidimaka
+MRT - Hodh Ech Chargui
+MRT - Hodh El Gharbi
+MRT - Inchiri
+MRT - Nouakchott
+MRT - Tagant
+MRT - Tiris Zemmour
+MRT - Trarza
+MSR - Saint Peter
+MTQ - Martinique
+MUS - Agaléga
+MUS - Flacq
+MUS - Grand Port
+MUS - Moka
+MUS - Pamplemousses
+MUS - Plaines Wilhems
+MUS - Port Louis
+MUS - Rivière Noire
+MUS - Rivière du Rempart
+MUS - Rodrigues
+MUS - Savanne
+MYS - Johor
+MYS - Kedah
+MYS - Kelantan
+MYS - Kuala Lumpur
+MYS - Labuan
+MYS - Melaka
+MYS - Negeri Sembilan
+MYS - Pahang
+MYS - Penang
+MYS - Perak
+MYS - Perlis
+MYS - Putrajaya
+MYS - Sabah
+MYS - Sarawak
+MYS - Selangor
+MYS - Terengganu
+NAM - Erongo
+NAM - Hardap
+NAM - Karas
+NAM - Kavango
+NAM - Khomas
+NAM - Kunene
+NAM - Ohangwena
+NAM - Omaheke
+NAM - Omusati
+NAM - Oshana
+NAM - Oshikoto
+NAM - Otjozondjupa
+NAM - Zambezi
+NCL - Loyalty Islands
+NCL - North
+NCL - South
+NER - Agadez
+NER - Diffa
+NER - Dosso
+NER - Maradi
+NER - Niamey
+NER - Tahoua
+NER - Tillabéri
+NER - Zinder
+NGA - Abia State
+NGA - Adamawa State
+NGA - Akwa Ibom State
+NGA - Anambra State
+NGA - Bauchi State
+NGA - Bayelsa State
+NGA - Benue State
+NGA - Borno State
+NGA - Cross River State
+NGA - Delta State
+NGA - Ebonyi State
+NGA - Edo State
+NGA - Ekiti State
+NGA - Enugu State
+NGA - Federal Capital Territory
+NGA - Gombe State
+NGA - Imo State
+NGA - Jigawa State
+NGA - Kaduna State
+NGA - Kano State
+NGA - Katsina State
+NGA - Kebbi State
+NGA - Kogi State
+NGA - Kwara State
+NGA - Lagos
+NGA - Nasarawa State
+NGA - Niger State
+NGA - Ogun State
+NGA - Ondo State
+NGA - Osun State
+NGA - Oyo State
+NGA - Plateau State
+NGA - Rivers State
+NGA - Sokoto State
+NGA - Taraba State
+NGA - Yobe State
+NGA - Zamfara State
+NIC - Boaco
+NIC - Carazo
+NIC - Chinandega
+NIC - Chontales
+NIC - Estelí
+NIC - Granada
+NIC - Jinotega
+NIC - León
+NIC - Madriz
+NIC - Managua
+NIC - Masaya
+NIC - Matagalpa
+NIC - North Caribbean Coast
+NIC - Nueva Segovia
+NIC - Rivas
+NIC - Río San Juan
+NIU - Niue
+NLD - Drenthe
+NLD - Flevoland
+NLD - Friesland
+NLD - Gelderland
+NLD - Groningen
+NLD - Limburg
+NLD - North Brabant
+NLD - North Holland
+NLD - Overijssel
+NLD - South Holland
+NLD - Utrecht
+NLD - Zeeland
+NOR - Aust-Agder
+NOR - Finnmark
+NOR - Møre og Romsdal
+NOR - Nordland
+NOR - Oslo
+NOR - Rogaland
+NOR - Svalbard
+NOR - Sør-Trøndelag
+NOR - Vestfold
+NPL - Bagmati
+NPL - Gandaki
+NPL - Karnali
+NPL - Koshi
+NPL - Lumbini
+NPL - Madhesh
+NPL - Sudurpashchim
+NRU - Yaren
+NZL - Auckland
+NZL - Bay of Plenty
+NZL - Canterbury
+NZL - Chatham Islands
+NZL - Gisborne
+NZL - Hawke's Bay
+NZL - Manawatū-Whanganui
+NZL - Marlborough
+NZL - Nelson
+NZL - Northland
+NZL - Otago
+NZL - Southland
+NZL - Taranaki
+NZL - Tasman
+NZL - Waikato
+NZL - Wellington
+NZL - West Coast
+OMN - Ad Dakhiliyah
+OMN - Ad Dhahirah
+OMN - Al Batinah North
+OMN - Al Batinah South
+OMN - Al Buraimi
+OMN - Ash Sharqiyah
+OMN - Ash Sharqiyah North
+OMN - Dhofar
+OMN - Musandam
+OMN - Muscat
+PAK - Azad Kashmir
+PAK - Balochistan
+PAK - Federally Administered Tribal Areas
+PAK - Gilgit-Baltistan
+PAK - Islamabad Capital Territory
+PAK - Khyber Pakhtunkhwa
+PAK - Punjab
+PAK - Sindh
+PAN - Chiriquí
+PAN - Coclé
+PAN - Colón
+PAN - Darién
+PAN - Emberá-Wounaan Comarca
+PAN - Guna Yala
+PAN - Herrera
+PAN - Los Santos
+PAN - Ngöbe-Buglé Comarca
+PAN - Panamá
+PAN - Veraguas
+PAN - comarca Ngäbe-Buglé
+PER - Amazonas
+PER - Apurímac
+PER - Arequipa
+PER - Ayacucho
+PER - Cajamarca
+PER - Callao
+PER - Cusco Departament
+PER - Huancavelica
+PER - Huanuco
+PER - Ica
+PER - Junín
+PER - La Libertad
+PER - Lambayeque
+PER - Lima
+PER - Loreto
+PER - Madre de Dios
+PER - Moquegua
+PER - Pasco
+PER - Piura
+PER - Puno
+PER - San Martín
+PER - Tacna
+PER - Tumbes
+PER - Ucayali
+PER - Áncash
+PHL - Autonomous Region in Muslim Mindanao (ARMM)
+PHL - Cordillera Administrative Region (CAR)
+PHL - MIMAROPA Region
+PHL - National Capital Region (NCR)
+PHL - Region I (Ilocos Region)
+PHL - Region II (Cagayan Valley)
+PHL - Region III (Central Luzon)
+PHL - Region IV-A (CALABARZON)
+PHL - Region IX (Zamboanga Peninsula)
+PHL - Region V (Bicol Region)
+PHL - Region VI (Western Visayas)
+PHL - Region VII (Central Visayas)
+PHL - Region VIII (Eastern Visayas)
+PHL - Region X (Northern Mindanao)
+PHL - Region XI (Davao Region)
+PHL - Region XII (SOCCSKSARGEN)
+PHL - Region XIII (CARAGA)
+PLW - Koror
+PLW - Melekeok
+PNG - Central
+PNG - Chimbu
+PNG - East New Britain
+PNG - East Sepik
+PNG - Eastern Highlands
+PNG - Enga
+PNG - Gulf
+PNG - Madang
+PNG - Manus
+PNG - Milne Bay
+PNG - Morobe
+PNG - New Ireland
+PNG - Oro
+PNG - Port Moresby
+PNG - Sandaun
+PNG - Southern Highlands
+PNG - West New Britain
+PNG - Western
+PNG - Western Highlands
+PNG - of Bougainville
+POL - Greater Poland Voivodeship
+POL - Kuyavian-Pomeranian Voivodeship
+POL - Lesser Poland Voivodeship
+POL - Lower Silesian Voivodeship
+POL - Lublin Voivodeship
+POL - Lubusz Voivodeship
+POL - Masovian Voivodeship
+POL - Opole Voivodeship
+POL - Podkarpackie Voivodeship
+POL - Podlaskie Voivodeship
+POL - Pomeranian Voivodeship
+POL - Silesian Voivodeship
+POL - Warmian-Masurian Voivodeship
+POL - West Pomeranian Voivodeship
+POL - Łódź Voivodeship
+POL - Świętokrzyskie Voivodeship
+PRI - Puerto Rico
+PRK - Chagang
+PRK - Kangwon
+PRK - North Hamgyong
+PRK - North Hwanghae
+PRK - North Pyongan
+PRK - Pyongyang
+PRK - Rason
+PRK - Ryanggang
+PRK - South Hamgyong
+PRK - South Hwanghae
+PRK - South Pyongan
+PRT - Aveiro
+PRT - Azores
+PRT - Beja
+PRT - Braga
+PRT - Bragança
+PRT - Castelo Branco
+PRT - Coimbra
+PRT - Faro
+PRT - Guarda
+PRT - Leiria
+PRT - Lisbon
+PRT - Madeira
+PRT - Portalegre
+PRT - Porto
+PRT - Santarém
+PRT - Setúbal
+PRT - Viana do Castelo
+PRT - Vila Real
+PRT - Viseu
+PRT - Évora
+PRY - Alto Paraguay
+PRY - Alto Paraná
+PRY - Amambay
+PRY - Asunción
+PRY - Boquerón
+PRY - Caaguazú
+PRY - Caazapá
+PRY - Canindeyú
+PRY - Central
+PRY - Concepción
+PRY - Cordillera
+PRY - Guairá
+PRY - Itapúa
+PRY - Misiones
+PRY - Paraguarí
+PRY - Presidente Hayes
+PRY - San Pedro
+PRY - Ñeembucú
+PSX - Gaza
+PSX - West Bank
+PYF - Austral Islands
+PYF - Leeward Islands
+PYF - Marquesas Islands
+PYF - Tuamotu Archipelago
+PYF - Windward Islands
+QAT - Al Khor
+QAT - Al Rayyan
+QAT - Doha
+QAT - Madinat ash Shamal
+QAT - Umm Salal
+ROU - Alba
+ROU - Arad
+ROU - Argeș
+ROU - Bacău
+ROU - Bihor
+ROU - Bistrița-Năsăud
+ROU - Botoșani
+ROU - Brașov
+ROU - Brăila
+ROU - Bucharest
+ROU - Buzău
+ROU - Caraș-Severin
+ROU - Cluj
+ROU - Constanța
+ROU - Covasna
+ROU - Călărași
+ROU - Dolj
+ROU - Dâmbovița
+ROU - Galați
+ROU - Giurgiu
+ROU - Gorj
+ROU - Harghita
+ROU - Hunedoara
+ROU - Ialomița
+ROU - Iași
+ROU - Ilfov
+ROU - Maramureș
+ROU - Mehedinți
+ROU - Mureș
+ROU - Neamț
+ROU - Olt
+ROU - Prahova
+ROU - Satu Mare
+ROU - Sibiu
+ROU - Suceava
+ROU - Sălaj
+ROU - Teleorman
+ROU - Timiș
+ROU - Tulcea
+ROU - Vaslui
+ROU - Vrancea
+ROU - Vâlcea
+RUS - Altai Republic
+RUS - Amur
+RUS - Arkhangelsk
+RUS - Astrakhan
+RUS - Autonomous Republic of Crimea
+RUS - Bashkortostan
+RUS - Belgorod
+RUS - Bryansk
+RUS - Chelyabinsk
+RUS - Irkutsk
+RUS - Ivanovo
+RUS - Jewish
+RUS - Kabardino-Balkaria
+RUS - Kaliningrad
+RUS - Kaluga
+RUS - Kamchatka Krai
+RUS - Karelia
+RUS - Kemerovo
+RUS - Khabarovsk Krai
+RUS - Khanty-Mansi Autonomous Okrug
+RUS - Kirov
+RUS - Komi Republic
+RUS - Kostroma
+RUS - Krasnodar Krai
+RUS - Krasnoyarsk Krai
+RUS - Kurgan
+RUS - Kursk
+RUS - Leningrad
+RUS - Lipetsk
+RUS - Magadan
+RUS - Mari El Republic
+RUS - Moscow
+RUS - Murmansk
+RUS - Nenets Autonomous Okrug
+RUS - Nizhny Novgorod
+RUS - Novgorod
+RUS - Novosibirsk
+RUS - Omsk
+RUS - Orenburg
+RUS - Oryol
+RUS - Penza
+RUS - Perm Krai
+RUS - Primorsky Krai
+RUS - Pskov
+RUS - Republic of Adygea
+RUS - Republic of Buryatia
+RUS - Republic of Dagestan
+RUS - Republic of Ingushetia
+RUS - Republic of Kalmykia
+RUS - Republic of Khakassia
+RUS - Republic of Mordovia
+RUS - Republic of North Ossetia-Alania
+RUS - Republic of Tatarstan
+RUS - Rostov
+RUS - Ryazan
+RUS - Saint Petersburg
+RUS - Sakha Republic
+RUS - Sakhalin
+RUS - Samara
+RUS - Saratov
+RUS - Smolensk
+RUS - Stavropol Krai
+RUS - Sverdlovsk
+RUS - Tambov
+RUS - Tomsk
+RUS - Tula
+RUS - Tuva Republic
+RUS - Tver
+RUS - Tyumen
+RUS - Udmurt Republic
+RUS - Ulyanovsk
+RUS - Vladimir
+RUS - Volgograd
+RUS - Vologda
+RUS - Voronezh
+RUS - Yamalo-Nenets Autonomous Okrug
+RUS - Yaroslavl
+RUS - Zabaykalsky Krai
+RWA - Eastern
+RWA - Kigali
+RWA - Northern
+RWA - Southern
+RWA - Western
+SAU - 'Asir
+SAU - Al Madinah
+SAU - Al-Qassim
+SAU - Eastern
+SAU - Ha'il
+SAU - Jazan
+SAU - Makkah
+SAU - Najran
+SAU - Riyadh
+SAU - Tabuk
+SDN - Al Jazirah
+SDN - Al Qadarif
+SDN - Blue Nile
+SDN - Central Darfur
+SDN - East Darfur
+SDN - Kassala
+SDN - Khartoum
+SDN - North Darfur
+SDN - North Kordofan
+SDN - Northern
+SDN - Red Sea
+SDN - River Nile
+SDN - Sennar
+SDN - South Darfur
+SDN - South Kordofan
+SDN - White Nile
+SDS - Central Equatoria
+SDS - Eastern Equatoria
+SDS - Jonglei
+SDS - Lakes
+SDS - Northern Bahr el Ghazal
+SDS - Unity
+SDS - Upper Nile
+SDS - Warrap
+SDS - Western Bahr el Ghazal
+SDS - Western Equatoria
+SEN - Dakar
+SEN - Diourbel
+SEN - Fatick
+SEN - Kaffrine
+SEN - Kaolack
+SEN - Kolda
+SEN - Kédougou
+SEN - Louga
+SEN - Matam
+SEN - Saint-Louis
+SEN - Sédhiou
+SEN - Tambacounda
+SEN - Thiès
+SEN - Ziguinchor
+SGP - Central Singapore Community Development Council
+SHN - Saint Helena
+SLB - Guadalcanal
+SLB - Isabel
+SLB - Malaita
+SLB - Temotu
+SLB - Western
+SLE - Eastern
+SLE - Northern
+SLE - Southern
+SLE - Western Area
+SLV - Ahuachapán
+SLV - Cabañas
+SLV - Chalatenango
+SLV - Cuscatlán
+SLV - La Libertad
+SLV - La Paz
+SLV - La Unión
+SLV - Morazán
+SLV - San Miguel
+SLV - San Salvador
+SLV - San Vicente
+SLV - Santa Ana
+SLV - Sonsonate
+SLV - Usulután
+SMR - Acquaviva
+SMR - Borgo Maggiore
+SMR - Serravalle
+SOM - Awdal
+SOM - Bakool
+SOM - Banadir
+SOM - Bari
+SOM - Bay
+SOM - Galgaduud
+SOM - Gedo
+SOM - Hiraan
+SOM - Juba Dhexe
+SOM - Mudug
+SOM - Nugaal
+SOM - Sanaag
+SOM - Shabelle Dhexe
+SOM - Sool
+SOM - Togdheer
+SOM - Woqooyi Galbeed
+SPM - Miquelon-Langlade
+SPM - Saint Pierre and Miquelon
+SRB - Belgrade
+SRB - Bor
+SRB - Braničevo
+SRB - Central Banat
+SRB - Jablanica
+SRB - Kolubara
+SRB - Mačva
+SRB - Moravica
+SRB - Nišava
+SRB - North Banat
+SRB - North Bačka
+SRB - Pirot
+SRB - Podunavlje
+SRB - Pomoravski
+SRB - Pčinja
+SRB - Rasina
+SRB - Raška
+SRB - South Banat
+SRB - South Bačka
+SRB - Srem
+SRB - Toplica
+SRB - West Bačka
+SRB - Zaječar
+SRB - Zlatibor
+SRB - Šumadija
+STP - Príncipe
+SUR - Brokopondo
+SUR - Commewijne
+SUR - Coronie
+SUR - Marowijne
+SUR - Nickerie
+SUR - Para
+SUR - Paramaribo
+SUR - Saramacca
+SUR - Sipaliwini
+SUR - Wanica
+SVK - Banská Bystrica
+SVK - Bratislava
+SVK - Košice
+SVK - Nitra
+SVK - Prešov
+SVK - Trenčín
+SVK - Trnava
+SVK - Žilina
+SVN - Bled
+SVN - Braslovče
+SVN - Brežice
+SVN - Celje
+SVN - Gornja Radgona
+SVN - Grosuplje
+SVN - Hoče-Slivnica
+SVN - Hrastnik
+SVN - Hrpelje-Kozina
+SVN - Ilirska Bistrica
+SVN - Izola
+SVN - Jesenice
+SVN - Kamnik
+SVN - Kanal ob Soči
+SVN - Koper
+SVN - Kočevje
+SVN - Kranj
+SVN - Kranjska Gora
+SVN - Krsko
+SVN - Lenart
+SVN - Lendava
+SVN - Ljubljana
+SVN - Ljutomer
+SVN - Maribor
+SVN - Markovci
+SVN - Metlika
+SVN - Mislinja
+SVN - Mozirje
+SVN - Murska Sobota
+SVN - Nova Gorica
+SVN - Novo Mesto
+SVN - Občina Gorenja vas-Poljane
+SVN - Piran
+SVN - Ptuj
+SVN - Radenci
+SVN - Radeče
+SVN - Radovljica
+SVN - Ribnica
+SVN - Selnica ob Dravi
+SVN - Sežana
+SVN - Slovenj Gradec
+SVN - Slovenska Bistrica
+SVN - Slovenske Konjice
+SVN - Solčava
+SVN - Trbovlje
+SVN - Tržič
+SVN - Velenje
+SVN - Vojnik
+SVN - Zagorje ob Savi
+SVN - Zavrč
+SVN - Črnomelj
+SVN - Šempeter–Vrtojba
+SVN - Šentilj
+SVN - Šentjernej
+SVN - Šentjur
+SVN - Škofja Loka
+SVN - Šoštanj
+SVN - Žalec
+SWE - Blekinge
+SWE - Dalarna
+SWE - Gotland
+SWE - Gävleborg
+SWE - Halland
+SWE - Jämtland
+SWE - Jönköping
+SWE - Kalmar
+SWE - Kronoberg
+SWE - Norrbotten
+SWE - Skåne
+SWE - Stockholm
+SWE - Södermanland
+SWE - Uppsala
+SWE - Värmland
+SWE - Västerbotten
+SWE - Västernorrland
+SWE - Västmanland
+SWE - Västra Götaland
+SWE - Örebro
+SWE - Östergötland
+SWZ - Hhohho
+SWZ - Lubombo
+SWZ - Manzini
+SWZ - Shiselweni
+SXM - Sint Maarten
+SYC - Au Cap
+SYC - Baie Lazare
+SYC - Baie Sainte Anne
+SYC - Bel Air
+SYC - Mont Fleuri
+SYC - Port Glaud
+SYR - Al-Hasakah
+SYR - Al-Raqqah
+SYR - Aleppo
+SYR - As-Suwayda
+SYR - Damascus
+SYR - Daraa
+SYR - Deir ez-Zor
+SYR - Hama
+SYR - Homs
+SYR - Idlib
+SYR - Latakia
+SYR - Quneitra
+SYR - Tartus
+TCA - Grand Turk
+TCA - Providenciales and West Caicos
+TCD - Bahr el Gazel
+TCD - Batha
+TCD - Borkou
+TCD - Chari-Baguirmi
+TCD - Ennedi
+TCD - Guéra
+TCD - Hadjer-Lamis
+TCD - Kanem
+TCD - Lac
+TCD - Logone Occidental
+TCD - Logone Oriental
+TCD - Mandoul
+TCD - Mayo-Kebbi Est
+TCD - Mayo-Kebbi Ouest
+TCD - Moyen-Chari
+TCD - N'Djamena
+TCD - Ouaddaï
+TCD - Salamat
+TCD - Sila
+TCD - Tandjilé
+TCD - Tibesti
+TCD - Wadi Fira
+TGO - Centre
+TGO - Kara
+TGO - Maritime
+TGO - Plateaux
+TGO - Savanes
+THA - Amnat Charoen
+THA - Ang Thong
+THA - Bangkok
+THA - Bueng Kan
+THA - Buri Ram
+THA - Chachoengsao
+THA - Chai Nat
+THA - Chaiyaphum
+THA - Chanthaburi
+THA - Chiang Mai
+THA - Chiang Rai
+THA - Chon Buri
+THA - Chumphon
+THA - Kalasin
+THA - Kamphaeng Phet
+THA - Kanchanaburi
+THA - Khon Kaen
+THA - Krabi
+THA - Lampang
+THA - Lamphun
+THA - Loei
+THA - Lopburi
+THA - Mae Hong Son
+THA - Maha Sarakham
+THA - Mukdahan
+THA - Nakhon Nayok
+THA - Nakhon Pathom
+THA - Nakhon Phanom
+THA - Nakhon Ratchasima
+THA - Nakhon Sawan
+THA - Nakhon Si Thammarat
+THA - Nan
+THA - Narathiwat
+THA - Nong Bua Lam Phu
+THA - Nong Khai
+THA - Nonthaburi
+THA - Pathum Thani
+THA - Pattani
+THA - Phang Nga
+THA - Phatthalung
+THA - Phayao
+THA - Phetchabun
+THA - Phetchaburi
+THA - Phichit
+THA - Phitsanulok
+THA - Phra Nakhon Si Ayutthaya
+THA - Phrae
+THA - Phuket
+THA - Prachin Buri
+THA - Prachuap Khiri Khan
+THA - Ranong
+THA - Ratchaburi
+THA - Rayong
+THA - Roi Et
+THA - Sa Kaeo
+THA - Sakon Nakhon
+THA - Samut Prakan
+THA - Samut Sakhon
+THA - Samut Songkhram
+THA - Saraburi
+THA - Satun
+THA - Si Sa Ket
+THA - Sing Buri
+THA - Songkhla
+THA - Sukhothai
+THA - Suphan Buri
+THA - Surat Thani
+THA - Surin
+THA - Tak
+THA - Trang
+THA - Trat
+THA - Ubon Ratchathani
+THA - Udon Thani
+THA - Uttaradit
+THA - Yala
+THA - Yasothon
+TJK - Dushanbe
+TJK - Gorno-Badakhshan
+TJK - Khatlon
+TJK - Khujand
+TJK - districts of Republican Subordination
+TKM - Ahal
+TKM - Balkan
+TKM - Daşoguz
+TKM - Lebap
+TKM - Mary
+TLS - Baucau
+TLS - Bobonaro
+TLS - Cova Lima
+TLS - Dili
+TLS - Ermera
+TLS - Lautém
+TLS - Liquiçá
+TLS - Oe-Cusse Ambeno
+TLS - Viqueque
+TON - Tongatapu
+TTO - Arima
+TTO - Chaguanas
+TTO - Couva-Tabaquite-Talparo
+TTO - Diego Martin Regional Corporation
+TTO - Mayaro-Rio Claro
+TTO - Penal-Debe Regional Corporation
+TTO - Point Fortin
+TTO - Port of Spain
+TTO - Princes Town
+TTO - San Fernando
+TTO - San Juan–Laventille
+TTO - Sangre Grande Regional Corporation
+TTO - Siparia Regional Corporation
+TTO - Tobago
+TTO - Tunapuna-Piarco Regional Corporation
+TUN - Beja
+TUN - Ben Arous
+TUN - Bizerte
+TUN - Gabès
+TUN - Gafsa
+TUN - Jendouba
+TUN - Kairouan
+TUN - Kasserine
+TUN - Kebili
+TUN - Kef
+TUN - Mahdia
+TUN - Manouba
+TUN - Medenine
+TUN - Monastir
+TUN - Nabeul
+TUN - Sfax
+TUN - Sidi Bouzid
+TUN - Siliana
+TUN - Sousse
+TUN - Tataouine
+TUN - Tozeur
+TUN - Tunis
+TUN - Zaghouan
+TUR - Adana
+TUR - Adıyaman
+TUR - Afyonkarahisar
+TUR - Aksaray
+TUR - Amasya
+TUR - Ankara
+TUR - Antalya
+TUR - Ardahan
+TUR - Artvin
+TUR - Aydın
+TUR - Ağrı
+TUR - Balıkesir
+TUR - Bartın
+TUR - Batman
+TUR - Bayburt
+TUR - Bilecik
+TUR - Bingöl
+TUR - Bitlis
+TUR - Bolu
+TUR - Burdur
+TUR - Bursa
+TUR - Denizli
+TUR - Diyarbakır
+TUR - Düzce
+TUR - Edirne
+TUR - Elazığ
+TUR - Erzincan
+TUR - Erzurum
+TUR - Eskişehir
+TUR - Gaziantep
+TUR - Giresun
+TUR - Gümüşhane
+TUR - Hakkâri
+TUR - Hatay
+TUR - Isparta
+TUR - Istanbul
+TUR - Iğdır
+TUR - Kahramanmaraş
+TUR - Karabük
+TUR - Karaman
+TUR - Kars
+TUR - Kastamonu
+TUR - Kayseri
+TUR - Kilis
+TUR - Kocaeli
+TUR - Konya
+TUR - Kütahya
+TUR - Kırklareli
+TUR - Kırıkkale
+TUR - Kırşehir
+TUR - Malatya
+TUR - Manisa
+TUR - Mardin
+TUR - Mersin
+TUR - Muğla
+TUR - Muş
+TUR - Nevşehir
+TUR - Niğde
+TUR - Ordu
+TUR - Osmaniye
+TUR - Rize
+TUR - Sakarya
+TUR - Samsun
+TUR - Siirt
+TUR - Sinop
+TUR - Sivas
+TUR - Tekirdağ
+TUR - Tokat
+TUR - Trabzon
+TUR - Tunceli
+TUR - Uşak
+TUR - Van
+TUR - Yalova
+TUR - Yozgat
+TUR - Zonguldak
+TUR - Çanakkale
+TUR - Çankırı
+TUR - Çorum
+TUR - İzmir
+TUR - Şanlıurfa
+TUR - Şırnak
+TWN - Changhua
+TWN - Chiayi
+TWN - Hsinchu
+TWN - Hualien
+TWN - Kaohsiung
+TWN - Keelung
+TWN - Kinmen
+TWN - Miaoli
+TWN - Nantou
+TWN - New Taipei
+TWN - Penghu
+TWN - Pingtung
+TWN - Taichung City
+TWN - Tainan
+TWN - Taipei
+TWN - Taitung
+TWN - Yilan
+TWN - Yunlin
+TZA - Arusha
+TZA - Dar es Salaam
+TZA - Dodoma
+TZA - Geita
+TZA - Iringa
+TZA - Kagera
+TZA - Katavi
+TZA - Kigoma
+TZA - Kilimanjaro
+TZA - Lindi
+TZA - Manyara
+TZA - Mara
+TZA - Mbeya
+TZA - Mjini Magharibi
+TZA - Morogoro
+TZA - Mtwara
+TZA - Mwanza
+TZA - Njombe
+TZA - North Pemba
+TZA - Pwani
+TZA - Rukwa
+TZA - Ruvuma
+TZA - Shinyanga
+TZA - Simiyu
+TZA - Singida
+TZA - Tabora
+TZA - Tanga
+TZA - Unguja North
+TZA - Unguja South
+UGA - Abim
+UGA - Adjumani
+UGA - Agago
+UGA - Alebtong
+UGA - Amolatar
+UGA - Amudat
+UGA - Amuria
+UGA - Amuru
+UGA - Apac
+UGA - Arua
+UGA - Budaka
+UGA - Bududa
+UGA - Bugiri
+UGA - Buhweju
+UGA - Buikwe
+UGA - Bukedea
+UGA - Bukomansimbi
+UGA - Bukwo
+UGA - Bulambuli
+UGA - Buliisa
+UGA - Bundibugyo
+UGA - Bushenyi
+UGA - Busia
+UGA - Butaleja
+UGA - Butambala
+UGA - Buvuma
+UGA - Buyende
+UGA - Dokolo
+UGA - Gomba
+UGA - Gulu
+UGA - Hoima
+UGA - Ibanda
+UGA - Iganga
+UGA - Isingiro
+UGA - Jinja
+UGA - Kaabong
+UGA - Kabale
+UGA - Kabarole
+UGA - Kaberamaido
+UGA - Kalangala
+UGA - Kaliro
+UGA - Kalungu
+UGA - Kampala
+UGA - Kamuli
+UGA - Kamwenge
+UGA - Kanungu
+UGA - Kapchorwa
+UGA - Kasese
+UGA - Katakwi
+UGA - Kayunga
+UGA - Kibaale
+UGA - Kiboga
+UGA - Kibuku
+UGA - Kiryandongo
+UGA - Kisoro
+UGA - Kitgum
+UGA - Koboko
+UGA - Kole
+UGA - Kotido
+UGA - Kumi
+UGA - Kween
+UGA - Kyankwanzi
+UGA - Kyegegwa
+UGA - Kyenjojo
+UGA - Lamwo
+UGA - Lira
+UGA - Luuka
+UGA - Luwero
+UGA - Lwengo
+UGA - Lyantonde
+UGA - Manafwa
+UGA - Maracha
+UGA - Masaka
+UGA - Masindi
+UGA - Mayuge
+UGA - Mbale
+UGA - Mbarara
+UGA - Mitooma
+UGA - Mityana
+UGA - Moroto
+UGA - Moyo
+UGA - Mpigi
+UGA - Mubende
+UGA - Mukono
+UGA - Nakapiripirit
+UGA - Nakaseke
+UGA - Nakasongola
+UGA - Namayingo
+UGA - Namutumba
+UGA - Napak
+UGA - Nebbi
+UGA - Ngora
+UGA - Ntoroko
+UGA - Ntungamo
+UGA - Nwoya
+UGA - Otuke
+UGA - Oyam
+UGA - Pader
+UGA - Pallisa
+UGA - Rakai
+UGA - Rubirizi
+UGA - Rukungiri
+UGA - Sembabule
+UGA - Serere
+UGA - Sheema
+UGA - Sironko
+UGA - Soroti
+UGA - Tororo
+UGA - Wakiso
+UGA - Yumbe
+UGA - Zombo
+UKR - Cherkasy
+UKR - Chernihiv
+UKR - Chernivtsi
+UKR - Dnipropetrovsk
+UKR - Donetsk
+UKR - Ivano-Frankivsk
+UKR - Kharkiv
+UKR - Kherson
+UKR - Khmelnytskyi
+UKR - Kirovohrad
+UKR - Kyiv
+UKR - Luhansk
+UKR - Lviv
+UKR - Mykolaiv
+UKR - Odessa
+UKR - Poltava
+UKR - Rivne
+UKR - Sumy
+UKR - Ternopil
+UKR - Vinnytsia
+UKR - Volyn
+UKR - Zakarpattia
+UKR - Zaporizhzhia
+UKR - Zhytomyr
+URY - Artigas
+URY - Canelones
+URY - Cerro Largo
+URY - Colonia
+URY - Durazno
+URY - Flores
+URY - Florida
+URY - Lavalleja
+URY - Maldonado
+URY - Montevideo
+URY - Paysandú
+URY - Rivera
+URY - Rocha
+URY - Río Negro
+URY - Salto
+URY - San José
+URY - Soriano
+URY - Tacuarembó
+URY - Treinta y Tres
+USA - Alabama
+USA - Alaska
+USA - Arizona
+USA - Arkansas
+USA - California
+USA - Colorado
+USA - Connecticut
+USA - Delaware
+USA - Florida
+USA - Georgia
+USA - Hawaii
+USA - Idaho
+USA - Illinois
+USA - Indiana
+USA - Iowa
+USA - Kansas
+USA - Kentucky
+USA - Louisiana
+USA - Maine
+USA - Maryland
+USA - Massachusetts
+USA - Michigan
+USA - Minnesota
+USA - Mississippi
+USA - Missouri
+USA - Montana
+USA - Nebraska
+USA - Nevada
+USA - New Hampshire
+USA - New Jersey
+USA - New Mexico
+USA - New York
+USA - North Carolina
+USA - North Dakota
+USA - Ohio
+USA - Oklahoma
+USA - Oregon
+USA - Pennsylvania
+USA - Rhode Island
+USA - South Carolina
+USA - South Dakota
+USA - Tennessee
+USA - Texas
+USA - Utah
+USA - Vermont
+USA - Virginia
+USA - Washington
+USA - West Virginia
+USA - Wisconsin
+USA - Wyoming
+UZB - Andijan
+UZB - Bukhara
+UZB - Fergana
+UZB - Jizzakh
+UZB - Karakalpakstan
+UZB - Namangan
+UZB - Navoiy
+UZB - Qashqadaryo
+UZB - Samarqand
+UZB - Sirdaryo
+UZB - Surxondaryo
+UZB - Tashkent
+UZB - Xorazm
+VCT - Grenadines
+VCT - Saint George
+VEN - Amazonas
+VEN - Anzoátegui
+VEN - Apure
+VEN - Aragua
+VEN - Barinas
+VEN - Bolívar
+VEN - Capital
+VEN - Carabobo
+VEN - Cojedes
+VEN - Delta Amacuro
+VEN - Falcón
+VEN - Federal Dependencies
+VEN - Guárico State
+VEN - Lara
+VEN - Merida
+VEN - Miranda
+VEN - Monagas
+VEN - Nueva Esparta
+VEN - Portuguesa
+VEN - Sucre
+VEN - Tachira
+VEN - Trujillo
+VEN - Yaracuy
+VEN - Zulia
+VGB - British Virgin Islands
+VIR - Saint Croix
+VIR - Saint Thomas
+VNM - An Giang
+VNM - Bình Dương
+VNM - Bình Thuận
+VNM - Bình Định
+VNM - Bắc Ninh
+VNM - Bến Tre
+VNM - Da Nang
+VNM - Gia Lai
+VNM - Haiphong
+VNM - Hanoi
+VNM - Ho Chi Minh
+VNM - Hà Nam
+VNM - Hà Tĩnh
+VNM - Hòa Bình
+VNM - Hải Dương
+VNM - Khánh Hòa
+VNM - Kiên Giang
+VNM - Kon Tum
+VNM - Lào Cai
+VNM - Lâm Đồng
+VNM - Nghệ An
+VNM - Phú Thọ
+VNM - Phú Yên
+VNM - Quảng Bình
+VNM - Quảng Nam
+VNM - Quảng Ngãi
+VNM - Quảng Ninh
+VNM - Thanh Hóa
+VNM - Thái Bình
+VNM - Thừa Thiên Huế
+VNM - Tuyên Quang
+VNM - Vĩnh Long
+VNM - Yên Bái
+VNM - Đắk Lắk
+VNM - Đồng Tháp
+VUT - Penama
+VUT - Sanma
+VUT - Shefa
+VUT - Tafea
+WLF - Uvea
+WSM - A'ana
+WSM - Aiga-i-le-Tai
+WSM - Atua
+WSM - Fa'asaleleaga
+WSM - Gaga'ifomauga
+WSM - Tuamasaga
+XKX - Ferizaj
+XKX - Gjakovë
+XKX - Gjilan
+XKX - Mitrovicë
+XKX - Pejë
+XKX - Prishtinë
+XKX - Prizren
+YEM - 'Adan
+YEM - 'Amran
+YEM - Abyan
+YEM - Ad Dali'
+YEM - Al Bayda'
+YEM - Al Hudaydah
+YEM - Al Jawf
+YEM - Al Mahrah
+YEM - Al Mahwit
+YEM - Dhamar
+YEM - Hadhramaut
+YEM - Hajjah
+YEM - Ibb
+YEM - Lahij
+YEM - Ma'rib
+YEM - Raymah
+YEM - Sa'dah
+YEM - Sanaa
+YEM - Shabwah
+YEM - Ta'izz
+ZAF - Eastern Cape
+ZAF - Free State
+ZAF - Gauteng
+ZAF - KwaZulu-Natal
+ZAF - Limpopo
+ZAF - Mpumalanga
+ZAF - North West
+ZAF - Northern Cape
+ZAF - Western Cape
+ZMB - Central
+ZMB - Copperbelt
+ZMB - Eastern
+ZMB - Luapula
+ZMB - Lusaka
+ZMB - Muchinga
+ZMB - Northern
+ZMB - Northwestern
+ZMB - Southern
+ZMB - Western
+ZWE - Bulawayo
+ZWE - Harare
+ZWE - Manicaland
+ZWE - Mashonaland Central
+ZWE - Mashonaland East
+ZWE - Mashonaland West
+ZWE - Masvingo
+ZWE - Matabeleland North
+ZWE - Matabeleland South
+ZWE - Midlands
