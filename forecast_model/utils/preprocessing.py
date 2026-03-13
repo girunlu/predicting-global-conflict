@@ -5,6 +5,7 @@ from utils import data_cleaning, map_admin_regions
 from config import settings
 from utils.features.holidays import add_holiday_features
 from utils.features.worldbank import add_worldbank_features
+from utils.fetch_world_bank_data import WorldBankDataFetcher
 
 
 def prepare_data_pipeline(clean_data: bool = False):
@@ -34,6 +35,19 @@ def prepare_data_pipeline(clean_data: bool = False):
     subevent_data = data_cleaning.get_monthly_subevents(
         df_neighbours, ['Excessive force against protesters', 'Agreement']
     )
+
+    # Get World Bank data
+    wb_dir = "data/raw/world_bank"
+    indicators_path = os.path.join(wb_dir, "combined_indicators.csv")
+    metadata_path = os.path.join(wb_dir, "country_metadata.csv")
+
+    if not os.path.exists(indicators_path) or not os.path.exists(metadata_path):
+        wb = WorldBankDataFetcher()
+        countries = wb.get_countries()
+        data = wb.get_all_indicators()
+
+        wb.save_data(data, countries, wb_dir)
+        countries.to_csv(metadata_path, index=False)
 
     combined = pd.concat([event_data, subevent_data], axis=1).join(neighbour_data, how='left')
     combined = data_cleaning.add_lagged_columns(combined)

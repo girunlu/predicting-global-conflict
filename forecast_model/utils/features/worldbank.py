@@ -76,8 +76,8 @@ def _indicators_yearly_wide_to_monthly(indicators_path: str) -> pd.DataFrame:
 def add_worldbank_features(
     combined: pd.DataFrame,
     gdf,
-    indicators_path: str = "data/raw/world_bank_data/combined_indicators.csv",
-    metadata_path: str = "data/raw/world_bank_data/country_metadata.csv",) -> pd.DataFrame:
+    indicators_path: str = "data/raw/world_bank/combined_indicators.csv",
+    metadata_path: str = "data/raw/world_bank/country_metadata.csv",) -> pd.DataFrame:
 
  
     admin1_to_iso3 = gdf[["adm0_a3", "name_en"]].dropna().copy()

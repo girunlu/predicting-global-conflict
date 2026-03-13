@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_holidays_monthly(holidays_path: str = "data/raw/holidays.csv") -> pd.DataFrame:
+def load_holidays_monthly(holidays_path: str = "data/raw/holidays_raw.csv") -> pd.DataFrame:
     hol = pd.read_csv(holidays_path)
 
     required = {"Country", "Date", "Holiday"}
@@ -73,7 +73,7 @@ def add_iso3_to_holidays(hol_month: pd.DataFrame, country_map: pd.DataFrame) -> 
 
     return out
 
-def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays.csv"):
+def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays_raw.csv"):
     country_map = gdf[["admin", "adm0_a3"]].dropna().drop_duplicates()
 
     hol_month = load_holidays_monthly(holidays_path)
