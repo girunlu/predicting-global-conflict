@@ -1,5 +1,7 @@
 import pandas as pd
 
+# change 1
+
 def load_holidays_monthly(holidays_path: str = "data/raw/holidays_raw.csv") -> pd.DataFrame:
     hol = pd.read_csv(holidays_path)
 
@@ -13,7 +15,7 @@ def load_holidays_monthly(holidays_path: str = "data/raw/holidays_raw.csv") -> p
     hol["Date"] = pd.to_datetime(hol["Date"], errors="coerce")
     hol = hol.dropna(subset=["Country", "Date"]).copy()
 
-    hol["month_year"] = hol["Date"].dt.to_period("M").astype(str)
+    hol["month_year"] = hol["Date"].dt.strftime("%Y-%m")
 
     hol_month = (
         hol.groupby(["Country", "month_year"], as_index=False)
@@ -80,22 +82,30 @@ def add_holiday_features(combined, gdf, holidays_path: str = "data/raw/holidays_
     hol_month = add_iso3_to_holidays(hol_month, country_map)
     hol_month["month_year"] = hol_month["month_year"].astype(str)
 
+    # Drop unmapped rows (NaN country_iso3 would match NaN adm0_a3 in pandas merge,
+    # causing cartesian-product expansion). Aggregate duplicates that arise when
+    # multiple country-name spellings resolve to the same ISO3 code.
+    hol_month = hol_month.dropna(subset=["country_iso3"]).copy()
+    hol_month = (
+        hol_month.groupby(["country_iso3", "month_year"], as_index=False)
+        .agg(holiday_count_month=("holiday_count_month", "sum"),
+             is_holiday_month=("is_holiday_month", "max"))
+    )
     hol_month = hol_month[["country_iso3", "month_year", "holiday_count_month", "is_holiday_month"]].copy()
 
-    admin1_to_iso3 = gdf[["adm0_a3", "name_en"]].dropna().copy()
-    admin1_to_iso3["matched_admin1_id"] = (
-        admin1_to_iso3["adm0_a3"].astype(str).str.upper().str.strip()
-        + " - "
-        + admin1_to_iso3["name_en"].astype(str).str.strip()
-    )
-    admin1_to_iso3["adm0_a3"] = admin1_to_iso3["adm0_a3"].astype(str).str.upper().str.strip()
-    admin1_to_iso3 = admin1_to_iso3[["matched_admin1_id", "adm0_a3"]].drop_duplicates("matched_admin1_id")
+    # Extract ISO3 directly from matched_admin1_id prefix ("ISO3 - region name").
+    # Previously used a GDF name_en reverse-lookup which silently failed for 214 regions
+    # whose names changed after fix_france/fix_libya.
+    _ACLED_TO_ISO3 = {'PSX': 'PSE', 'SDS': 'SSD'}
 
     idx = combined.index.to_frame(index=False)
     idx["matched_admin1_id"] = idx["matched_admin1_id"].astype(str)
     idx["month_year"] = pd.to_datetime(idx["month_year"], errors="coerce").dt.strftime("%Y-%m")
-
-    idx = idx.merge(admin1_to_iso3, on="matched_admin1_id", how="left")
+    idx["adm0_a3"] = (
+        idx["matched_admin1_id"].str.split(" - ").str[0]
+        .str.upper().str.strip()
+        .replace(_ACLED_TO_ISO3)
+    )
 
 
     idx = idx.merge(hol_month, left_on=["adm0_a3", "month_year"], right_on=["country_iso3", "month_year"],how="left")

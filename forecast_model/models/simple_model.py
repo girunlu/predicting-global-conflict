@@ -10,17 +10,23 @@ def sanitize_filename(name: str) -> str:
     return name.replace("/", "_").replace(" ", "_").replace(":", "_")
     
 
-def train_and_evaluate_model(region_data, target_event, region_name=None):
+def train_and_evaluate_model(region_data, target_event, region_name=None, predictors=None):
     # Ensure output directory exists
     output_dir = "outputs/figures"
     os.makedirs(output_dir, exist_ok=True)
+
+    # Use provided predictor list or fall back to baseline predictors
+    if predictors is None:
+        predictors = settings.predictors
+    # Only keep columns that actually exist in region_data
+    predictors = [p for p in predictors if p in region_data.columns]
 
     # Split train/test
     train_data = region_data.iloc[:-6]
     test_data = region_data.iloc[-6:]
 
-    X_train = train_data[settings.predictors]
-    X_test = test_data[settings.predictors]
+    X_train = train_data[predictors]
+    X_test = test_data[predictors]
     y_train = train_data[target_event]
     y_test = test_data[target_event]
 
